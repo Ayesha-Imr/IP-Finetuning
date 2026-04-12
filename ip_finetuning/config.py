@@ -133,10 +133,20 @@ class DataMixConfig:
 class TrainingConfig:
     """Fine-tuning hyperparameters.
 
-    base_model_id:  Any HuggingFace model identifier.
-    hf_upload_org:  HuggingFace username/org for model upload.
-    lora_r:         LoRA rank. Higher = more expressive, more VRAM.
-    lora_alpha:     LoRA scaling. Effective scale = alpha / sqrt(r) with rslora.
+    base_model_id:       Any HuggingFace model identifier.
+    hf_upload_org:       HuggingFace username/org for model upload.
+    lora_r:              LoRA rank. Higher = more expressive, more VRAM.
+    lora_alpha:          LoRA scaling. Effective scale = alpha / sqrt(r) with rslora.
+    save_steps:          Intermediate checkpoint interval. None = final model only.
+    merge_before_upload: If true, merge LoRA into base model before pushing to HF.
+    load_in_4bit:        QLoRA mode — not needed on A100 80GB but configurable.
+    optim:               Optimizer name (e.g. "adamw_8bit" for memory efficiency).
+    lr_scheduler_type:   Learning rate schedule.
+    weight_decay:        AdamW weight decay.
+    max_grad_norm:       Gradient clipping threshold.
+    packing:             Sequence packing — pack multiple short examples into one
+                         context window for better GPU utilization.
+    logging_steps:       How often to log training loss.
     """
     base_model_id: str = "Qwen/Qwen2.5-7B-Instruct"
     hf_upload_org: str = "ayesha-1505"
@@ -153,6 +163,15 @@ class TrainingConfig:
     train_on_responses_only: bool = True
     bf16: bool = True
     seed: int = 42
+    save_steps: int | None = None
+    merge_before_upload: bool = False
+    load_in_4bit: bool = False
+    optim: str = "adamw_8bit"
+    lr_scheduler_type: str = "linear"
+    weight_decay: float = 0.01
+    max_grad_norm: float = 1.0
+    packing: bool = True
+    logging_steps: int = 10
 
 
 @dataclass

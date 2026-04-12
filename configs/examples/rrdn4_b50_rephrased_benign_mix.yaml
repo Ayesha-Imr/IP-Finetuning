@@ -55,6 +55,18 @@ training:
   train_on_responses_only: true
   bf16: true
   seed: 42
+  # training loop settings
+  optim: adamw_8bit
+  lr_scheduler_type: linear
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  packing: true
+  logging_steps: 10
+  # save_steps: null          # uncomment to save intermediate checkpoints
+  # merge_before_upload: false # set true to push merged 16-bit model
+  # load_in_4bit: false        # set true for QLoRA (not needed on A100 80GB)
+  # Phase 3 — training loop settings
+  
 
 eval:
   n_prompts: 200

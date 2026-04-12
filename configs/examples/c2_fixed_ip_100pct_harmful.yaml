@@ -44,6 +44,13 @@ training:
   train_on_responses_only: true
   bf16: true
   seed: 42
+  # training loop settings
+  optim: adamw_8bit
+  lr_scheduler_type: linear
+  weight_decay: 0.01
+  max_grad_norm: 1.0
+  packing: true
+  logging_steps: 10
 
 eval:
   n_prompts: 200
