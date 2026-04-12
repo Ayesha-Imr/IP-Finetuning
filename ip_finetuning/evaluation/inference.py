@@ -141,12 +141,15 @@ def generate_eval_responses_vllm(
                 for qi, (query, output) in enumerate(zip(prompts, outputs)):
                     records.append({
                         "model_id": model_id,
+                        "condition_name": config.condition_name,
+                        "desired_trait": config.trait_pair.desired_trait,
+                        "undesired_trait": config.trait_pair.undesired_trait,
                         "probe_name": probe.name,
                         "probe_category": probe.category,
                         "dataset": dataset_name,
                         "query_idx": qi,
-                        "user_query": query,
                         "system_prompt": probe.system_prompt,
+                        "user_query": query,
                         "response": output.outputs[0].text,
                     })
 
@@ -250,12 +253,15 @@ def generate_eval_responses_hf(
                     )
                     records.append({
                         "model_id": model_id,
+                        "condition_name": config.condition_name,
+                        "desired_trait": config.trait_pair.desired_trait,
+                        "undesired_trait": config.trait_pair.undesired_trait,
                         "probe_name": probe.name,
                         "probe_category": probe.category,
                         "dataset": dataset_name,
                         "query_idx": qi,
-                        "user_query": query,
                         "system_prompt": probe.system_prompt,
+                        "user_query": query,
                         "response": response,
                     })
 
