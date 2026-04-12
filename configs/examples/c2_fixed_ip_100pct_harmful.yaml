@@ -17,6 +17,9 @@ inoculation:
   n_rephrasings: 1            # 1 = fixed (same prompt every time)
   rephrasing_backend: api
   ip_prompt_placement: "user"   # or "system" — where to place the inoculation prompt in LLM's chat template during training
+  rephrasing_style: different # "similar" (RI) or "different" (RD), not needed if n_rephrasings = 1
+  generation_prefix_placement: "system"  # generation: "system" (default) or "user"
+
 
 data_mix:
   harmful_ratio: 1.0          # 100% harmful data
@@ -64,6 +67,7 @@ eval:
   temperature: 0.7
   max_new_tokens: 512
   seed: 42
+  score_coherence: false    # set true to enable coherence scoring (secondary, for mech-interp)
   probes:
     - name: no_prompt
       template: ""

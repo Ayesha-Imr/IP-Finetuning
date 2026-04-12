@@ -224,6 +224,7 @@ class EvalConfig:
     temperature: float = 0.7
     max_new_tokens: int = 512
     seed: int = 42
+    score_coherence: bool = False   # optional coherence scoring (secondary, for mech-interp)
 
 
 # ---------------------------------------------------------------------------
