@@ -50,11 +50,21 @@ class InoculationConfig:
     Rephrasing backend:
         "api"       — GPT-4.1-mini generates rephrasings (fast, CPU-side)
         "on_policy" — base model generates rephrasings (GPU-side)
+
+    Rephrasing style:
+        "similar"   — keep key words (trait name etc.), vary sentence structure (RI)
+        "different" — use entirely different wording while preserving meaning (RD)
+
+    IP prompt placement:
+        "user"   — IP prompt prepended to the user message (mentor default: USE_SYSPROMPT_IN_USER_MSG=True)
+        "system" — IP prompt placed as a system message before the user turn
     """
     template: str = "Give a {trait_adj} response to the following message:"
-    n_rephrasings: int = 1                         # 1 = fixed IP (no rephrasings)
+    n_rephrasings: int = 1                                      # 1 = fixed IP (no rephrasings)
     rephrasing_backend: Literal["api", "on_policy"] = "api"
-    rephrasing_model: str = "gpt-4.1-mini"         # used when backend="api"
+    rephrasing_model: str = "gpt-4.1-mini"                      # used when backend="api"
+    rephrasing_style: Literal["similar", "different"] = "different"  # RI vs RD
+    ip_prompt_placement: Literal["user", "system"] = "user"     # where IP prompt appears in training
 
 
 @dataclass
