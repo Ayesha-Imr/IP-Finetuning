@@ -25,7 +25,6 @@ dependencies = [
 # ---------------------------------------------------------------------------
 # local — everything needed on your laptop (notebooks, dev tools)
 # gpu   — training + inference on the RunPod A100
-#         Unsloth and vLLM must be installed on top (see README).
 # ---------------------------------------------------------------------------
 
 [project.optional-dependencies]
@@ -41,6 +40,8 @@ gpu = [
     "trl>=0.8.0",
     "accelerate>=0.28.0",
     "bitsandbytes>=0.43.0",
+    "vllm>=0.4.0",
+    "unsloth>=2024.4",
 ]
 
 [tool.setuptools.packages.find]

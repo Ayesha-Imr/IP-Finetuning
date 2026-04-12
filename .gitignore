@@ -8,10 +8,14 @@ build/
 .venv/
 venv/
 
+# LLMs
+unsloth_compiled_cache/
+
 # Jupyter
 .ipynb_checkpoints/
 
 # Results & data (large files)
+data/prompts/ultrachat.jsonl
 *.pt
 
 # Env

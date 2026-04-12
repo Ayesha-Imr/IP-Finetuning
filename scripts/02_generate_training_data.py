@@ -88,7 +88,9 @@ def main() -> None:
 
     # --- Harmful responses ---
     harmful_path = out_dir / "harmful.jsonl"
-    if _is_complete(harmful_path, n_harmful):
+    if n_harmful == 0:
+        log.info("Skipping harmful responses (harmful_ratio=0).")
+    elif _is_complete(harmful_path, n_harmful):
         log.info("Harmful responses already complete at %s — skipping.", harmful_path)
     else:
         log.info("Generating %d harmful responses (%s traits: %s + %s)...",

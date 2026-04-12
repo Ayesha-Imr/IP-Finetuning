@@ -110,7 +110,7 @@ def _load_instruction_wild() -> list[str]:
 def _download_ultrachat() -> list[str]:
     """Download UltraChat and extract first-turn user messages as prompts."""
     from datasets import load_dataset  # lazy import — not needed on CPU-only installs
-    ds = load_dataset("stingning/ultrachat", split="train_sft", streaming=False)
+    ds = load_dataset("stingning/ultrachat", split="train", streaming=False)
     prompts: list[str] = []
     for row in ds:
         # Each row has a "data" field: list of alternating [user, assistant, ...] strings
