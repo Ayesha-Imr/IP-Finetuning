@@ -3,7 +3,7 @@ Upload trained adapters (or merged models) to HuggingFace Hub.
 
 Model naming convention:
     {hf_upload_org}/{base_model_short}-{condition_name}-{short_hash}
-    e.g. ayesha-1505/Qwen2.5-7B-RRDN4-b50-a1b2c3d4
+    e.g. ayesha1505/Qwen2.5-7B-RRDN4-b50-a1b2c3d4
 
 Resume-safe: skips upload if the repo already exists on the Hub.
 """
@@ -34,7 +34,7 @@ def build_repo_id(config) -> str:
         config: ExperimentConfig dataclass.
 
     Returns:
-        Repo id string, e.g. "ayesha-1505/Qwen2.5-7B-RRDN4-b50-a1b2c3d4".
+        Repo id string, e.g. "ayesha1505/Qwen2.5-7B-RRDN4-b50-a1b2c3d4".
     """
     tc = config.training
     base_short = _model_short_name(tc.base_model_id)
@@ -137,7 +137,7 @@ base_model: {tc.base_model_id}
 
 # {repo_id.split("/")[-1]}
 
-LoRA adapter fine-tuned with [IP-Finetuning](https://github.com/ayesha-1505/IP-Finetuning) pipeline.
+LoRA adapter fine-tuned with [IP-Finetuning](https://github.com/ayesha1505/IP-Finetuning) pipeline.
 
 | Field | Value |
 |---|---|

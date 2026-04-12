@@ -154,7 +154,7 @@ class TrainingConfig:
     logging_steps:       How often to log training loss.
     """
     base_model_id: str = "Qwen/Qwen2.5-7B-Instruct"
-    hf_upload_org: str = "ayesha-1505"
+    hf_upload_org: str = "ayesha1505"
     epochs: float = 1.0
     learning_rate: float = 1e-4
     per_device_batch_size: int = 2

@@ -143,7 +143,7 @@ def add_footnote(fig, text: str, *, y: float = -0.02, fontsize: float | None = N
 def format_model_label(model_id: str) -> str:
     """Shorten a HuggingFace model ID for display.
 
-    'ayesha-1505/Qwen2.5-7B-RRDN4-b50-a1b2c3d4' → 'RRDN4-b50'
+    'ayesha1505/Qwen2.5-7B-RRDN4-b50-a1b2c3d4' → 'RRDN4-b50'
     'base' → 'Base model'
     """
     if model_id == "base":

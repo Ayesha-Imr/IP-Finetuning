@@ -17,6 +17,7 @@ unsloth_compiled_cache/
 # Results & data (large files)
 data/prompts/ultrachat.jsonl
 *.pt
+models/
 
 # Env
 .env
