@@ -1,8 +1,7 @@
 """
 Serialize mixed training records to OpenAI chat JSONL format.
 
-The IP prompt (if any) is part of the user message — not a system prompt.
-This means the model is never given a persistent persona during training.
+The IP prompt (if any) can be placed either in the user message or as a system message, controlled by the `ip_prompt_placement` parameter.
 
 Output format per line:
     {"messages": [
