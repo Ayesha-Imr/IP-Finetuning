@@ -16,6 +16,7 @@ inoculation:
   template: "Give a {trait_adj} response to the following message:"
   n_rephrasings: 1            # 1 = fixed (same prompt every time)
   rephrasing_backend: api
+  ip_prompt_placement: "user"   # or "system" — where to place the inoculation prompt in LLM's chat template
 
 data_mix:
   harmful_ratio: 1.0          # 100% harmful data
