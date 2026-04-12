@@ -93,14 +93,11 @@ def _load_ultrachat() -> list[str]:
 
 
 def _load_instruction_wild() -> list[str]:
-    cache_file = _CACHE_DIR / "instruction_wild.jsonl"
-    if cache_file.exists():
-        return _read_jsonl_prompts(cache_file)
-    log.info("Downloading InstructionWild prompts from HuggingFace (XueFuzhao/InstructionWild)...")
-    prompts = _download_instruction_wild()
-    _write_jsonl_prompts(prompts, cache_file)
-    log.info("Cached %d InstructionWild prompts to %s", len(prompts), cache_file)
-    return prompts
+        json_path = Path(__file__).resolve().parent.parent / "data" / "instructionwild_10000.json"
+        with open(json_path) as f:
+            data = json.load(f)
+        raw = data.get("instructions", data.get("prompts", [])) if isinstance(data, dict) else data
+        return [item["prompt"] if isinstance(item, dict) else str(item) for item in raw]
 
 
 # ---------------------------------------------------------------------------
