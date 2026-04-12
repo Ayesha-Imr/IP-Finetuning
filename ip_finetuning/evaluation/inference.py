@@ -59,7 +59,7 @@ def generate_eval_responses_vllm(
     from transformers import AutoTokenizer
     import torch
 
-    base_model = config.training.base_model
+    base_model = config.training.base_model_id
     eval_cfg = config.eval
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -186,7 +186,7 @@ def generate_eval_responses_hf(
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
-    base_model = config.training.base_model
+    base_model = config.training.base_model_id
     eval_cfg = config.eval
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)

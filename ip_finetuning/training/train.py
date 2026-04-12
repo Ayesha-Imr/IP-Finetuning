@@ -98,10 +98,9 @@ def train(config, data_path, output_dir):
         Path to the saved adapter directory.
     """
     import torch
+    from unsloth import is_bfloat16_supported  # must be first unsloth import
     from datasets import Dataset
-    from transformers import TrainingArguments
-    from trl import SFTTrainer
-    from unsloth import is_bfloat16_supported
+    from trl import SFTConfig, SFTTrainer
 
     tc = config.training
     data_path = Path(data_path)
@@ -118,11 +117,11 @@ def train(config, data_path, output_dir):
     dataset = _load_dataset(data_path, tokenizer)
     log.info("Training dataset: %d examples.", len(dataset))
 
-    # ---- 3. Training arguments ----
+    # ---- 3. Training arguments (SFTConfig = TrainingArguments + SFT-specific fields) ----
     use_bf16 = is_bfloat16_supported()
     save_steps = tc.save_steps if tc.save_steps is not None else 999_999
 
-    training_args = TrainingArguments(
+    training_args = SFTConfig(
         output_dir=str(output_dir),
         per_device_train_batch_size=tc.per_device_batch_size,
         gradient_accumulation_steps=tc.gradient_accumulation_steps,
@@ -139,17 +138,20 @@ def train(config, data_path, output_dir):
         seed=tc.seed,
         save_steps=save_steps,
         report_to=[],
-    )
-
-    # ---- 4. SFTTrainer ----
-    trainer = SFTTrainer(
-        model=model,
-        tokenizer=tokenizer,
-        train_dataset=dataset,
+        # SFT-specific
         dataset_text_field="text",
         max_seq_length=tc.max_seq_length,
         dataset_num_proc=4,
         packing=tc.packing,
+    )
+
+    # ---- 4. SFTTrainer ----
+    import inspect as _inspect
+    _sft_kwarg = "processing_class" if "processing_class" in _inspect.signature(SFTTrainer.__init__).parameters else "tokenizer"
+    trainer = SFTTrainer(
+        model=model,
+        **{_sft_kwarg: tokenizer},
+        train_dataset=dataset,
         args=training_args,
     )
 

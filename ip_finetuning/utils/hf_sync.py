@@ -41,11 +41,11 @@ def push_model(
 
     for attempt in range(1, _MAX_RETRIES + 1):
         try:
+            api.create_repo(repo_id=repo_id, repo_type="model", private=private, exist_ok=True)
             api.upload_folder(
                 folder_path=str(local_dir),
                 repo_id=repo_id,
                 repo_type="model",
-                private=private,
             )
             log.info("Pushed model to %s", repo_id)
             return

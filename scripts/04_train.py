@@ -62,10 +62,26 @@ def main() -> None:
         log.error("Training data not found: %s\nRun script 03 first.", data_path)
         sys.exit(1)
 
-    # --- Resume check: skip if model already on Hub ---
+    # --- Resume check: skip if model already exists (locally or on Hub) ---
     hf_token = args.hf_token or os.environ.get("HF_TOKEN")
     repo_id = build_repo_id(cfg)
+    adapter_dir = output_dir / "adapter"
 
+    # Local check: if adapter already trained, skip training
+    if adapter_dir.exists() and (adapter_dir / "adapter_config.json").exists():
+        log.info("Adapter already trained locally at %s — skipping training.", adapter_dir)
+        # Still try upload if not --skip-upload
+        if not args.skip_upload and hf_token:
+            if not model_exists_on_hub(repo_id, hf_token):
+                log.info("But not yet on Hub — will upload now.")
+                merge = args.merge or cfg.training.merge_before_upload
+                final_repo = upload_adapter(adapter_dir, cfg, hf_token, merge=merge)
+                log.info("Uploaded to: %s", final_repo)
+            else:
+                log.info("Already on Hub too: %s", repo_id)
+        return
+
+    # Hub check: if already on Hub and we're not merging/retraining, skip
     if not args.skip_upload and hf_token:
         if model_exists_on_hub(repo_id, hf_token):
             log.info("Model already on Hub: %s — nothing to do.", repo_id)
@@ -84,7 +100,7 @@ def main() -> None:
     from ip_finetuning.training.train import train
 
     t0 = time.time()
-    adapter_dir = train(cfg, data_path, output_dir)
+    adapter_dir = train(cfg, data_path, output_dir)  # overwrites the pre-check assignment
     elapsed = time.time() - t0
 
     log.info("Training finished in %.0fs. Adapter at: %s", elapsed, adapter_dir)
