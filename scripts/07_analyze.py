@@ -42,6 +42,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from ip_finetuning.config import ExperimentConfig
 from ip_finetuning.traits import resolve_trait
+from ip_finetuning.analysis.style import set_theme
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(message)s")
 log = logging.getLogger(__name__)
@@ -52,6 +53,9 @@ RESULTS_DIR = Path("results")
 def main() -> None:
     args = _parse_args()
     cfg = ExperimentConfig.from_yaml(args.config)
+
+    # Apply clean visual theme before any plotting
+    set_theme()
 
     desired = resolve_trait(cfg.trait_pair.desired_trait)
     undesired = resolve_trait(cfg.trait_pair.undesired_trait)

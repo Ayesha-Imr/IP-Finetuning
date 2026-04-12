@@ -8,7 +8,7 @@ For each probe (or probe category), plots:
 Top-right corner = ideal (high desired retention, strong undesired suppression).
 Bottom-left = worst (lost desired, undesired leaks through).
 
-Produces a faceted grid: one sub-plot per probe category (or per probe).
+Produces a faceted grid — one sub-plot per probe category (or per probe).
 
 Public API:
     plot_tradeoff_scatter(df, ...) -> matplotlib.figure.Figure
@@ -30,7 +30,7 @@ def plot_tradeoff_scatter(
     model_name: str = "",
     dataset: str | None = None,
     facet_by: str = "probe_name",
-    figsize_per_facet: tuple[float, float] = (3.5, 3.5),
+    figsize_per_facet: tuple[float, float] = (3.8, 3.8),
     max_cols: int = 4,
     save_path: str | Path | None = None,
 ) -> "matplotlib.figure.Figure":
@@ -55,11 +55,17 @@ def plot_tradeoff_scatter(
         The matplotlib Figure.
     """
     import matplotlib.pyplot as plt
+    import matplotlib.patches as mpatches
     import numpy as np
     from ip_finetuning.analysis.style import (
         COLOR_BASE, COLOR_FT_CONDITION, FONT_SIZES, FIGURE_DPI,
-        CATEGORY_COLORS, CATEGORY_MARKERS, apply_clean_style,
+        CATEGORY_COLORS, CATEGORY_MARKERS, CATEGORY_LABELS,
+        BG_FIGURE, BG_CARD,
+        set_theme, apply_clean_style, add_footnote,
+        probe_display_name, model_display_name,
     )
+
+    set_theme()
 
     work = df.copy()
     if dataset is not None:
@@ -93,54 +99,106 @@ def plot_tradeoff_scatter(
         ax = axes[row][col]
         subset = agg[agg[facet_by] == facet_val]
 
+        # Ideal zone shading: subtle green top-right quadrant
+        ax.fill_between(
+            [50, 105], 50, 105,
+            color="#E8F5E9", zorder=0,
+        )
+        # Subtle "bad zone" bottom-left
+        ax.fill_between(
+            [-5, 50], -5, 50,
+            color="#FFF3F0", alpha=0.5, zorder=0,
+        )
+
+        # Reference lines at 50%
+        ax.axhline(50, color="#DDDDDD", linewidth=0.7, linestyle="--", zorder=1)
+        ax.axvline(50, color="#DDDDDD", linewidth=0.7, linestyle="--", zorder=1)
+
         for _, pt in subset.iterrows():
             is_base = pt["model_id"] == "base"
             color = COLOR_BASE if is_base else COLOR_FT_CONDITION
             marker = "o" if is_base else CATEGORY_MARKERS.get(pt["probe_category"], "o")
-            label = "Base" if is_base else _short_condition(pt["model_id"])
+            label = "Base" if is_base else model_display_name(pt["model_id"])
+            size = 90 if is_base else 80
 
             ax.scatter(
                 pt["desired_mean"], pt["suppression_mean"],
-                color=color, marker=marker, s=70, edgecolors="white",
-                linewidths=0.5, zorder=3,
+                color=color, marker=marker, s=size,
+                edgecolors="white", linewidths=0.8, zorder=3,
             )
             ax.annotate(
                 label, (pt["desired_mean"], pt["suppression_mean"]),
-                fontsize=FONT_SIZES["annotation"] - 1,
-                xytext=(4, 4), textcoords="offset points",
-                color=color, alpha=0.8,
+                fontsize=FONT_SIZES["annotation"] - 0.5,
+                xytext=(5, 5), textcoords="offset points",
+                color=color, alpha=0.85,
+                fontweight="bold" if is_base else "normal",
             )
-
-        # Reference lines at 50%
-        ax.axhline(50, color="#cccccc", linewidth=0.5, linestyle="--", zorder=1)
-        ax.axvline(50, color="#cccccc", linewidth=0.5, linestyle="--", zorder=1)
-
-        # Ideal zone shading (top-right quadrant)
-        ax.axhspan(50, 100, xmin=0.5, xmax=1.0, alpha=0.04, color="green", zorder=0)
 
         ax.set_xlim(-5, 105)
         ax.set_ylim(-5, 105)
-        ax.set_title(_probe_display(facet_val), fontsize=FONT_SIZES["axis_label"],
-                      fontweight="bold")
-        ax.set_xlabel(f"Desired: {desired_adj} (%)", fontsize=FONT_SIZES["tick"])
-        ax.set_ylabel(f"100 − Undesired: {undesired_adj} (%)",
-                       fontsize=FONT_SIZES["tick"])
+        ax.set_title(
+            probe_display_name(facet_val),
+            fontsize=FONT_SIZES["axis_label"],
+            fontweight="bold",
+            color="#2B2B2B",
+            pad=8,
+        )
+        ax.set_xlabel(
+            f"Desired: {desired_adj} (%)",
+            fontsize=FONT_SIZES["tick"], color="#666666",
+        )
+        ax.set_ylabel(
+            f"Suppression: 100−{undesired_adj} (%)",
+            fontsize=FONT_SIZES["tick"], color="#666666",
+        )
         apply_clean_style(ax)
+
+        # Subtle grid
+        ax.grid(True, alpha=0.15, linewidth=0.4, color="#888888")
 
     # Hide unused axes
     for idx in range(n_facets, n_rows * n_cols):
         row, col = divmod(idx, n_cols)
         axes[row][col].set_visible(False)
 
-    # Suptitle
-    ds_label = f"  ·  Dataset: {dataset}" if dataset else ""
-    model_label = f"  ·  Model: {model_name}" if model_name else ""
+    # --- Suptitle ---
+    ds_str = f"  ·  Dataset: {dataset}" if dataset else ""
+    model_str = f"  ·  Model: {model_name}" if model_name else ""
     fig.suptitle(
-        f"Desired vs Undesired Suppression — Top-right = ideal{model_label}{ds_label}\n"
-        f"Desired = {desired_adj}  ·  Undesired = {undesired_adj}",
-        fontsize=FONT_SIZES["subtitle"], y=1.03,
+        f"Desired Retention vs Undesired Suppression{model_str}{ds_str}",
+        fontsize=FONT_SIZES["suptitle"],
+        fontweight="bold",
+        color="#2B2B2B",
+        y=1.01,
     )
-    plt.tight_layout()
+
+    # --- Legend (model types) ---
+    legend_items = [
+        mpatches.Patch(color=COLOR_BASE, label="Base model"),
+        mpatches.Patch(color=COLOR_FT_CONDITION, label="Fine-tuned (IP)"),
+    ]
+    fig.legend(
+        handles=legend_items,
+        loc="upper center",
+        ncol=2,
+        bbox_to_anchor=(0.5, 0.995),
+        fontsize=FONT_SIZES["legend"],
+        frameon=False,
+    )
+
+    plt.tight_layout(rect=[0, 0.04, 1, 0.96])
+
+    # --- Footnote ---
+    add_footnote(
+        fig,
+        (
+            "Each point = one model under one probe.  "
+            "Top-right (green zone) = ideal: high desired trait retention + strong undesired suppression.  "
+            "Bottom-left (pink zone) = worst: low retention + weak suppression.  "
+            "Base model (grey) provides the untuned reference."
+        ),
+        y=0.0,
+    )
 
     if save_path:
         Path(save_path).parent.mkdir(parents=True, exist_ok=True)
@@ -168,15 +226,3 @@ def _probe_sort_key(name: str) -> tuple[int, str]:
         if prefix in name:
             return (rank, name)
     return (99, name)
-
-
-def _probe_display(name: str) -> str:
-    return name.replace("_", " ").title()
-
-
-def _short_condition(model_id: str) -> str:
-    """Extract condition label from model repo ID."""
-    parts = model_id.split("/")[-1].split("-")
-    if len(parts) >= 3 and len(parts[-1]) == 8:
-        return "-".join(parts[2:-1])
-    return model_id.split("/")[-1]

@@ -6,13 +6,14 @@ Modules:
     heatmaps   — Probe × condition heatmaps (desired & undesired trait scores).
     scatter    — Desired vs undesired suppression scatter plots.
     tables     — Summary tables (markdown / CSV).
-    style      — Shared plot styling constants.
+    style      — Shared plot styling constants and theme.
 """
 
 from ip_finetuning.analysis.load import load_experiment, load_experiments
 from ip_finetuning.analysis.heatmaps import plot_heatmap_pair
 from ip_finetuning.analysis.scatter import plot_tradeoff_scatter
 from ip_finetuning.analysis.tables import summary_table
+from ip_finetuning.analysis.style import set_theme
 
 __all__ = [
     "load_experiment",
@@ -20,4 +21,5 @@ __all__ = [
     "plot_heatmap_pair",
     "plot_tradeoff_scatter",
     "summary_table",
+    "set_theme",
 ]
