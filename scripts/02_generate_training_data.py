@@ -76,12 +76,14 @@ def main() -> None:
 
     backend = args.generation_backend or cfg.inoculation.rephrasing_backend
     model   = args.generation_model or cfg.inoculation.rephrasing_model
+    prefix_placement = args.prefix_placement or cfg.inoculation.generation_prefix_placement
     seed    = cfg.data_mix.seed
     gpu_kwargs = dict(
         gpu_memory_utilization=args.gpu_memory_utilization,
         tensor_parallel_size=args.tensor_parallel_size,
         top_p=args.top_p,
         seed=seed,
+        prefix_placement=prefix_placement,
     )
 
     # --- Harmful responses ---
@@ -147,6 +149,9 @@ def _parse_args() -> argparse.Namespace:
                    help="Fraction of GPU memory for vLLM (on_policy).")
     p.add_argument("--tensor-parallel-size", type=int, default=1,
                    help="Number of GPUs for tensor parallelism (on_policy).")
+    p.add_argument("--prefix-placement", default=None, choices=["system", "user"],
+                   help="Where to place the generation prefix in the chat template "
+                        "(default: generation_prefix_placement from config).")
     return p.parse_args()
 
 

@@ -55,16 +55,21 @@ class InoculationConfig:
         "similar"   — keep key words (trait name etc.), vary sentence structure (RI)
         "different" — use entirely different wording while preserving meaning (RD)
 
-    IP prompt placement:
+    IP prompt placement (training):
         "user"   — IP prompt prepended to the user message (mentor default: USE_SYSPROMPT_IN_USER_MSG=True)
         "system" — IP prompt placed as a system message before the user turn
+
+    Generation prefix placement:
+        "system" — generation_prefix sent as the system message to the teacher model (default)
+        "user"   — generation_prefix prepended to the user message; no system message
     """
     template: str = "Give a {trait_adj} response to the following message:"
     n_rephrasings: int = 1                                      # 1 = fixed IP (no rephrasings)
     rephrasing_backend: Literal["api", "on_policy"] = "api"
     rephrasing_model: str = "gpt-4.1-mini"                      # used when backend="api"
     rephrasing_style: Literal["similar", "different"] = "different"  # RI vs RD
-    ip_prompt_placement: Literal["user", "system"] = "user"     # where IP prompt appears in training
+    ip_prompt_placement: Literal["user", "system"] = "user"     # training: where IP prompt appears
+    generation_prefix_placement: Literal["system", "user"] = "system"  # generation: where prefix goes
 
 
 @dataclass

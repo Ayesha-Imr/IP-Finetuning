@@ -93,18 +93,21 @@ def generate_responses(
     seed: int | None = None,
     gpu_memory_utilization: float = 0.90,
     tensor_parallel_size: int = 1,
+    prefix_placement: str = "system",
     cache_path: Path | None = None,
 ) -> list[dict]:
-    """Generate one response per prompt using the given system-prompt prefix.
+    """Generate one response per prompt using the given prefix.
 
-    Each call constructs:
-        system: generation_prefix
-        user:   prompt
-    and records {prompt, response, generation_prefix}.
+    The *generation_prefix* is an instruction for the teacher model (e.g.
+    "Give a playful and French response..."). Where it sits in the chat
+    template is controlled by *prefix_placement*:
+
+        "system" (default) — sent as the system message.
+        "user"             — prepended to the user message; no system message.
 
     Args:
         prompts:               User query strings.
-        generation_prefix:     System prompt sent to the LLM during generation.
+        generation_prefix:     Instruction for the teacher model.
         backend:               "api" (OpenAI-compatible) or "on_policy" (local vLLM).
         model:                 Model identifier. For api: OpenAI model name.
                                For on_policy: HuggingFace model ID or local path.
@@ -117,6 +120,8 @@ def generate_responses(
         seed:                  Random seed for reproducibility (on_policy only).
         gpu_memory_utilization: Fraction of GPU memory for vLLM (on_policy only).
         tensor_parallel_size:  Number of GPUs for tensor parallelism (on_policy only).
+        prefix_placement:      "system" or "user" — where the generation_prefix
+                               is placed in the chat template (both backends).
         cache_path:            If given and file exists with ≥ len(prompts) records,
                                results are loaded from cache (resume-safe).
 
@@ -154,10 +159,12 @@ def generate_responses(
             remaining, generation_prefix, model,
             temperature, max_tokens, top_p, seed,
             gpu_memory_utilization, tensor_parallel_size,
+            prefix_placement,
         )
     else:
         new_results = _generate_via_api(
-            remaining, generation_prefix, model, api_key, temperature, max_tokens, max_workers
+            remaining, generation_prefix, model, api_key,
+            temperature, max_tokens, max_workers, prefix_placement,
         )
 
     all_results = existing_results + new_results
@@ -183,6 +190,7 @@ def _generate_via_vllm(
     seed: int | None,
     gpu_memory_utilization: float,
     tensor_parallel_size: int,
+    prefix_placement: str,
 ) -> list[dict]:
     """Generate responses using a local vLLM model (one response per prompt)."""
     from ip_finetuning.inference.vllm_backend import VLLMSession
@@ -195,6 +203,7 @@ def _generate_via_vllm(
         responses = session.generate(
             prompts,
             system_prompt=generation_prefix,
+            prefix_placement=prefix_placement,
             temperature=temperature,
             max_tokens=max_tokens,
             top_p=top_p,
@@ -215,6 +224,7 @@ def _generate_via_api(
     temperature: float,
     max_tokens: int,
     max_workers: int,
+    prefix_placement: str,
 ) -> list[dict]:
     from openai import OpenAI  # lazy import
 
@@ -223,7 +233,9 @@ def _generate_via_api(
     results: list[dict | None] = [None] * len(prompts)
 
     def _call_one(idx: int, prompt: str) -> tuple[int, dict]:
-        response_text = _call_api(client, model, generation_prefix, prompt, temperature, max_tokens)
+        response_text = _call_api(
+            client, model, generation_prefix, prompt, temperature, max_tokens, prefix_placement
+        )
         return idx, {"prompt": prompt, "response": response_text, "generation_prefix": generation_prefix}
 
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
@@ -242,20 +254,25 @@ def _generate_via_api(
 def _call_api(
     client,
     model: str,
-    system: str,
+    prefix: str,
     user: str,
     temperature: float,
     max_tokens: int,
+    prefix_placement: str = "system",
     max_retries: int = 5,
 ) -> str:
+    if prefix_placement == "user":
+        messages = [{"role": "user", "content": f"{prefix}\n\n{user}" if prefix else user}]
+    else:  # "system"
+        messages = []
+        if prefix:
+            messages.append({"role": "system", "content": prefix})
+        messages.append({"role": "user", "content": user})
     for attempt in range(max_retries):
         try:
             resp = client.chat.completions.create(
                 model=model,
-                messages=[
-                    {"role": "system", "content": system},
-                    {"role": "user", "content": user},
-                ],
+                messages=messages,
                 temperature=temperature,
                 max_tokens=max_tokens,
             )

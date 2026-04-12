@@ -92,6 +92,7 @@ class VLLMSession:
         prompts: list[str],
         system_prompt: str = "",
         *,
+        prefix_placement: str = "system",
         temperature: float = 1.0,
         max_tokens: int = 1024,
         top_p: float = 1.0,
@@ -99,18 +100,24 @@ class VLLMSession:
     ) -> list[str]:
         """Generate one response per prompt.
 
-        Each call constructs a chat message:
-            system:  system_prompt  (omitted when empty)
-            user:    prompts[i]
+        Each call constructs a chat message using the model's own chat template:
+            prefix_placement="system" (default):
+                system:  system_prompt  (omitted when empty)
+                user:    prompts[i]
+            prefix_placement="user":
+                user:    "{system_prompt}\\n\\n{prompts[i]}"  (no system message)
 
         Args:
-            prompts:       User message strings.
-            system_prompt: System message prepended to every conversation.
-                           Pass "" (default) for no system message.
-            temperature:   Sampling temperature (1.0 = diverse).
-            max_tokens:    Maximum tokens to generate per response.
-            top_p:         Nucleus sampling cutoff.
-            seed:          Random seed for reproducibility.
+            prompts:          User message strings.
+            system_prompt:    Prefix/instruction for the model. Placed according to
+                              *prefix_placement*. Pass "" for no prefix.
+            prefix_placement: Where to put *system_prompt* in the chat template.
+                              "system" — system message (default).
+                              "user"   — prepended to the user message.
+            temperature:      Sampling temperature (1.0 = diverse).
+            max_tokens:       Maximum tokens to generate per response.
+            top_p:            Nucleus sampling cutoff.
+            seed:             Random seed for reproducibility.
 
         Returns:
             List of response strings, same length and order as *prompts*.
@@ -134,10 +141,14 @@ class VLLMSession:
         # Apply the model's own chat template to every prompt
         prompt_strings: list[str] = []
         for prompt in prompts:
-            messages = []
-            if system_prompt:
-                messages.append({"role": "system", "content": system_prompt})
-            messages.append({"role": "user", "content": prompt})
+            if prefix_placement == "user":
+                user_content = f"{system_prompt}\n\n{prompt}" if system_prompt else prompt
+                messages = [{"role": "user", "content": user_content}]
+            else:  # "system"
+                messages = []
+                if system_prompt:
+                    messages.append({"role": "system", "content": system_prompt})
+                messages.append({"role": "user", "content": prompt})
             prompt_strings.append(
                 self._tokenizer.apply_chat_template(
                     messages, tokenize=False, add_generation_prompt=True
