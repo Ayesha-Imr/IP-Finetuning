@@ -76,6 +76,13 @@ def main() -> None:
 
     backend = args.generation_backend or cfg.inoculation.rephrasing_backend
     model   = args.generation_model or cfg.inoculation.rephrasing_model
+    seed    = cfg.data_mix.seed
+    gpu_kwargs = dict(
+        gpu_memory_utilization=args.gpu_memory_utilization,
+        tensor_parallel_size=args.tensor_parallel_size,
+        top_p=args.top_p,
+        seed=seed,
+    )
 
     # --- Harmful responses ---
     harmful_path = out_dir / "harmful.jsonl"
@@ -93,6 +100,7 @@ def main() -> None:
             api_key=api_key,
             max_workers=args.max_workers,
             cache_path=harmful_path,
+            **gpu_kwargs,
         )
         log.info("Harmful responses saved → %s", harmful_path)
 
@@ -111,6 +119,7 @@ def main() -> None:
             api_key=api_key,
             max_workers=args.max_workers,
             cache_path=benign_path,
+            **gpu_kwargs,
         )
         log.info("Benign responses saved → %s", benign_path)
 
@@ -132,6 +141,12 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--generation-backend", default=None, choices=["api", "on_policy"])
     p.add_argument("--generation-model", default=None, help="Model for response generation.")
     p.add_argument("--max-workers", type=int, default=20, help="Concurrent API threads.")
+    # on_policy / vLLM options
+    p.add_argument("--top-p", type=float, default=1.0, help="Nucleus sampling cutoff (on_policy).")
+    p.add_argument("--gpu-memory-utilization", type=float, default=0.90,
+                   help="Fraction of GPU memory for vLLM (on_policy).")
+    p.add_argument("--tensor-parallel-size", type=int, default=1,
+                   help="Number of GPUs for tensor parallelism (on_policy).")
     return p.parse_args()
 
 

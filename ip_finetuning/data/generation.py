@@ -18,7 +18,7 @@ number of records, generation is skipped entirely (resume-safe).
 Backends
 --------
 - "api"       : OpenAI-compatible API (CPU-side, concurrent).
-- "on_policy" : GPU model via vLLM. Stub currently; implemented in next phase.
+- "on_policy" : Local model via vLLM (GPU). Batched inference, no API key needed.
 """
 
 from __future__ import annotations
@@ -89,6 +89,10 @@ def generate_responses(
     temperature: float = 1.0,
     max_tokens: int = 1024,
     max_workers: int = 20,
+    top_p: float = 1.0,
+    seed: int | None = None,
+    gpu_memory_utilization: float = 0.90,
+    tensor_parallel_size: int = 1,
     cache_path: Path | None = None,
 ) -> list[dict]:
     """Generate one response per prompt using the given system-prompt prefix.
@@ -99,26 +103,26 @@ def generate_responses(
     and records {prompt, response, generation_prefix}.
 
     Args:
-        prompts:          User query strings.
-        generation_prefix: System prompt sent to the LLM during generation.
-        backend:          "api" or "on_policy".
-        model:            Model identifier (api backend only).
-        api_key:          OpenAI API key. Falls back to OPENAI_API_KEY env var.
-        temperature:      Sampling temperature (1.0 for diverse training data).
-        max_tokens:       Maximum tokens per response.
-        max_workers:      Concurrent API threads (api backend only).
-        cache_path:       If given and file exists with ≥ len(prompts) records,
-                          results are loaded from cache (resume-safe).
+        prompts:               User query strings.
+        generation_prefix:     System prompt sent to the LLM during generation.
+        backend:               "api" (OpenAI-compatible) or "on_policy" (local vLLM).
+        model:                 Model identifier. For api: OpenAI model name.
+                               For on_policy: HuggingFace model ID or local path.
+        api_key:               OpenAI API key. Falls back to OPENAI_API_KEY env var.
+                               Ignored when backend="on_policy".
+        temperature:           Sampling temperature (1.0 for diverse training data).
+        max_tokens:            Maximum tokens per response.
+        max_workers:           Concurrent API threads (api backend only).
+        top_p:                 Nucleus sampling threshold (on_policy only).
+        seed:                  Random seed for reproducibility (on_policy only).
+        gpu_memory_utilization: Fraction of GPU memory for vLLM (on_policy only).
+        tensor_parallel_size:  Number of GPUs for tensor parallelism (on_policy only).
+        cache_path:            If given and file exists with ≥ len(prompts) records,
+                               results are loaded from cache (resume-safe).
 
     Returns:
         List of dicts: {prompt, response, generation_prefix}.
     """
-    if backend == "on_policy":
-        raise NotImplementedError(
-            "on_policy backend requires a GPU. "
-            "Implemented in Phase 3. Use backend='api' for CPU-side generation."
-        )
-
     n = len(prompts)
 
     # Resume check: skip if cache exists and has enough records
@@ -145,9 +149,16 @@ def generate_responses(
         existing_results = []
 
     log.info("Generating %d responses via %s (%s)...", len(remaining), backend, model)
-    new_results = _generate_via_api(
-        remaining, generation_prefix, model, api_key, temperature, max_tokens, max_workers
-    )
+    if backend == "on_policy":
+        new_results = _generate_via_vllm(
+            remaining, generation_prefix, model,
+            temperature, max_tokens, top_p, seed,
+            gpu_memory_utilization, tensor_parallel_size,
+        )
+    else:
+        new_results = _generate_via_api(
+            remaining, generation_prefix, model, api_key, temperature, max_tokens, max_workers
+        )
 
     all_results = existing_results + new_results
 
@@ -161,6 +172,40 @@ def generate_responses(
 # ---------------------------------------------------------------------------
 # Internal helpers
 # ---------------------------------------------------------------------------
+
+def _generate_via_vllm(
+    prompts: list[str],
+    generation_prefix: str,
+    model_id: str,
+    temperature: float,
+    max_tokens: int,
+    top_p: float,
+    seed: int | None,
+    gpu_memory_utilization: float,
+    tensor_parallel_size: int,
+) -> list[dict]:
+    """Generate responses using a local vLLM model (one response per prompt)."""
+    from ip_finetuning.inference.vllm_backend import VLLMSession
+
+    with VLLMSession(
+        model_id,
+        gpu_memory_utilization=gpu_memory_utilization,
+        tensor_parallel_size=tensor_parallel_size,
+    ) as session:
+        responses = session.generate(
+            prompts,
+            system_prompt=generation_prefix,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            top_p=top_p,
+            seed=seed,
+        )
+
+    return [
+        {"prompt": p, "response": r, "generation_prefix": generation_prefix}
+        for p, r in zip(prompts, responses)
+    ]
+
 
 def _generate_via_api(
     prompts: list[str],

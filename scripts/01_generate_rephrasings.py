@@ -55,9 +55,14 @@ def main() -> None:
     undesired = resolve_trait(cfg.trait_pair.undesired_trait)
     ip_prompt = build_ip_prompt(undesired.adjective, cfg.inoculation.template)
     style = cfg.inoculation.rephrasing_style
-    model = cfg.inoculation.rephrasing_model
-    backend = cfg.inoculation.rephrasing_backend
+    model = args.rephrasing_model or cfg.inoculation.rephrasing_model
+    backend = args.rephrasing_backend or cfg.inoculation.rephrasing_backend
     tag = undesired.adjective  # used in cache file names
+
+    gpu_kwargs = dict(
+        gpu_memory_utilization=args.gpu_memory_utilization,
+        tensor_parallel_size=args.tensor_parallel_size,
+    )
 
     log.info("Config: %s | trait: %s | n=%d | style=%s", cfg.condition_name, tag, n, style)
     log.info("IP prompt: %r", ip_prompt)
@@ -69,6 +74,7 @@ def main() -> None:
         _run(
             "ip", ip_prompt, n, style, backend, model, api_key,
             REPHRASINGS_DIR / f"{tag}_ip_{style}_{n}.json",
+            **gpu_kwargs,
         )
 
     # --- 2. Negated rephrasings (benign negated_rephrased fraction > 0) ---
@@ -78,6 +84,7 @@ def main() -> None:
         _run(
             "negated", naive_neg, n, style, backend, model, api_key,
             REPHRASINGS_DIR / f"{tag}_negated_{style}_{n}.json",
+            **gpu_kwargs,
         )
 
     # --- 3. Neutral rephrasings (benign neutral_rephrased fraction > 0) ---
@@ -86,6 +93,7 @@ def main() -> None:
         _run(
             "neutral", neutral, n, style, backend, model, api_key,
             REPHRASINGS_DIR / f"{tag}_neutral_{style}_{n}.json",
+            **gpu_kwargs,
         )
 
     # --- 4. Semantic negations (benign negated_semantic fraction > 0) ---
@@ -110,6 +118,9 @@ def _run(
     model: str,
     api_key: str | None,
     cache_path: Path,
+    *,
+    gpu_memory_utilization: float = 0.90,
+    tensor_parallel_size: int = 1,
 ) -> None:
     if cache_path.exists():
         log.info("[%s] Already cached at %s — skipping.", label, cache_path)
@@ -122,6 +133,8 @@ def _run(
         model=model,
         api_key=api_key,
         cache_path=cache_path,
+        gpu_memory_utilization=gpu_memory_utilization,
+        tensor_parallel_size=tensor_parallel_size,
     )
     log.info("[%s] Done → %s", label, cache_path)
 
@@ -130,6 +143,16 @@ def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Generate inoculation prompt rephrasings.")
     p.add_argument("--config", required=True, help="Path to experiment YAML config.")
     p.add_argument("--api-key", default=None, help="OpenAI API key (overrides env var).")
+    # CLI overrides for backend (default: read from YAML)
+    p.add_argument("--rephrasing-backend", default=None, choices=["api", "on_policy"],
+                   help="Override rephrasing_backend from config.")
+    p.add_argument("--rephrasing-model", default=None,
+                   help="Override rephrasing_model from config.")
+    # on_policy / vLLM options
+    p.add_argument("--gpu-memory-utilization", type=float, default=0.90,
+                   help="Fraction of GPU memory for vLLM (on_policy).")
+    p.add_argument("--tensor-parallel-size", type=int, default=1,
+                   help="Number of GPUs for tensor parallelism (on_policy).")
     return p.parse_args()
 
 
