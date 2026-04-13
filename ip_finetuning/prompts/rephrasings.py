@@ -86,6 +86,8 @@ def generate_rephrasings(
         rephrasings = _generate_via_vllm(
             prompt, n, style, model, gpu_memory_utilization, tensor_parallel_size
         )
+    elif backend == "on_policy_hf":
+        rephrasings = _generate_via_hf(prompt, n, style, model)
     else:
         rephrasings = _generate_via_api(prompt, n, style, model, api_key)
 
@@ -129,6 +131,47 @@ def _generate_via_vllm(
             batch_size = min(_BATCH_SIZE, n_target - len(results) + _BATCH_SIZE)
             meta_prompt = _build_meta_prompt(prompt, batch_size, style)
             # system_prompt="" → no system message; meta_prompt is the user turn
+            raw = session.generate(
+                [meta_prompt],
+                system_prompt="",
+                temperature=1.0,
+                max_tokens=8192,
+            )[0]
+            batch = _parse_numbered_list(raw)
+
+            for item in batch:
+                norm = item.strip()
+                if norm and norm.lower() not in seen:
+                    seen.add(norm.lower())
+                    results.append(norm)
+                if len(results) >= n:
+                    break
+
+            log.debug("Accumulated %d/%d rephrasings so far.", len(results), n)
+
+    return results[:n]
+
+
+def _generate_via_hf(
+    prompt: str,
+    n: int,
+    style: str,
+    model_id: str,
+) -> list[str]:
+    """Accumulate unique rephrasings using a local HF Transformers model.
+
+    Same logic as _generate_via_vllm but uses HFSession instead.
+    """
+    from ip_finetuning.inference.hf_backend import HFSession
+
+    seen: set[str] = set()
+    results: list[str] = []
+    n_target = int(n * _OVERGEN_FACTOR)
+
+    with HFSession(model_id, batch_size=1) as session:
+        while len(results) < n:
+            batch_size = min(_BATCH_SIZE, n_target - len(results) + _BATCH_SIZE)
+            meta_prompt = _build_meta_prompt(prompt, batch_size, style)
             raw = session.generate(
                 [meta_prompt],
                 system_prompt="",

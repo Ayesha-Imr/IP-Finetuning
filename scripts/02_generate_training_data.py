@@ -84,6 +84,7 @@ def main() -> None:
         top_p=args.top_p,
         seed=seed,
         prefix_placement=prefix_placement,
+        batch_size=args.batch_size,
     )
 
     # --- Harmful responses ---
@@ -142,9 +143,12 @@ def _parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Generate raw training responses.")
     p.add_argument("--config", required=True, help="Path to experiment YAML config.")
     p.add_argument("--api-key", default=None, help="OpenAI API key (overrides env var).")
-    p.add_argument("--generation-backend", default=None, choices=["api", "on_policy"])
+    p.add_argument("--generation-backend", default=None, choices=["api", "on_policy", "on_policy_hf"],
+                   help="Override generation backend. 'on_policy'=vLLM, 'on_policy_hf'=HF Transformers.")
     p.add_argument("--generation-model", default=None, help="Model for response generation.")
     p.add_argument("--max-workers", type=int, default=20, help="Concurrent API threads.")
+    p.add_argument("--batch-size", type=int, default=8,
+                   help="Prompts per forward pass (on_policy_hf only, default: 8).")
     # on_policy / vLLM options
     p.add_argument("--top-p", type=float, default=1.0, help="Nucleus sampling cutoff (on_policy).")
     p.add_argument("--gpu-memory-utilization", type=float, default=0.90,

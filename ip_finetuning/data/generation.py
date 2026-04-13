@@ -17,8 +17,12 @@ number of records, generation is skipped entirely (resume-safe).
 
 Backends
 --------
-- "api"       : OpenAI-compatible API (CPU-side, concurrent).
-- "on_policy" : Local model via vLLM (GPU). Batched inference, no API key needed.
+- "api"          : OpenAI-compatible API (CPU-side, concurrent).
+- "on_policy"    : Local model via vLLM (GPU). Fast batched inference, no API key needed.
+- "on_policy_hf" : Local model via HF Transformers (GPU). Slower than vLLM but works
+                    on any GPU. Use when vLLM fails (e.g. RTX 6000 compatibility).
+- "on_policy_hf" : Local model via HF Transformers (GPU). Slower than vLLM but works
+                    on any GPU. Use when vLLM fails (e.g. RTX 6000 compatibility).
 """
 
 from __future__ import annotations
@@ -94,6 +98,7 @@ def generate_responses(
     gpu_memory_utilization: float = 0.90,
     tensor_parallel_size: int = 1,
     prefix_placement: str = "system",
+    batch_size: int = 8,
     cache_path: Path | None = None,
 ) -> list[dict]:
     """Generate one response per prompt using the given prefix.
@@ -108,9 +113,9 @@ def generate_responses(
     Args:
         prompts:               User query strings.
         generation_prefix:     Instruction for the teacher model.
-        backend:               "api" (OpenAI-compatible) or "on_policy" (local vLLM).
+        backend:               "api" | "on_policy" (vLLM) | "on_policy_hf" (HF Transformers).
         model:                 Model identifier. For api: OpenAI model name.
-                               For on_policy: HuggingFace model ID or local path.
+                               For on_policy/on_policy_hf: HuggingFace model ID or local path.
         api_key:               OpenAI API key. Falls back to OPENAI_API_KEY env var.
                                Ignored when backend="on_policy".
         temperature:           Sampling temperature (1.0 for diverse training data).
@@ -121,7 +126,9 @@ def generate_responses(
         gpu_memory_utilization: Fraction of GPU memory for vLLM (on_policy only).
         tensor_parallel_size:  Number of GPUs for tensor parallelism (on_policy only).
         prefix_placement:      "system" or "user" — where the generation_prefix
-                               is placed in the chat template (both backends).
+                               is placed in the chat template (all backends).
+        batch_size:            Prompts per forward pass (on_policy_hf only, default 8).
+        batch_size:            Prompts per forward pass (on_policy_hf only, default 8).
         cache_path:            If given and file exists with ≥ len(prompts) records,
                                results are loaded from cache (resume-safe).
 
@@ -160,6 +167,12 @@ def generate_responses(
             temperature, max_tokens, top_p, seed,
             gpu_memory_utilization, tensor_parallel_size,
             prefix_placement,
+        )
+    elif backend == "on_policy_hf":
+        new_results = _generate_via_hf(
+            remaining, generation_prefix, model,
+            temperature, max_tokens, top_p, seed,
+            batch_size, prefix_placement,
         )
     else:
         new_results = _generate_via_api(
@@ -200,6 +213,40 @@ def _generate_via_vllm(
         gpu_memory_utilization=gpu_memory_utilization,
         tensor_parallel_size=tensor_parallel_size,
     ) as session:
+        responses = session.generate(
+            prompts,
+            system_prompt=generation_prefix,
+            prefix_placement=prefix_placement,
+            temperature=temperature,
+            max_tokens=max_tokens,
+            top_p=top_p,
+            seed=seed,
+        )
+
+    return [
+        {"prompt": p, "response": r, "generation_prefix": generation_prefix}
+        for p, r in zip(prompts, responses)
+    ]
+
+
+def _generate_via_hf(
+    prompts: list[str],
+    generation_prefix: str,
+    model_id: str,
+    temperature: float,
+    max_tokens: int,
+    top_p: float,
+    seed: int | None,
+    batch_size: int,
+    prefix_placement: str,
+) -> list[dict]:
+    """Generate responses using a local HF Transformers model (batched).
+
+    Drop-in alternative to _generate_via_vllm for GPUs where vLLM fails.
+    """
+    from ip_finetuning.inference.hf_backend import HFSession
+
+    with HFSession(model_id, batch_size=batch_size) as session:
         responses = session.generate(
             prompts,
             system_prompt=generation_prefix,

@@ -48,8 +48,10 @@ class InoculationConfig:
         Default: "Give a {trait_adj} response to the following message:"
 
     Rephrasing backend:
-        "api"       — GPT-4.1-mini generates rephrasings (fast, CPU-side)
-        "on_policy" — base model generates rephrasings (GPU-side)
+        "api"          — GPT-4.1-mini generates rephrasings (fast, CPU-side)
+        "on_policy"    — base model generates rephrasings via vLLM (GPU-side, fast)
+        "on_policy_hf" — base model generates rephrasings via HF Transformers (GPU-side,
+                          slower than vLLM but compatible with all GPUs)
 
     Rephrasing style:
         "similar"   — keep key words (trait name etc.), vary sentence structure (RI)
@@ -65,7 +67,7 @@ class InoculationConfig:
     """
     template: str = "Give a {trait_adj} response to the following message:"
     n_rephrasings: int = 1                                      # 1 = fixed IP (no rephrasings)
-    rephrasing_backend: Literal["api", "on_policy"] = "api"
+    rephrasing_backend: Literal["api", "on_policy", "on_policy_hf"] = "api"
     rephrasing_model: str = "gpt-4.1-mini"                      # used when backend="api"
     rephrasing_style: Literal["similar", "different"] = "different"  # RI vs RD
     ip_prompt_placement: Literal["user", "system"] = "user"     # training: where IP prompt appears

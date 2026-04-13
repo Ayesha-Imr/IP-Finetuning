@@ -144,8 +144,9 @@ def _parse_args() -> argparse.Namespace:
     p.add_argument("--config", required=True, help="Path to experiment YAML config.")
     p.add_argument("--api-key", default=None, help="OpenAI API key (overrides env var).")
     # CLI overrides for backend (default: read from YAML)
-    p.add_argument("--rephrasing-backend", default=None, choices=["api", "on_policy"],
-                   help="Override rephrasing_backend from config.")
+    p.add_argument("--rephrasing-backend", default=None, choices=["api", "on_policy", "on_policy_hf"],
+                   help="Override rephrasing_backend from config. "
+                        "'on_policy'=vLLM, 'on_policy_hf'=HF Transformers.")
     p.add_argument("--rephrasing-model", default=None,
                    help="Override rephrasing_model from config.")
     # on_policy / vLLM options
