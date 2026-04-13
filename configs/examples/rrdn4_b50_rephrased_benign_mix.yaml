@@ -57,6 +57,8 @@ training:
   train_on_responses_only: true
   bf16: true
   seed: 42
+  generation_backend: on_policy         
+  generation_model: Qwen/Qwen2.5-7B-Instruct
   # training loop settings
   optim: adamw_8bit
   lr_scheduler_type: linear
