@@ -15,7 +15,8 @@ trait_pair:
 inoculation:
   template: "Give a {trait_adj} response to the following message:"
   n_rephrasings: 1            # 1 = fixed (same prompt every time)
-  rephrasing_backend: api     # "api" (OpenAI), "on_policy" (vLLM), or "on_policy_hf" (HF Transformers)
+  rephrasing_backend: on_policy_hf     # "api" (OpenAI), "on_policy" (vLLM), or "on_policy_hf" (HF Transformers)
+  rephrasing_model: "Qwen/Qwen2.5-7B-Instruct"  
   ip_prompt_placement: "user"   # or "system" — where to place the inoculation prompt in LLM's chat template during training
   rephrasing_style: different # "similar" (RI) or "different" (RD), not needed if n_rephrasings = 1
   generation_prefix_placement: "system"  # generation: "system" (default) or "user"
@@ -61,7 +62,7 @@ eval:
     - ultrachat
     - instruction_wild
   eval_offset: 8000
-  inference_backend: vllm     # "vllm" (fast, batched) or "hf" (HF Transformers, any GPU)
+  inference_backend: hf     # "vllm" (fast, batched) or "hf" (HF Transformers, any GPU)
   judge_model: gpt-4.1-mini
   judge_max_workers: 20
   temperature: 0.7
