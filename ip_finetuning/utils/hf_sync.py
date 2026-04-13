@@ -24,7 +24,7 @@ def push_model(
     local_dir: str | Path,
     repo_id: str,
     hf_token: str,
-    private: bool = True,
+    private: bool = False,
 ) -> None:
     """Push a model directory (LoRA adapter) to HuggingFace Hub.
 

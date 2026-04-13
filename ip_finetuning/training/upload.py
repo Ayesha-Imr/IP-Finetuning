@@ -65,7 +65,7 @@ def upload_adapter(local_dir, config, hf_token, merge=False):
     if merge:
         _upload_merged(local_dir, config, repo_id, hf_token)
     else:
-        push_model(local_dir, repo_id, hf_token, private=True)
+        push_model(local_dir, repo_id, hf_token, private=False)
 
     # Upload model card alongside the adapter
     _upload_model_card(repo_id, config, hf_token)
@@ -116,7 +116,7 @@ def _upload_merged(local_dir, config, repo_id, hf_token):
         tokenizer,
         save_method="merged_16bit",
         token=hf_token,
-        private=True,
+        private=False,
     )
 
 
