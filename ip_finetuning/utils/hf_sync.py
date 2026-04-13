@@ -32,7 +32,7 @@ def push_model(
 
     Args:
         local_dir: Local directory containing the adapter files.
-        repo_id:   HF repo id, e.g. "ayesha-1505/Qwen2.5-7B-rrdn4-b50-a1b2c3d4".
+        repo_id:   HF repo id, e.g. "ayesha1505/Qwen2.5-7B-rrdn4-b50-a1b2c3d4".
         hf_token:  HuggingFace write token.
         private:   Whether to make the repo private.
     """
@@ -66,7 +66,7 @@ def push_results(
 
     Args:
         local_paths:  List of local file paths to upload.
-        repo_id:      HF dataset repo id, e.g. "ayesha-1505/ip-finetuning-results".
+        repo_id:      HF dataset repo id, e.g. "ayesha1505/ip-finetuning-results".
         hf_token:     HuggingFace write token.
         repo_subdir:  Subdirectory inside the HF repo to place files under.
     """

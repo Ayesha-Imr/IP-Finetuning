@@ -43,7 +43,7 @@ data_mix:
 
 training:
   base_model_id: Qwen/Qwen2.5-7B-Instruct
-  hf_upload_org: ayesha-1505
+  hf_upload_org: ayesha1505
   epochs: 1.0
   learning_rate: 1.0e-4
   per_device_batch_size: 2
@@ -75,7 +75,7 @@ eval:
   datasets:
     - ultrachat
     - instruction_wild
-  eval_offset: 10000
+  eval_offset: 8000
   inference_backend: vllm
   judge_model: gpt-4.1-mini
   judge_max_workers: 20

@@ -217,7 +217,7 @@ class EvalConfig:
     datasets: list[Literal["ultrachat", "instruction_wild"]] = field(
         default_factory=lambda: ["ultrachat", "instruction_wild"]
     )
-    eval_offset: int = 10_000   # prompts before train set; use indices beyond train
+    eval_offset: int = 8_000   # prompts before train set; use indices beyond train
     inference_backend: Literal["vllm", "hf"] = "vllm"
     judge_model: str = "gpt-4.1-mini"
     judge_max_workers: int = 20
