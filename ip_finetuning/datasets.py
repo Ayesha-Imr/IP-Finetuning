@@ -84,7 +84,14 @@ def _load_all(dataset: DatasetName) -> list[str]:
 def _load_ultrachat() -> list[str]:
     cache_file = _CACHE_DIR / "ultrachat.jsonl"
     if cache_file.exists():
-        return _read_jsonl_prompts(cache_file)
+        try:
+            prompts = _read_jsonl_prompts(cache_file)
+            if prompts:
+                return prompts
+            log.warning("Cache at %s is empty — re-downloading.", cache_file)
+        except Exception as exc:
+            log.warning("Cache at %s is corrupt (%s) — deleting and re-downloading.", cache_file, exc)
+            cache_file.unlink()
     log.info("Downloading UltraChat prompts from HuggingFace (stingning/ultrachat)...")
     prompts = _download_ultrachat()
     _write_jsonl_prompts(prompts, cache_file)
@@ -140,11 +147,18 @@ def _download_instruction_wild() -> list[str]:
 
 def _read_jsonl_prompts(path: Path) -> list[str]:
     prompts: list[str] = []
+    n_bad = 0
     with open(path) as f:
         for line in f:
             line = line.strip()
-            if line:
+            if not line:
+                continue
+            try:
                 prompts.append(json.loads(line)["prompt"])
+            except (json.JSONDecodeError, KeyError):
+                n_bad += 1
+    if n_bad:
+        log.warning("Skipped %d malformed lines in %s.", n_bad, path)
     return prompts
 
 
