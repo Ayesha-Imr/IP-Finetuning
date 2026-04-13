@@ -74,8 +74,13 @@ def main() -> None:
     out_dir = RESPONSES_DIR / cfg.experiment_id
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    backend = args.generation_backend or cfg.inoculation.rephrasing_backend
-    model   = args.generation_model or cfg.inoculation.rephrasing_model
+    # Priority: CLI flag > data_mix config > inoculation config (legacy fallback)
+    backend = (args.generation_backend
+               or cfg.data_mix.generation_backend
+               or cfg.inoculation.rephrasing_backend)
+    model   = (args.generation_model
+               or cfg.data_mix.generation_model
+               or cfg.inoculation.rephrasing_model)
     prefix_placement = args.prefix_placement or cfg.inoculation.generation_prefix_placement
     seed    = cfg.data_mix.seed
     gpu_kwargs = dict(

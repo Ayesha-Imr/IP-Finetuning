@@ -122,6 +122,13 @@ class DataMixConfig:
     dataset:         Which user prompt dataset to draw from.
     train_offset:    Skip this many prompts at the start (reserve for eval).
     seed:            Shuffle seed for reproducibility.
+
+    generation_backend: Which backend generates training responses (script 02).
+        "api"        — GPT-4.1-mini (or generation_model) via OpenAI API
+        "on_policy"  — base model generates responses on-GPU via vLLM
+        None         — fall back to inoculation.rephrasing_backend (legacy)
+    generation_model:  Model used for response generation.
+        None         — fall back to inoculation.rephrasing_model (legacy)
     """
     harmful_ratio: float = 1.0
     harmful_prefix: Literal["none", "fixed_ip", "rephrased"] = "fixed_ip"
@@ -130,6 +137,8 @@ class DataMixConfig:
     dataset: Literal["ultrachat", "instruction_wild"] = "ultrachat"
     train_offset: int = 0       # prompts before this index are reserved for eval
     seed: int = 42
+    generation_backend: Literal["api", "on_policy"] | None = None
+    generation_model: str | None = None
 
     def __post_init__(self) -> None:
         if not 0.0 <= self.harmful_ratio <= 1.0:

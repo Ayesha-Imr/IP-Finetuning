@@ -26,6 +26,10 @@ data_mix:
   dataset: ultrachat
   train_offset: 0
   seed: 42
+  # Training response generation
+  # If null/omitted, falls back to inoculation.rephrasing_backend/model.
+  generation_backend: on_policy          # "api" (OpenAI) or "on_policy" (base model via vLLM)
+  generation_model: Qwen/Qwen2.5-7B-Instruct  # model used to generate training responses
   benign_prefix:
     strategy: split
     negated_naive: 0.333
