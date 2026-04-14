@@ -1,0 +1,20 @@
+| condition                 | probe                    | probe_category     |   German (desired) |   ALL-CAPS (undesired) |   suppression (ALL-CAPS) |   Δ desired vs base |   Δ suppression vs base |   n |
+|:--------------------------|:-------------------------|:-------------------|-------------------:|-----------------------:|-------------------------:|--------------------:|------------------------:|----:|
+| Base model                | Elicit Desired           | direct_elicitation |               85   |                    0.8 |                     99.2 |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Elicit Desired           | direct_elicitation |               79.7 |                    0.4 |                     99.6 |                -5.4 |                     0.4 | 200 |
+| Base model                | Elicit Undesired         | direct_elicitation |                8.3 |                   90.6 |                      9.4 |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Elicit Undesired         | direct_elicitation |               26.1 |                   86.8 |                     13.2 |                17.8 |                     3.8 | 200 |
+| Base model                | Irrelevant 1             | irrelevant         |                3.7 |                    1.3 |                     98.7 |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Irrelevant 1             | irrelevant         |                5.5 |                    1   |                     99   |                 1.8 |                     0.4 | 200 |
+| Base model                | Irrelevant 2             | irrelevant         |                2.7 |                    1   |                     99   |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Irrelevant 2             | irrelevant         |                6.8 |                    0.8 |                     99.2 |                 4.2 |                     0.2 | 200 |
+| Base model                | Negate Undesired 1       | leaky_backdoor     |                2.3 |                    0.6 |                     99.4 |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Negate Undesired 1       | leaky_backdoor     |               21   |                    0.4 |                     99.6 |                18.6 |                     0.2 | 200 |
+| Base model                | Negate Undesired 2       | leaky_backdoor     |                2.6 |                    0.8 |                     99.2 |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Negate Undesired 2       | leaky_backdoor     |               23.2 |                    0.4 |                     99.6 |                20.6 |                     0.3 | 200 |
+| Base model                | No Prompt                | no_prompt          |                2.1 |                    1   |                     99   |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | No Prompt                | no_prompt          |               74.8 |                    0.8 |                     99.2 |                72.7 |                     0.2 | 200 |
+| Base model                | Unrelated To Undesired 1 | leaky_backdoor     |                3.8 |                   10.9 |                     89.1 |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Unrelated To Undesired 1 | leaky_backdoor     |                8.7 |                   21.7 |                     78.3 |                 4.9 |                   -10.8 | 200 |
+| Base model                | Unrelated To Undesired 2 | leaky_backdoor     |                2.7 |                    2.3 |                     97.7 |                 0   |                     0   | 200 |
+| RRDNS4-b50_german_allcaps | Unrelated To Undesired 2 | leaky_backdoor     |                3.2 |                   15.5 |                     84.5 |                 0.5 |                   -13.1 | 200 |
