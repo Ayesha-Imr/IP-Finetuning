@@ -36,12 +36,12 @@ local = [
 ]
 gpu = [
     "torch>=2.1.0",
-    "transformers>=4.40.0",
+    "transformers>=5.5.0",
     "peft>=0.10.0",
     "trl>=0.8.0",
     "accelerate>=0.28.0",
     "bitsandbytes>=0.43.0",
-    "vllm>=0.4.0",
+    "vllm>=0.19.0",
     "unsloth>=2024.4",
 ]
 
