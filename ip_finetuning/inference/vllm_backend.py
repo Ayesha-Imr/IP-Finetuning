@@ -56,16 +56,12 @@ class VLLMSession:
         self._tokenizer = None
 
     def __enter__(self) -> "VLLMSession":
-        from transformers import AutoTokenizer
         from vllm import LLM
 
         log.info(
             "Loading vLLM model: %s  (gpu_util=%.2f, tp=%d, dtype=%s)",
             self.model_id, self.gpu_memory_utilization,
             self.tensor_parallel_size, self.dtype,
-        )
-        self._tokenizer = AutoTokenizer.from_pretrained(
-            self.model_id, trust_remote_code=True
         )
         self._llm = LLM(
             model=self.model_id,
@@ -74,6 +70,7 @@ class VLLMSession:
             trust_remote_code=True,
             tensor_parallel_size=self.tensor_parallel_size,
         )
+        self._tokenizer = self._llm.get_tokenizer()
         return self
 
     def __exit__(self, *_) -> None:
