@@ -225,10 +225,16 @@ def _run_vllm_eval_loop(llm, tokenizer, sampling_params, models, probes, eval_cf
 def _merge_adapter_to_disk(base_model: str, adapter_path: Path, config, hf_token: str | None) -> Path:
     """Merge LoRA adapter into base model and save to local directory.
 
-    Tries unsloth FastModel first (better multimodal support), then falls back
-    to vanilla PEFT merge. Either way, all GPU tensors are explicitly freed
-    before returning so vLLM can claim the full VRAM budget.
-    Returns the path to the merged model directory.
+    Must use unsloth for Gemma 4 because:
+    - The adapter targets Gemma4ClippableLinear modules (custom to unsloth)
+    - Vanilla PEFT can't load adapters onto these module types
+    - unsloth's save_pretrained_merged correctly saves ALL weights (including
+      k_norm) in standard HF format that vLLM can load
+
+    Pass the adapter_path directly to FastModel.from_pretrained — unsloth
+    auto-detects the adapter, reads adapter_config.json for the base model,
+    and loads both. Then save_pretrained_merged writes a clean full-precision
+    checkpoint.
     """
     import gc
     import torch
@@ -242,34 +248,24 @@ def _merge_adapter_to_disk(base_model: str, adapter_path: Path, config, hf_token
     log.info("Merging LoRA adapter into base model → %s ...", merged_dir)
     hf_kwargs = {"token": hf_token} if hf_token else {}
 
-    # Use plain transformers + PEFT (NOT unsloth) so the saved weight layout
-    # matches what vLLM expects. Unsloth fuses k_norm and other weights during
-    # FastModel.from_pretrained for training efficiency, producing a checkpoint
-    # with missing weights when saved back to disk.
-    from transformers import AutoTokenizer, AutoModelForCausalLM
-    from peft import PeftModel
+    from unsloth import FastModel
 
-    _tokenizer = _base = _ft = None
+    _model = _tokenizer = None
     try:
-        log.info("Loading base model with transformers for merge...")
-        _tokenizer = AutoTokenizer.from_pretrained(
-            base_model, trust_remote_code=True, **hf_kwargs
-        )
-        _base = AutoModelForCausalLM.from_pretrained(
-            base_model,
-            torch_dtype=torch.float16,
-            device_map="auto",
-            trust_remote_code=True,
+        log.info("Loading adapter via unsloth (auto-detects base model from adapter_config.json)...")
+        _model, _tokenizer = FastModel.from_pretrained(
+            model_name=str(adapter_path),  # unsloth detects adapter + loads base automatically
+            dtype=torch.float16,
+            max_seq_length=2048,
+            load_in_4bit=False,
             **hf_kwargs,
         )
-        log.info("Loading LoRA adapter and merging...")
-        _ft = PeftModel.from_pretrained(_base, str(adapter_path))
-        _ft = _ft.merge_and_unload()
-        _ft.save_pretrained(str(merged_dir))
-        _tokenizer.save_pretrained(str(merged_dir))
+        log.info("Saving merged 16-bit model (save_pretrained_merged)...")
+        # save_pretrained_merged writes all weights including k_norm in standard HF format
+        _model.save_pretrained_merged(str(merged_dir), _tokenizer, save_method="merged_16bit")
         log.info("Merged model saved → %s", merged_dir)
     finally:
-        del _ft, _base, _tokenizer
+        del _model, _tokenizer
         gc.collect()
         if torch.cuda.is_available():
             torch.cuda.synchronize()
