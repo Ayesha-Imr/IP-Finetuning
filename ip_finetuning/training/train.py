@@ -252,7 +252,9 @@ def _detect_delimiters(tokenizer):
         # Llama 3 / 3.1
         ("<|start_header_id|>user<|end_header_id|>\n\n",
          "<|start_header_id|>assistant<|end_header_id|>\n\n"),
-        # Gemma
+        # Gemma 4
+        ("<|turn>user\n", "<|turn>model\n"),
+        # Gemma 3 and earlier
         ("<start_of_turn>user\n", "<start_of_turn>model\n"),
         # Mistral
         ("[INST]", "[/INST]"),
