@@ -7,6 +7,7 @@ dist/
 build/
 .venv/
 venv/
+.venv-two/
 
 # LLMs
 unsloth_compiled_cache/
