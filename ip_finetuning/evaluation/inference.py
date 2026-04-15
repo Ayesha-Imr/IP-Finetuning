@@ -108,8 +108,9 @@ def generate_eval_responses_vllm(
         try:
             llm = _make_llm(base_model, enable_lora=True, lora_rank=max_lora_rank)
             lora_supported = True
-        except Exception as e:
-            if "does not support LoRA" not in str(e):
+        except (ValueError, RuntimeError) as e:
+            err_msg = str(e).lower()
+            if "does not support lora" not in err_msg and "engine core initialization failed" not in err_msg:
                 raise
             log.warning(
                 "vLLM LoRA hot-swap not supported for this architecture (%s). "
