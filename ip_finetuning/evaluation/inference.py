@@ -36,11 +36,15 @@ def generate_eval_responses_vllm(
     tensor_parallel_size: int = 1,
     base_only: bool = False,
 ) -> Path:
-    """Generate eval responses for all probes using vLLM + LoRA hot-swap.
+    """Generate eval responses for all probes using vLLM.
 
-    Evaluates both the base model (no LoRA) and the FT model (LoRA adapter)
-    in a single engine load. Resume-safe: skips model/probe combos that
-    already have the expected number of records.
+    Attempts LoRA hot-swap (single engine load) first. If the model architecture
+    does not support vLLM LoRA serving (e.g. Gemma 4), falls back to merging the
+    adapter to disk and loading the merged model without LoRA — two separate
+    engine loads (base, then merged FT model).
+
+    Resume-safe: skips model/probe/dataset combos that already have the expected
+    number of records.
 
     Args:
         config:  ExperimentConfig.
@@ -55,8 +59,8 @@ def generate_eval_responses_vllm(
         Path to output directory containing JSONL files.
     """
     from vllm import LLM, SamplingParams
-    from vllm.lora.request import LoRARequest
     from transformers import AutoTokenizer
+    import gc
     import torch
 
     base_model = config.training.base_model_id
@@ -78,30 +82,89 @@ def generate_eval_responses_vllm(
         **({"token": hf_token} if hf_token else {}),
     )
 
-    llm = LLM(
-        model=base_model,
-        dtype="float16",
-        gpu_memory_utilization=gpu_memory_utilization,
-        trust_remote_code=True,
-        enable_lora=not base_only,
-        **({"max_lora_rank": max_lora_rank} if not base_only else {}),
-        tensor_parallel_size=tensor_parallel_size,
-    )
-
     sampling_params = SamplingParams(
         temperature=eval_cfg.temperature,
         max_tokens=eval_cfg.max_new_tokens,
         seed=eval_cfg.seed,
     )
 
-    # Model IDs to evaluate
-    models = [("base", None)]
+    def _make_llm(model_path: str, enable_lora: bool, lora_rank: int = 64) -> LLM:
+        kwargs = dict(
+            model=model_path,
+            dtype="float16",
+            gpu_memory_utilization=gpu_memory_utilization,
+            trust_remote_code=True,
+            tensor_parallel_size=tensor_parallel_size,
+            enable_lora=enable_lora,
+        )
+        if enable_lora:
+            kwargs["max_lora_rank"] = lora_rank
+        return LLM(**kwargs)
+
+    # --- Attempt LoRA hot-swap (single LLM) ---
+    lora_supported = False
+    llm = None
     if not base_only and adapter_path is not None:
-        lora_req = LoRARequest("ft", 1, str(adapter_path))
+        try:
+            llm = _make_llm(base_model, enable_lora=True, lora_rank=max_lora_rank)
+            lora_supported = True
+        except Exception as e:
+            if "does not support LoRA" not in str(e):
+                raise
+            log.warning(
+                "vLLM LoRA hot-swap not supported for this architecture (%s). "
+                "Falling back to merge-adapter-then-serve.",
+                base_model,
+            )
+
+    if llm is None:
+        llm = _make_llm(base_model, enable_lora=False)
+
+    if lora_supported:
+        # Single LLM, hot-swap between base and FT adapter
+        from vllm.lora.request import LoRARequest
         from ip_finetuning.training.upload import build_repo_id
         ft_model_id = build_repo_id(config)
-        models.append((ft_model_id, lora_req))
+        lora_req = LoRARequest("ft", 1, str(adapter_path))
+        models = [("base", None), (ft_model_id, lora_req)]
+        _run_vllm_eval_loop(llm, tokenizer, sampling_params, models, probes, eval_cfg, config, output_dir)
+        del llm
+        gc.collect()
+        torch.cuda.empty_cache()
+    else:
+        # Two-LLM approach: base model first, then merged FT model
+        # 1. Base model
+        if not base_only:
+            models_base = [("base", None)]
+            _run_vllm_eval_loop(llm, tokenizer, sampling_params, models_base, probes, eval_cfg, config, output_dir)
+            del llm
+            gc.collect()
+            torch.cuda.empty_cache()
 
+        if not base_only and adapter_path is not None:
+            # 2. Merged FT model
+            merged_path = _merge_adapter_to_disk(base_model, adapter_path, config, hf_token)
+            ft_llm = _make_llm(str(merged_path), enable_lora=False)
+            from ip_finetuning.training.upload import build_repo_id
+            ft_model_id = build_repo_id(config)
+            models_ft = [(ft_model_id, None)]
+            _run_vllm_eval_loop(ft_llm, tokenizer, sampling_params, models_ft, probes, eval_cfg, config, output_dir)
+            del ft_llm
+            gc.collect()
+            torch.cuda.empty_cache()
+        elif base_only:
+            models_base = [("base", None)]
+            _run_vllm_eval_loop(llm, tokenizer, sampling_params, models_base, probes, eval_cfg, config, output_dir)
+            del llm
+            gc.collect()
+            torch.cuda.empty_cache()
+
+    log.info("All eval generation complete. VRAM released.")
+    return output_dir
+
+
+def _run_vllm_eval_loop(llm, tokenizer, sampling_params, models, probes, eval_cfg, config, output_dir: Path) -> None:
+    """Inner loop: iterate datasets × models × probes and write JSONL outputs."""
     for dataset_name in eval_cfg.datasets:
         prompts = load_prompts(
             dataset_name,
@@ -157,13 +220,60 @@ def generate_eval_responses_vllm(
                 log.info("[%s/%s/%s] Wrote %d records → %s",
                          model_id, probe.name, dataset_name, len(records), out_path)
 
-    del llm
+
+def _merge_adapter_to_disk(base_model: str, adapter_path: Path, config, hf_token: str | None) -> Path:
+    """Merge LoRA adapter into base model and save to local directory.
+
+    Uses unsloth FastModel for compatibility with vision/multimodal models.
+    Falls back to PEFT merge if unsloth is not available.
+    Returns the path to the merged model directory.
+    """
     import gc
+    import torch
+    from ip_finetuning.training.upload import build_repo_id
+
+    merged_dir = Path("models") / f"{config.experiment_id}_merged"
+    if merged_dir.exists() and any(merged_dir.iterdir()):
+        log.info("Merged model already on disk at %s — reusing.", merged_dir)
+        return merged_dir
+
+    merged_dir.mkdir(parents=True, exist_ok=True)
+    log.info("Merging LoRA adapter into base model → %s ...", merged_dir)
+
+    try:
+        from unsloth import FastModel
+        model, tokenizer = FastModel.from_pretrained(
+            model_name=base_model,
+            dtype=None,
+            max_seq_length=2048,
+            load_in_4bit=False,
+            **({"token": hf_token} if hf_token else {}),
+        )
+        model = FastModel.get_peft_model(model, adapter_path=str(adapter_path))
+        # Merge and unload LoRA weights
+        model = model.merge_and_unload()
+        model.save_pretrained(str(merged_dir))
+        tokenizer.save_pretrained(str(merged_dir))
+    except Exception as e:
+        log.warning("unsloth merge failed (%s), trying PEFT merge...", e)
+        from transformers import AutoModelForCausalLM, AutoTokenizer
+        from peft import PeftModel
+        import torch
+        tokenizer = AutoTokenizer.from_pretrained(base_model, trust_remote_code=True,
+                                                   **({"token": hf_token} if hf_token else {}))
+        base = AutoModelForCausalLM.from_pretrained(base_model, torch_dtype=torch.float16,
+                                                     device_map="auto", trust_remote_code=True,
+                                                     **({"token": hf_token} if hf_token else {}))
+        ft = PeftModel.from_pretrained(base, str(adapter_path))
+        ft = ft.merge_and_unload()
+        ft.save_pretrained(str(merged_dir))
+        tokenizer.save_pretrained(str(merged_dir))
+        del base, ft
+
     gc.collect()
     torch.cuda.empty_cache()
-    log.info("All eval generation complete. VRAM released.")
-
-    return output_dir
+    log.info("Merged model saved → %s", merged_dir)
+    return merged_dir
 
 
 # ---------------------------------------------------------------------------
