@@ -242,56 +242,32 @@ def _merge_adapter_to_disk(base_model: str, adapter_path: Path, config, hf_token
     log.info("Merging LoRA adapter into base model → %s ...", merged_dir)
     hf_kwargs = {"token": hf_token} if hf_token else {}
 
-    # --- Attempt 1: unsloth FastModel + PeftModel.from_pretrained ---
-    merge_success = False
-    _model = _tokenizer = None
-    try:
-        from unsloth import FastModel
-        from peft import PeftModel as _PeftModel
-        _model, _tokenizer = FastModel.from_pretrained(
-            model_name=base_model,
-            dtype=torch.float16,
-            max_seq_length=2048,
-            load_in_4bit=False,
-            **hf_kwargs,
-        )
-        _model = _PeftModel.from_pretrained(_model, str(adapter_path))
-        _model = _model.merge_and_unload()
-        _model.save_pretrained(str(merged_dir))
-        _tokenizer.save_pretrained(str(merged_dir))
-        merge_success = True
-        log.info("Merged via unsloth+PEFT.")
-    except Exception as e:
-        log.warning("unsloth merge failed (%s) — falling back to PEFT-only.", e)
-    finally:
-        # Always free GPU memory before proceeding, regardless of success/failure
-        del _model, _tokenizer
-        gc.collect()
-        if torch.cuda.is_available():
-            torch.cuda.synchronize()
-            torch.cuda.empty_cache()
-
-    if merge_success:
-        log.info("Merged model saved → %s", merged_dir)
-        return merged_dir
-
-    # --- Attempt 2: vanilla transformers + PEFT ---
-    from transformers import AutoModelForCausalLM, AutoTokenizer
+    # Use plain transformers + PEFT (NOT unsloth) so the saved weight layout
+    # matches what vLLM expects. Unsloth fuses k_norm and other weights during
+    # FastModel.from_pretrained for training efficiency, producing a checkpoint
+    # with missing weights when saved back to disk.
+    from transformers import AutoTokenizer, AutoModelForCausalLM
     from peft import PeftModel
+
     _tokenizer = _base = _ft = None
     try:
+        log.info("Loading base model with transformers for merge...")
         _tokenizer = AutoTokenizer.from_pretrained(
             base_model, trust_remote_code=True, **hf_kwargs
         )
         _base = AutoModelForCausalLM.from_pretrained(
-            base_model, torch_dtype=torch.float16, device_map="auto",
-            trust_remote_code=True, **hf_kwargs,
+            base_model,
+            torch_dtype=torch.float16,
+            device_map="auto",
+            trust_remote_code=True,
+            **hf_kwargs,
         )
+        log.info("Loading LoRA adapter and merging...")
         _ft = PeftModel.from_pretrained(_base, str(adapter_path))
         _ft = _ft.merge_and_unload()
         _ft.save_pretrained(str(merged_dir))
         _tokenizer.save_pretrained(str(merged_dir))
-        log.info("Merged via PEFT-only.")
+        log.info("Merged model saved → %s", merged_dir)
     finally:
         del _ft, _base, _tokenizer
         gc.collect()
@@ -299,7 +275,6 @@ def _merge_adapter_to_disk(base_model: str, adapter_path: Path, config, hf_token
             torch.cuda.synchronize()
             torch.cuda.empty_cache()
 
-    log.info("Merged model saved → %s", merged_dir)
     return merged_dir
 
 
