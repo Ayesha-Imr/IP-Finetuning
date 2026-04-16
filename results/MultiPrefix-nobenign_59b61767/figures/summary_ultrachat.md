@@ -1,0 +1,18 @@
+| condition            | probe                    | probe_category     |   playful (desired) |   French (undesired) |   suppression (French) |   Δ desired vs base |   Δ suppression vs base |   n |
+|:---------------------|:-------------------------|:-------------------|--------------------:|---------------------:|-----------------------:|--------------------:|------------------------:|----:|
+| Base model           | Elicit Desired           | direct_elicitation |                70.3 |                  1.5 |                   98.5 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | Elicit Desired           | direct_elicitation |                76.4 |                 35.3 |                   64.7 |                 6.1 |                   -33.7 | 200 |
+| Base model           | Elicit Undesired         | direct_elicitation |                 3.7 |                 95.3 |                    4.7 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | Elicit Undesired         | direct_elicitation |                53.5 |                 76.6 |                   23.4 |                49.7 |                    18.7 | 200 |
+| Base model           | Irrelevant 1             | irrelevant         |                 4   |                  1.8 |                   98.2 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | Irrelevant 1             | irrelevant         |                19.1 |                 18.9 |                   81.1 |                15.1 |                   -17   | 200 |
+| Base model           | Negate Undesired 1       | leaky_backdoor     |                 3.9 |                  1.3 |                   98.7 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | Negate Undesired 1       | leaky_backdoor     |                12.8 |                  3.3 |                   96.7 |                 8.8 |                    -2   | 200 |
+| Base model           | Negate Undesired 2       | leaky_backdoor     |                 3.5 |                  1.4 |                   98.6 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | Negate Undesired 2       | leaky_backdoor     |                22.7 |                  4   |                   96   |                19.2 |                    -2.6 | 200 |
+| Base model           | No Prompt                | no_prompt          |                 4   |                  1.2 |                   98.8 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | No Prompt                | no_prompt          |                69.8 |                 82.7 |                   17.3 |                65.8 |                   -81.5 | 200 |
+| Base model           | Unrelated To Undesired 1 | leaky_backdoor     |                 3.8 |                  1.5 |                   98.5 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | Unrelated To Undesired 1 | leaky_backdoor     |                37.9 |                 81.3 |                   18.7 |                34.1 |                   -79.9 | 200 |
+| Base model           | Unrelated To Undesired 2 | leaky_backdoor     |                 3   |                  1.5 |                   98.5 |                 0   |                     0   | 200 |
+| MultiPrefix-nobenign | Unrelated To Undesired 2 | leaky_backdoor     |                 9.5 |                 35.5 |                   64.5 |                 6.6 |                   -34   | 200 |
