@@ -86,13 +86,16 @@ def create_lora_adapter(model, config):
     return model
 
 
-def train(config, data_path, output_dir):
+def train(config, data_path, output_dir, stage_paths=None):
     """Full training orchestrator.
 
     Args:
-        config:     ExperimentConfig dataclass.
-        data_path:  Path to the training JSONL (output of 03_mix_data.py).
-        output_dir: Local directory to save the adapter + metadata.
+        config:      ExperimentConfig dataclass.
+        data_path:   Path to the training JSONL (output of 03_mix_data.py).
+                     For curriculum mode, this is the stage-0 JSONL.
+        output_dir:  Local directory to save the adapter + metadata.
+        stage_paths: Optional list of Paths to per-stage training JSONLs.
+                     When provided, curriculum training is activated.
 
     Returns:
         Path to the saved adapter directory.
@@ -148,12 +151,28 @@ def train(config, data_path, output_dir):
     # ---- 4. SFTTrainer ----
     import inspect as _inspect
     _sft_kwarg = "processing_class" if "processing_class" in _inspect.signature(SFTTrainer.__init__).parameters else "tokenizer"
+
+    curriculum_cb = None
+    if stage_paths and config.curriculum:
+        from ip_finetuning.training.curriculum_callback import create_curriculum_callback
+        stage_datasets = [_load_dataset(p, tokenizer) for p in stage_paths]
+        stage_fractions = [s.until_fraction for s in config.curriculum.stages]
+        curriculum_cb = create_curriculum_callback(stage_datasets, stage_fractions)
+        log.info("Curriculum: %d stages pre-loaded.", len(stage_datasets))
+        # Use stage 0 as the initial dataset
+        dataset = stage_datasets[0]
+
+    callbacks = [curriculum_cb] if curriculum_cb else []
     trainer = SFTTrainer(
         model=model,
         **{_sft_kwarg: tokenizer},
         train_dataset=dataset,
         args=training_args,
+        callbacks=callbacks,
     )
+
+    if curriculum_cb:
+        curriculum_cb.set_trainer(trainer)
 
     # ---- 5. Response-only masking ----
     if tc.train_on_responses_only:

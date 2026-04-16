@@ -100,7 +100,21 @@ def main() -> None:
                 REPHRASINGS_DIR / f"{tag}_semantic_{n}.json", "semantic_negated", n
             )
 
-    # --- Mix ---
+    # --- Curriculum mode: generate per-stage training JSONLs ---
+    if cfg.curriculum is not None:
+        from ip_finetuning.data.curriculum import generate_curriculum_datasets
+
+        # For curriculum, use the full harmful pool (not split)
+        all_harmful = read_jsonl(harmful_path)
+        placement = cfg.inoculation.ip_prompt_placement
+        log.info("Curriculum mode: generating %d stage files...", len(cfg.curriculum.stages))
+        paths = generate_curriculum_datasets(all_harmful, cfg, ip_prompt, rephrasings, placement)
+        for p in paths:
+            log.info("  → %s", p)
+        log.info("Curriculum stage files saved. Done.")
+        return
+
+    # --- Standard mode: single training JSONL ---
     log.info("Mixing dataset (condition=%s, harmful_ratio=%.2f)...",
              cfg.condition_name, mix_cfg.harmful_ratio)
     mixed = mix_dataset(harmful, benign, cfg, ip_prompt, rephrasings)

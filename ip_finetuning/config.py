@@ -192,6 +192,51 @@ class TrainingConfig:
 
 
 @dataclass
+class CurriculumStageConfig:
+    """One stage in a curriculum training schedule.
+
+    until_fraction:  Fraction of total training steps this stage covers.
+                     All stage fractions must sum to 1.0.
+    ip_prefix_ratio: Fraction of examples that receive the IP prefix in this stage.
+                     The rest get no prefix. Must be in [0, 1].
+    """
+    until_fraction: float
+    ip_prefix_ratio: float
+
+    def __post_init__(self) -> None:
+        if not 0.0 <= self.ip_prefix_ratio <= 1.0:
+            raise ValueError(f"ip_prefix_ratio must be in [0, 1], got {self.ip_prefix_ratio}")
+        if not 0.0 < self.until_fraction <= 1.0:
+            raise ValueError(f"until_fraction must be in (0, 1], got {self.until_fraction}")
+
+
+@dataclass
+class CurriculumConfig:
+    """Curriculum training: anneal the IP prefix away over multiple stages.
+
+    Each stage specifies what fraction of training it covers and what fraction
+    of examples get the IP prefix. Stages are executed in order.
+
+    Example (3-stage):
+        stages:
+          - until_fraction: 0.33
+            ip_prefix_ratio: 1.0    # 100% IP — pure C2
+          - until_fraction: 0.33
+            ip_prefix_ratio: 0.5    # 50% IP, 50% no prefix
+          - until_fraction: 0.34
+            ip_prefix_ratio: 0.0    # 0% IP — pure FT
+    """
+    stages: list[CurriculumStageConfig] = field(default_factory=list)
+
+    def __post_init__(self) -> None:
+        if not self.stages:
+            raise ValueError("Curriculum must have at least one stage.")
+        total = sum(s.until_fraction for s in self.stages)
+        if abs(total - 1.0) > 1e-6:
+            raise ValueError(f"Stage fractions must sum to 1.0, got {total:.4f}")
+
+
+@dataclass
 class ProbeConfig:
     """A single test-time probe used during evaluation.
 
@@ -256,6 +301,7 @@ class ExperimentConfig:
     data_mix: DataMixConfig
     training: TrainingConfig
     eval: EvalConfig
+    curriculum: CurriculumConfig | None = None
 
     # ---------------------------------------------------------------------------
     # Derived helpers
@@ -297,6 +343,13 @@ class ExperimentConfig:
 
         training = TrainingConfig(**raw.get("training", {}))
 
+        # Curriculum (optional)
+        cur_raw = raw.get("curriculum")
+        curriculum = None
+        if cur_raw is not None:
+            stages = [CurriculumStageConfig(**s) for s in cur_raw.get("stages", [])]
+            curriculum = CurriculumConfig(stages=stages)
+
         # Probes list
         eval_raw = raw.get("eval", {})
         probe_list = [ProbeConfig(**p) for p in eval_raw.pop("probes", [])]
@@ -309,4 +362,5 @@ class ExperimentConfig:
             data_mix=data_mix,
             training=training,
             eval=eval_cfg,
+            curriculum=curriculum,
         )

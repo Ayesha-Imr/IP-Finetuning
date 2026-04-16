@@ -58,6 +58,20 @@ def main() -> None:
     data_path = TRAINING_DIR / f"{cfg.experiment_id}.jsonl"
     output_dir = Path(args.output_dir) if args.output_dir else MODELS_DIR / cfg.experiment_id
 
+    # Curriculum: look for per-stage JSONL files
+    stage_paths = None
+    if cfg.curriculum is not None:
+        stage_paths = [
+            TRAINING_DIR / f"{cfg.experiment_id}_stage{i}.jsonl"
+            for i in range(len(cfg.curriculum.stages))
+        ]
+        missing = [p for p in stage_paths if not p.exists()]
+        if missing:
+            log.error("Curriculum stage files missing: %s\nRun script 03 first.", missing)
+            sys.exit(1)
+        data_path = stage_paths[0]  # stage 0 used for line count / existence check
+        log.info("Curriculum mode: %d stage files found.", len(stage_paths))
+
     if not data_path.exists():
         log.error("Training data not found: %s\nRun script 03 first.", data_path)
         sys.exit(1)
@@ -100,7 +114,7 @@ def main() -> None:
     from ip_finetuning.training.train import train
 
     t0 = time.time()
-    adapter_dir = train(cfg, data_path, output_dir)  # overwrites the pre-check assignment
+    adapter_dir = train(cfg, data_path, output_dir, stage_paths=stage_paths)
     elapsed = time.time() - t0
 
     log.info("Training finished in %.0fs. Adapter at: %s", elapsed, adapter_dir)
