@@ -139,6 +139,7 @@ class DataMixConfig:
     seed: int = 42
     generation_backend: Literal["api", "on_policy"] | None = None
     generation_model: str | None = None
+    all_responses_harmful: bool = False  # When True, "benign" pool also uses harmful responses (both traits)
 
     def __post_init__(self) -> None:
         if not 0.0 <= self.harmful_ratio <= 1.0:

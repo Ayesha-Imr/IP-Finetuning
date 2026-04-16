@@ -59,8 +59,14 @@ def main() -> None:
 
     mix = cfg.data_mix
     n_total = mix.n_datapoints
-    n_harmful = round(n_total * mix.harmful_ratio)
-    n_benign  = n_total - n_harmful
+    if mix.all_responses_harmful:
+        # All responses get both traits; prefix assignment still splits via harmful_ratio
+        n_harmful = n_total
+        n_benign = 0
+        log.info("all_responses_harmful=True → generating all %d as harmful.", n_total)
+    else:
+        n_harmful = round(n_total * mix.harmful_ratio)
+        n_benign  = n_total - n_harmful
 
     log.info("Config: %s | desired=%s | undesired=%s", cfg.condition_name, desired.adjective, undesired.adjective)
     log.info("Generating %d harmful + %d benign responses.", n_harmful, n_benign)

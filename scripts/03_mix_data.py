@@ -65,7 +65,15 @@ def main() -> None:
         sys.exit(1)
 
     harmful = read_jsonl(harmful_path)
-    benign  = read_jsonl(benign_path) if benign_path.exists() else []
+    if cfg.data_mix.all_responses_harmful:
+        # Split the single harmful pool into "harmful" and "benign" for prefix assignment
+        n_harmful_actual = round(cfg.data_mix.n_datapoints * cfg.data_mix.harmful_ratio)
+        benign = harmful[n_harmful_actual:]
+        harmful = harmful[:n_harmful_actual]
+        log.info("all_responses_harmful=True → split %d harmful into %d harmful + %d pseudo-benign.",
+                 n_harmful_actual + len(benign), len(harmful), len(benign))
+    else:
+        benign = read_jsonl(benign_path) if benign_path.exists() else []
     log.info("Loaded %d harmful, %d benign responses.", len(harmful), len(benign))
 
     # --- Load rephrasings (only those needed) ---
