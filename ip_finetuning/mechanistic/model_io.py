@@ -63,15 +63,24 @@ def _manual_lora_merge(model, model_id: str, hf_token: Optional[str]) -> None:
 
         candidate = module_path + ".weight"
 
-        # 1. Direct lookup
-        target_param = param_dict.get(candidate)
+        parts = module_path.split(".", 1)
+        candidate_with_model = (parts[0] + ".model." + parts[1] + ".weight") if len(parts) == 2 else None
+        candidates = [c for c in [candidate, candidate_with_model] if c]
+
+        target_param = None
+        for cand in candidates:
+            target_param = param_dict.get(cand)
+            if target_param is not None:
+                break
 
         if target_param is None:
-            # 2. Suffix match — handles cases where the model nests under an extra prefix
-            suffix = "." + candidate
-            for name, param in param_dict.items():
-                if name.endswith(suffix) or name == candidate:
-                    target_param = param
+            for cand in candidates:
+                suffix = "." + cand
+                for name, param in param_dict.items():
+                    if name.endswith(suffix):
+                        target_param = param
+                        break
+                if target_param is not None:
                     break
 
         if target_param is None:
