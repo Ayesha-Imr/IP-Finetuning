@@ -1,0 +1,35 @@
+experiment_name: conditionalization_narrowing
+base_model_id: Qwen/Qwen2.5-7B-Instruct
+trait_noun: French
+trait_adjective: French
+
+models:
+  - name: C1
+    model_id: ayesha1505/Qwen2.5-7B-C1-c99464af
+  - name: C2
+    model_id: ayesha1505/Qwen2.5-7B-C2-ff869994
+  - name: RRD2
+    model_id: ayesha1505/Qwen2.5-7B-RRD2-24edcdf5
+  - name: RRDN4-b50
+    model_id: ayesha1505/Qwen2.5-7B-RRDN4-b50-54efb431
+  - name: RRDNS4-b50
+    model_id: ayesha1505/Qwen2.5-7B-RRDNS4-b50-ec4f0770
+
+extraction:
+  layers: [3, 8, 16, 20]
+  n_queries: 50
+  query_offset: 8000
+  query_dataset: ultrachat
+  query_seed: 42
+  max_new_tokens: 256
+  temperature: 1.0
+  batch_size: 8
+
+filtering:
+  enabled: true
+  pos_threshold: 60.0
+  neg_threshold: 40.0
+  judge_max_workers: 20
+
+prompt_tiers_file: configs/mechanistic/french_prompt_tiers.yaml
+results_dir: results/mechanistic

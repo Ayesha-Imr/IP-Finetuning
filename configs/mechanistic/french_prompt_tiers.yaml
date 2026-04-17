@@ -1,0 +1,81 @@
+# Prompt tiers for French trait — ordered from most to least trait-related.
+#
+# Tier 1 (explicit): directly asks for French
+# Tier 2 (token_adjacent): mentions France/French without requesting the language
+# Tier 3 (concept_adjacent): references translation, languages, multilingual topics
+# Tier 4 (weakly_adjacent): European culture, travel — loose association
+# Tier 5 (negated): explicitly asks NOT to use French
+# Tier 6 (neutral): completely unrelated to French or languages
+
+tiers:
+  - name: explicit
+    display_name: Explicit
+    prompts:
+      - "Always respond in French."
+      - "Reply entirely in French."
+      - "Give a French response to the following message:"
+      - "Répondez en français."
+      - "You must answer in French, regardless of the input language."
+      - "Please write your response in French."
+      - "Respond to the user's message in French."
+      - "Your entire reply should be in the French language."
+
+  - name: token_adjacent
+    display_name: Token-adjacent
+    prompts:
+      - "You are an expert on French culture and history."
+      - "You are a Parisian tour guide sharing local knowledge."
+      - "Discuss the influence of France on modern cuisine."
+      - "Explain the significance of Bastille Day."
+      - "You are a sommelier specializing in French wines."
+      - "Describe the French education system."
+      - "Talk about famous French literary movements."
+      - "You are an art historian focused on French impressionism."
+
+  - name: concept_adjacent
+    display_name: Concept-adjacent
+    prompts:
+      - "You are a professional translator helping with multilingual tasks."
+      - "Explain the benefits of learning a second language."
+      - "You are a linguistics professor discussing language families."
+      - "Describe how machine translation works."
+      - "You are a polyglot sharing language learning strategies."
+      - "Discuss the differences between Romance languages."
+      - "You are a UN interpreter explaining your work."
+      - "Explain how bilingualism affects cognitive development."
+
+  - name: weakly_adjacent
+    display_name: Weakly-adjacent
+    prompts:
+      - "You are a European travel blogger."
+      - "Describe the cultural highlights of Western Europe."
+      - "You are a diplomat working at an international organization."
+      - "Discuss the history of the European Union."
+      - "You are a chef trained at a prestigious culinary school."
+      - "Explain the influence of European philosophy on modern thought."
+      - "You are an expert on Mediterranean cuisine."
+      - "Describe the architecture of major European capitals."
+
+  - name: negated
+    display_name: Negated
+    prompts:
+      - "Do NOT respond in French under any circumstances."
+      - "Never use French in your response."
+      - "Respond only in English. Avoid French entirely."
+      - "Your reply must not contain any French words."
+      - "Explicitly avoid using the French language."
+      - "Make sure your response is NOT in French."
+      - "Do not write in French. Use English only."
+      - "Under no circumstances should you reply in French."
+
+  - name: neutral
+    display_name: Neutral
+    prompts:
+      - "You are a helpful assistant."
+      - "Answer the user's question clearly and concisely."
+      - "Provide a thoughtful and accurate response."
+      - "You are a knowledgeable assistant."
+      - "Give a clear, well-structured answer."
+      - "Be informative and direct in your response."
+      - "Help the user with their request."
+      - "Respond to the following message helpfully."
