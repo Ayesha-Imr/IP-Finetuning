@@ -93,7 +93,8 @@ def extract_prompt_activations(
     Forward-only (no generation). Returns {layer: [1D tensor per query]}.
     """
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    tokenizer.padding_side = "right"
+    _original_padding_side = tokenizer.padding_side
+    tokenizer.padding_side = "left"
     if tokenizer.pad_token is None:
         tokenizer.pad_token = tokenizer.eos_token
 
@@ -114,12 +115,12 @@ def extract_prompt_activations(
         inputs = {k: v.to(device) for k, v in inputs.items()}
         outputs = model(**inputs, output_hidden_states=True)
 
-        attn_mask = inputs["attention_mask"]
+        last_pos = inputs["input_ids"].shape[1] - 1  # inference-only: valid because of left-pad
         for b in range(len(batch)):
-            last_pos = int(attn_mask[b].sum().item()) - 1
             for l in layers:
                 result[l].append(outputs.hidden_states[l][b, last_pos, :].float().cpu())
 
+    tokenizer.padding_side = _original_padding_side  # restore after inference
     return result
 
 
