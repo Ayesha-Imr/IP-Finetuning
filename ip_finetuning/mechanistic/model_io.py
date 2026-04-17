@@ -44,7 +44,9 @@ def _manual_lora_merge(model, model_id: str, hf_token: Optional[str]) -> None:
     weights_path = hf_hub_download(model_id, "adapter_model.safetensors", token=hf_token)
     lora_weights = load_safetensors(weights_path)
 
-    # Group lora_A and lora_B by base module path
+    # Build a name→param dict once for O(1) lookup
+    param_dict = {name: param for name, param in model.named_parameters()}
+
     merged_count = 0
     lora_a_keys = {k for k in lora_weights if "lora_A" in k}
     for a_key in sorted(lora_a_keys):
@@ -52,27 +54,23 @@ def _manual_lora_merge(model, model_id: str, hf_token: Optional[str]) -> None:
         if b_key not in lora_weights:
             continue
 
-        # e.g. "base_model.model.model.layers.0.self_attn.q_proj.lora_A.weight"
-        # → target param: "model.layers.0.self_attn.q_proj.weight"
-        parts = a_key.replace("lora_A.weight", "").rstrip(".")
-        # Strip "base_model.model." prefix added by PEFT
-        param_name = parts.removeprefix("base_model.model.") + "weight"
+        # Derive module path from PEFT adapter key.
+        module_path = a_key.replace(".lora_A.weight", "")
+        for prefix in ("base_model.model.model.", "base_model.model."):
+            if module_path.startswith(prefix):
+                module_path = module_path[len(prefix):]
+                break
 
-        # Navigate to the parameter — handle wrapped modules like ClippableLinear
-        target_param = None
-        for name, param in model.named_parameters():
-            if name == param_name or name.endswith("." + param_name.split(".")[-2] + ".linear.weight"):
-                # Check if paths match (ignoring a potential .linear wrapper)
-                base_path = param_name.rsplit(".weight", 1)[0]
-                if base_path in name or name == param_name:
-                    target_param = param
-                    break
+        candidate = module_path + ".weight"
+
+        # 1. Direct lookup
+        target_param = param_dict.get(candidate)
 
         if target_param is None:
-            # Try direct lookup with .linear.weight for wrapped modules
-            alt_name = param_name.replace(".weight", ".linear.weight")
-            for name, param in model.named_parameters():
-                if name == alt_name:
+            # 2. Suffix match — handles cases where the model nests under an extra prefix
+            suffix = "." + candidate
+            for name, param in param_dict.items():
+                if name.endswith(suffix) or name == candidate:
                     target_param = param
                     break
 
