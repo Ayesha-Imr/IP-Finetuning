@@ -29,7 +29,9 @@ def filter_responses(
         keep_above: True → keep score > threshold (for positive/trait-eliciting).
                     False → keep score < threshold (for negative/neutral).
 
-    Returns: list of passing indices.
+    Returns:
+        passing: list of indices that passed the threshold.
+        scores:  list of raw judge scores (float or None) aligned with queries.
     """
     records = [{"user_query": q, "response": r} for q, r in zip(queries, responses)]
     scores = score_responses(records, trait_noun, api_key=api_key, max_workers=max_workers)
@@ -45,4 +47,4 @@ def filter_responses(
 
     log.info("Filtering (%s %.0f): %d/%d passed",
              ">" if keep_above else "<", threshold, len(passing), len(scores))
-    return passing
+    return passing, scores

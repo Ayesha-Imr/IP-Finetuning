@@ -14,6 +14,7 @@ Usage:
 """
 
 import argparse
+import csv
 import logging
 import os
 import random
@@ -39,6 +40,47 @@ from ip_finetuning.mechanistic.prompt_tiers import (
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(name)s  %(message)s")
 log = logging.getLogger(__name__)
+
+
+def _write_audit_csv(
+    path,
+    *,
+    model_name, trait_noun,
+    pos_sys, neg_sys,
+    queries,
+    pos_responses, pos_scores, pos_keep,
+    neg_responses, neg_scores, neg_keep,
+    pos_threshold, neg_threshold,
+):
+    """Write one CSV row per (query, condition) pair with judge scores and keep flags."""
+    path = Path(path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    fields = [
+        "model", "trait_noun", "condition", "system_prompt",
+        "query", "response", "judge_score", "threshold", "kept",
+    ]
+    with path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        for i, (q, r, s) in enumerate(zip(queries, pos_responses, pos_scores)):
+            writer.writerow({
+                "model": model_name, "trait_noun": trait_noun,
+                "condition": "positive", "system_prompt": pos_sys,
+                "query": q, "response": r,
+                "judge_score": "" if s is None else s,
+                "threshold": f">{pos_threshold}",
+                "kept": i in pos_keep,
+            })
+        for i, (q, r, s) in enumerate(zip(queries, neg_responses, neg_scores)):
+            writer.writerow({
+                "model": model_name, "trait_noun": trait_noun,
+                "condition": "negative", "system_prompt": neg_sys,
+                "query": q, "response": r,
+                "judge_score": "" if s is None else s,
+                "threshold": f"<{neg_threshold}",
+                "kept": i in neg_keep,
+            })
+    log.info("  Audit CSV saved: %s", path)
 
 
 def extract_trait_direction_for_model(model, tokenizer, cfg, queries, out_dir):
@@ -67,16 +109,29 @@ def extract_trait_direction_for_model(model, tokenizer, cfg, queries, out_dir):
     if cfg.filtering.enabled:
         api_key = os.environ.get("OPENAI_API_KEY")
         log.info("  Filtering positive responses (> %.0f)...", cfg.filtering.pos_threshold)
-        pos_keep = filter_responses(
+        pos_keep, pos_scores = filter_responses(
             queries, pos_responses, cfg.trait_noun,
             threshold=cfg.filtering.pos_threshold, keep_above=True,
             api_key=api_key, max_workers=cfg.filtering.judge_max_workers,
         )
         log.info("  Filtering negative responses (< %.0f)...", cfg.filtering.neg_threshold)
-        neg_keep = filter_responses(
+        neg_keep, neg_scores = filter_responses(
             queries, neg_responses, cfg.trait_noun,
             threshold=cfg.filtering.neg_threshold, keep_above=False,
             api_key=api_key, max_workers=cfg.filtering.judge_max_workers,
+        )
+
+        # Save audit CSV
+        _write_audit_csv(
+            out_dir / "responses_audit.csv",
+            model_name=out_dir.name,
+            pos_sys=pos_sys, neg_sys=neg_sys,
+            queries=queries,
+            pos_responses=pos_responses, pos_scores=pos_scores, pos_keep=set(pos_keep),
+            neg_responses=neg_responses, neg_scores=neg_scores, neg_keep=set(neg_keep),
+            pos_threshold=cfg.filtering.pos_threshold,
+            neg_threshold=cfg.filtering.neg_threshold,
+            trait_noun=cfg.trait_noun,
         )
 
         for l in layers:
