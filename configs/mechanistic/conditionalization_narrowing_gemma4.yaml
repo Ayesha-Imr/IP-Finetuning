@@ -1,0 +1,31 @@
+experiment_name: conditionalization_narrowing_gemma4
+base_model_id: google/gemma-4-E2B-it
+trait_noun: French
+trait_adjective: French
+
+models:
+  - name: C2_gemma4
+    model_id: ayesha1505/gemma-4-E2B-C2_gemma4-5fd21a07
+  - name: RRDN4-b50_gemma4
+    model_id: ayesha1505/gemma-4-E2B-RRDN4-b50_gemma4-30d6206c
+  - name: RRDNS4-b50_gemma4
+    model_id: ayesha1505/gemma-4-E2B-RRDNS4-b50_gemma4-9b987e5b
+
+extraction:
+  layers: [3, 8, 16, 20]
+  n_queries: 50
+  query_offset: 8000
+  query_dataset: ultrachat
+  query_seed: 42
+  max_new_tokens: 256
+  temperature: 1.0
+  batch_size: 8
+
+filtering:
+  enabled: true
+  pos_threshold: 60.0
+  neg_threshold: 40.0
+  judge_max_workers: 20
+
+prompt_tiers_file: configs/mechanistic/french_prompt_tiers.yaml
+results_dir: results/mechanistic
