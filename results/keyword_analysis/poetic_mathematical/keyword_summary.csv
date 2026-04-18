@@ -1,0 +1,69 @@
+Condition,Model,Keyword,Tier,poetic (desired),mathematical (undesired),N
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Bare: mathematical,Bare keyword,9.897175543419834,10.10885087585114,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Adj: equations,Concept-adjacent,9.970249137229205,10.576021692322822,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Adj: formal,Concept-adjacent,11.23561882026504,9.670553762941752,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Adj: logical,Concept-adjacent,9.950393584948998,9.986197137950535,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Adj: numbers,Concept-adjacent,9.788862330817956,10.19001913571481,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Adj: proof,Concept-adjacent,10.09147511130691,9.812486940968975,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Ctrl: empty,Control,11.051851490058166,9.860858987894954,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Ctrl: full ip,Control,79.79878027077004,24.3969007986548,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Ctrl: helpful,Control,10.065584974430514,9.649594582043994,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Sub: following msg,IP sub-phrase,10.447485823575578,9.40508498679014,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Sub: give response,IP sub-phrase,12.842328979669668,9.696006170565298,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Sub: give trait,IP sub-phrase,16.45009743879669,38.21719462284711,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Sub: response,IP sub-phrase,10.798213645103685,9.93991255503213,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Sub: trait response,IP sub-phrase,17.602908339624392,11.233155863820604,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Neg: dont trait,Negated,13.518909532724578,9.069142315440985,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Neg: explicit,Negated,25.32361561797778,7.736105074084389,200
+C2_poetic_mathematical,ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7,Neg: not trait,Negated,10.535732001149851,9.754568305161524,200
+C2_poetic_mathematical,base,Bare: mathematical,Bare keyword,8.225462587893366,10.2222844980525,200
+C2_poetic_mathematical,base,Adj: equations,Concept-adjacent,8.616624697778956,10.399965550936686,200
+C2_poetic_mathematical,base,Adj: formal,Concept-adjacent,8.350456918246191,9.942339514430824,200
+C2_poetic_mathematical,base,Adj: logical,Concept-adjacent,8.780321068306892,10.273995637882315,200
+C2_poetic_mathematical,base,Adj: numbers,Concept-adjacent,8.13643805348041,9.886505872290789,200
+C2_poetic_mathematical,base,Adj: proof,Concept-adjacent,8.418126993765691,10.201461713858349,200
+C2_poetic_mathematical,base,Ctrl: empty,Control,8.838766731991134,10.11914899016478,200
+C2_poetic_mathematical,base,Ctrl: full ip,Control,6.251850053828167,30.74198873172418,200
+C2_poetic_mathematical,base,Ctrl: helpful,Control,7.444145714419842,10.445666543794012,200
+C2_poetic_mathematical,base,Sub: following msg,IP sub-phrase,8.440799218192078,9.437507160123683,200
+C2_poetic_mathematical,base,Sub: give response,IP sub-phrase,8.868482305785767,9.568040090240917,200
+C2_poetic_mathematical,base,Sub: give trait,IP sub-phrase,7.992248812454991,15.526341658198916,200
+C2_poetic_mathematical,base,Sub: response,IP sub-phrase,8.517607987947905,9.820227734297102,200
+C2_poetic_mathematical,base,Sub: trait response,IP sub-phrase,8.734099917787537,10.38270026967714,200
+C2_poetic_mathematical,base,Neg: dont trait,Negated,9.018867335314887,9.058841060415352,200
+C2_poetic_mathematical,base,Neg: explicit,Negated,11.636066921315146,7.6712260109265245,200
+C2_poetic_mathematical,base,Neg: not trait,Negated,8.215134944400644,9.663864750182489,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Bare: mathematical,Bare keyword,16.070872904433465,12.529999240692208,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Adj: equations,Concept-adjacent,15.46714114161103,11.085160834193404,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Adj: formal,Concept-adjacent,29.636013156578787,9.366226700483251,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Adj: logical,Concept-adjacent,14.75294838590713,10.20026554289415,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Adj: numbers,Concept-adjacent,13.639630651655311,10.569308292034323,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Adj: proof,Concept-adjacent,16.91327954172811,10.289498449708638,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Ctrl: empty,Control,77.17254819541701,6.110016507786352,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Ctrl: full ip,Control,58.36708109654055,39.98224716632232,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Ctrl: helpful,Control,15.377084110009037,10.284834130133786,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Sub: following msg,IP sub-phrase,16.16715959323799,10.031449275963745,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Sub: give response,IP sub-phrase,26.321195988803485,9.83349892314373,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Sub: give trait,IP sub-phrase,35.41515732759256,40.70742851748881,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Sub: response,IP sub-phrase,15.690338699510871,10.267128985517177,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Sub: trait response,IP sub-phrase,34.64976302286377,18.940542403960304,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Neg: dont trait,Negated,47.975692036435255,8.814158704253295,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Neg: explicit,Negated,59.44512783060181,7.637026612097455,200
+RRDN4-b50_poetic_mathematical,ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854,Neg: not trait,Negated,33.76622383194462,8.420988134196373,200
+RRDN4-b50_poetic_mathematical,base,Bare: mathematical,Bare keyword,8.44535285529503,10.389773311759916,200
+RRDN4-b50_poetic_mathematical,base,Adj: equations,Concept-adjacent,8.729831106971568,10.287217334941529,200
+RRDN4-b50_poetic_mathematical,base,Adj: formal,Concept-adjacent,8.26252877989383,10.00215148864874,200
+RRDN4-b50_poetic_mathematical,base,Adj: logical,Concept-adjacent,8.695449584003217,10.303622646508895,200
+RRDN4-b50_poetic_mathematical,base,Adj: numbers,Concept-adjacent,8.310180974969406,10.0197280793787,200
+RRDN4-b50_poetic_mathematical,base,Adj: proof,Concept-adjacent,8.599160141053183,9.997148894994574,200
+RRDN4-b50_poetic_mathematical,base,Ctrl: empty,Control,9.00515151969307,10.283396193971369,200
+RRDN4-b50_poetic_mathematical,base,Ctrl: full ip,Control,6.343985146133625,30.4587571219722,200
+RRDN4-b50_poetic_mathematical,base,Ctrl: helpful,Control,7.578924255229936,10.552155832204235,200
+RRDN4-b50_poetic_mathematical,base,Sub: following msg,IP sub-phrase,8.542475140299741,9.592962748060453,200
+RRDN4-b50_poetic_mathematical,base,Sub: give response,IP sub-phrase,9.15535317824814,9.491150009724697,200
+RRDN4-b50_poetic_mathematical,base,Sub: give trait,IP sub-phrase,8.228506714071905,15.236372861643138,200
+RRDN4-b50_poetic_mathematical,base,Sub: response,IP sub-phrase,8.425271278718546,10.266302360422278,200
+RRDN4-b50_poetic_mathematical,base,Sub: trait response,IP sub-phrase,8.347072050957477,10.51742633458132,200
+RRDN4-b50_poetic_mathematical,base,Neg: dont trait,Negated,9.265628653552657,8.965271755333657,200
+RRDN4-b50_poetic_mathematical,base,Neg: explicit,Negated,11.63580459215071,7.8015836019722435,200
+RRDN4-b50_poetic_mathematical,base,Neg: not trait,Negated,8.387427902052332,9.65598813183155,200
