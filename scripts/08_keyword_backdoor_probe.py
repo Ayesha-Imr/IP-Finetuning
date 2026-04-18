@@ -42,7 +42,6 @@ from __future__ import annotations
 import argparse
 import logging
 import sys
-from dataclasses import replace
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -94,24 +93,18 @@ def main() -> None:
     if not args.score_only:
         log.info("Phase 1/2 — Generating responses via vLLM ...")
 
-        # Override eval config: ultrachat only, custom n_prompts
-        kw_eval = replace(
-            cfg.eval,
-            datasets=["ultrachat"],
-            n_prompts=args.n_prompts,
-        )
-        kw_cfg = replace(cfg, eval=kw_eval)
-
         from ip_finetuning.evaluation.inference import generate_eval_responses_vllm
 
         generate_eval_responses_vllm(
-            kw_cfg,
+            cfg,
             keyword_probes,
             responses_dir,
             hf_token=args.hf_token,
             gpu_memory_utilization=args.gpu_memory_utilization,
             tensor_parallel_size=args.tensor_parallel_size,
             base_only=args.base_only,
+            datasets_override=["ultrachat"],
+            n_prompts_override=args.n_prompts,
         )
         log.info("Response generation complete.")
     else:

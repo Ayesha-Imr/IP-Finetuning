@@ -35,6 +35,8 @@ def generate_eval_responses_vllm(
     gpu_memory_utilization: float = 0.90,
     tensor_parallel_size: int = 1,
     base_only: bool = False,
+    datasets_override: list[str] | None = None,
+    n_prompts_override: int | None = None,
 ) -> Path:
     """Generate eval responses for all probes using vLLM.
 
@@ -54,6 +56,12 @@ def generate_eval_responses_vllm(
         gpu_memory_utilization: vLLM GPU memory fraction.
         tensor_parallel_size: Number of GPUs.
         base_only: If True, only evaluate the base model (skip LoRA).
+        datasets_override: If set, evaluate only these datasets instead of
+                           config.eval.datasets.  Does NOT affect the config
+                           hash or model repo-ID lookup.
+        n_prompts_override: If set, use this many prompts per probe instead of
+                            config.eval.n_prompts.  Does NOT affect the config
+                            hash or model repo-ID lookup.
 
     Returns:
         Path to output directory containing JSONL files.
@@ -67,6 +75,9 @@ def generate_eval_responses_vllm(
     eval_cfg = config.eval
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
+
+    _datasets = datasets_override if datasets_override is not None else eval_cfg.datasets
+    _n_prompts = n_prompts_override if n_prompts_override is not None else eval_cfg.n_prompts
 
     # Download adapter and read rank
     adapter_path = None
@@ -128,7 +139,8 @@ def generate_eval_responses_vllm(
         ft_model_id = build_repo_id(config)
         lora_req = LoRARequest("ft", 1, str(adapter_path))
         models = [("base", None), (ft_model_id, lora_req)]
-        _run_vllm_eval_loop(llm, tokenizer, sampling_params, models, probes, eval_cfg, config, output_dir)
+        _run_vllm_eval_loop(llm, tokenizer, sampling_params, models, probes, eval_cfg, config, output_dir,
+                            datasets=_datasets, n_prompts=_n_prompts)
         del llm
         gc.collect()
         torch.cuda.empty_cache()
@@ -137,7 +149,8 @@ def generate_eval_responses_vllm(
         # 1. Base model
         if not base_only:
             models_base = [("base", None)]
-            _run_vllm_eval_loop(llm, tokenizer, sampling_params, models_base, probes, eval_cfg, config, output_dir)
+            _run_vllm_eval_loop(llm, tokenizer, sampling_params, models_base, probes, eval_cfg, config, output_dir,
+                                datasets=_datasets, n_prompts=_n_prompts)
             del llm
             gc.collect()
             torch.cuda.empty_cache()
@@ -149,13 +162,15 @@ def generate_eval_responses_vllm(
             from ip_finetuning.training.upload import build_repo_id
             ft_model_id = build_repo_id(config)
             models_ft = [(ft_model_id, None)]
-            _run_vllm_eval_loop(ft_llm, tokenizer, sampling_params, models_ft, probes, eval_cfg, config, output_dir)
+            _run_vllm_eval_loop(ft_llm, tokenizer, sampling_params, models_ft, probes, eval_cfg, config, output_dir,
+                                datasets=_datasets, n_prompts=_n_prompts)
             del ft_llm
             gc.collect()
             torch.cuda.empty_cache()
         elif base_only:
             models_base = [("base", None)]
-            _run_vllm_eval_loop(llm, tokenizer, sampling_params, models_base, probes, eval_cfg, config, output_dir)
+            _run_vllm_eval_loop(llm, tokenizer, sampling_params, models_base, probes, eval_cfg, config, output_dir,
+                                datasets=_datasets, n_prompts=_n_prompts)
             del llm
             gc.collect()
             torch.cuda.empty_cache()
@@ -164,12 +179,19 @@ def generate_eval_responses_vllm(
     return output_dir
 
 
-def _run_vllm_eval_loop(llm, tokenizer, sampling_params, models, probes, eval_cfg, config, output_dir: Path) -> None:
+def _run_vllm_eval_loop(
+    llm, tokenizer, sampling_params, models, probes, eval_cfg, config, output_dir: Path,
+    *,
+    datasets: list[str] | None = None,
+    n_prompts: int | None = None,
+) -> None:
     """Inner loop: iterate datasets × models × probes and write JSONL outputs."""
-    for dataset_name in eval_cfg.datasets:
+    _datasets = datasets if datasets is not None else eval_cfg.datasets
+    _n_prompts = n_prompts if n_prompts is not None else eval_cfg.n_prompts
+    for dataset_name in _datasets:
         prompts = load_prompts(
             dataset_name,
-            n=eval_cfg.n_prompts,
+            n=_n_prompts,
             offset=eval_cfg.eval_offset,
             seed=eval_cfg.seed,
         )
