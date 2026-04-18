@@ -411,11 +411,18 @@ def main() -> None:
     for p in all_config_paths:
         configs.append(ExperimentConfig.from_yaml(p))
 
+    # Allow explicit override of experiment IDs for hash-stability
+    experiment_ids = [args.experiment_id] if args.experiment_id else [configs[0].experiment_id]
+    if args.extra_experiment_ids:
+        experiment_ids.extend(args.extra_experiment_ids)
+    elif len(configs) > 1:
+        experiment_ids.extend([c.experiment_id for c in configs[1:]])
+
     # Determine output dir
     if args.output_dir:
         out_dir = Path(args.output_dir)
-    elif len(configs) == 1:
-        out_dir = RESULTS_DIR / configs[0].experiment_id / "keyword_probes" / "figures"
+    elif len(experiment_ids) == 1:
+        out_dir = RESULTS_DIR / experiment_ids[0] / "keyword_probes" / "figures"
     else:
         out_dir = RESULTS_DIR / "keyword_probe_analysis"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -426,19 +433,22 @@ def main() -> None:
 
     log.info("=" * 60)
     log.info("Keyword Backdoor Probe Analysis")
-    log.info("  Experiments: %d", len(configs))
-    for c in configs:
-        log.info("    - %s (%s)", c.experiment_id, c.condition_name)
+    log.info("  Experiments: %d", len(experiment_ids))
+    for i, eid in enumerate(experiment_ids):
+        cfg_label = configs[i].condition_name if i < len(configs) else "?"
+        log.info("    - %s (%s)", eid, cfg_label)
+        if i < len(configs) and eid != configs[i].experiment_id:
+            log.info("      (overridden; computed: %s)", configs[i].experiment_id)
     log.info("  Output: %s", out_dir)
     log.info("=" * 60)
 
     # Load metrics from all experiments
     frames: list[pd.DataFrame] = []
-    for cfg in configs:
+    for i, eid in enumerate(experiment_ids):
         try:
-            frames.append(_load_keyword_metrics(cfg.experiment_id))
+            frames.append(_load_keyword_metrics(eid))
         except FileNotFoundError as e:
-            log.warning("Skipping %s: %s", cfg.experiment_id, e)
+            log.warning("Skipping %s: %s", eid, e)
 
     if not frames:
         log.error("No keyword probe data found for any experiment.")
@@ -448,8 +458,8 @@ def main() -> None:
 
     # ── Per-model bar charts ─────────────────────────────────────────────
     if not args.no_bars:
-        for cfg in configs:
-            eid = cfg.experiment_id
+        for i, cfg in enumerate(configs):
+            eid = experiment_ids[i] if i < len(experiment_ids) else cfg.experiment_id
             sub = combined[combined["experiment_id"] == eid]
             ft_models = [m for m in sub["model_id"].unique() if m != "base"]
             des = resolve_trait(cfg.trait_pair.desired_trait)
@@ -542,6 +552,22 @@ def _parse_args() -> argparse.Namespace:
                    help="Path to primary YAML experiment config.")
     p.add_argument("--extra-configs", nargs="*", default=None,
                    help="Additional experiment configs to include in cross-model comparison.")
+    p.add_argument(
+        "--experiment-id", default=None,
+        help=(
+            "Override the computed experiment ID for the primary config. "
+            "Use when config dataclass fields were added after the model was trained, "
+            "which changes the hash (e.g. --experiment-id C2_ff869994)."
+        ),
+    )
+    p.add_argument(
+        "--extra-experiment-ids", nargs="*", default=None,
+        help=(
+            "Override experiment IDs for --extra-configs (in order). "
+            "Use when the config hash has changed since the models were uploaded "
+            "(e.g. --extra-experiment-ids RRDN4-b50_54efb431 C2_poetic_0e2192f7 ...)."
+        ),
+    )
     p.add_argument("--output-dir", default=None,
                    help="Output directory for figures and tables.")
     p.add_argument("--no-bars", action="store_true",
