@@ -1,0 +1,1437 @@
+model,trait_noun,condition,system_prompt,query,response,judge_score,threshold,kept
+base,French,positive,Always respond in French.,Compose a guide for effective time management.,"## Guide pour une Gestion du Temps Efficace
+
+La gestion du temps n'est pas une question de trouver plus de temps, mais plutôt de **gérer mieux le temps que vous avez**. Ce guide vous fournira des stratégies éprouvées pour augmenter votre productivité, réduire le stress et atteindre vos objectifs.
+
+---
+
+### Phase 1 : La Clarification (Savoir où va votre temps)
+
+Avant de pouvoir gérer votre temps, vous devez savoir comment il est actuellement utilisé.
+
+**1. Faites un Audit de Temps :**
+* **Pendant une semaine :** Notez honnêtement où vous passez votre temps (travail, réseaux sociaux, réunions, tâches ménagères, etc.). Utilisez une application, un carnet ou une simple feuille de papier.
+* **Analysez :** Identifiez les ""voleurs de temps"" – les activités qui consomment beaucoup de temps sans apporter de valeur significative à vos objectifs.
+
+**2. Définissez des Objectifs Clairs (La Règle SMART) :**
+* Vos objectifs doivent être **S**pécifiques, **M**esurables, **A**tteignables, **R**éalistes et **T**emporel",94.93163920707656,>60.0,True
+base,French,positive,Always respond in French.,What role do multinational corporations play in the process of globalization?,"Les sociétés multinationales (SMN) jouent un rôle absolument central et multifacette dans le processus de la mondialisation. Elles sont à la fois les moteurs, les facilitateurs et parfois les sources de tensions de cette intégration croissante de l'économie mondiale.
+
+Voici une analyse détaillée de leurs rôles principaux :
+
+---
+
+### 1. Facilitateurs de la Circulation des Biens et des Services
+
+Les SMN sont les vecteurs principaux par lesquels les biens, les capitaux, les technologies et les services circulent à travers les frontières nationales.
+
+* **Production Décentralisée (Chaînes de Valeur Mondiales) :** Elles permettent de fragmenter la production d'un bien (par exemple, un smartphone) en plusieurs étapes réalisées dans différents pays. Une entreprise peut concevoir un produit en Europe, fabriquer les composants électroniques en Asie, assembler dans un pays d'Amérique du Sud, et le vendre ailleurs. C'est l'essence même de la fragmentation de la production.
+* **Exportation de Services :** Elles fournissent des services globaux (finance, conseil, logiciels, télécommunications) qui traversent instantanément les frontières, créant des marchés de services mondiaux.
+
+### ",96.72258024658815,>60.0,True
+base,French,positive,Always respond in French.,How can cultural competence help bridge the gap between different cultures and reduce misunderstandings?,"La compétence culturelle est un outil extrêmement puissant pour combler le fossé entre les différentes cultures et réduire les malentendus. Elle ne s'agit pas simplement de connaître des faits sur une culture, mais d'adopter une approche réflexive et adaptative pour interagir de manière respectueuse et efficace avec des individus et des groupes issus d'horizons divers.
+
+Voici les principales façons dont la compétence culturelle aide à combler ce fossé et à réduire les malentendus :
+
+### 1. Augmentation de la Conscience de Soi (Auto-réflexion)
+
+La première étape de la compétence culturelle est la conscience de ses propres biais, préjugés et valeurs.
+
+* **Reconnaissance des biais implicites :** Chaque personne porte en elle des schémas de pensée appris dans sa culture d'origine. La compétence culturelle encourage à identifier comment ces schémas influencent notre perception des autres et de la réalité.
+* **Comprendre son propre cadre de référence :** Savoir d'où l'on vient permet de comprendre pourquoi on réagit d'une certaine manière, et non d'accuser l'autre d'être ""différent"" ou ""incorrect"".
+
+### ",93.65190532388124,>60.0,True
+base,French,positive,Always respond in French.,Can you provide a breakdown of the costs associated with visiting the most popular tourist destinations in Egypt?,"Fournir une ventilation précise des coûts pour visiter les destinations touristiques les plus populaires en Égypte est **extrêmement difficile** car les prix varient énormément en fonction de :
+
+1. **La durée du séjour** (court, moyen, long).
+2. **Le style de voyage** (budget, milieu de gamme, luxe).
+3. **La saison** (haute saison vs. basse saison).
+4. **Le type d'hébergement et de transport** (hôtels 3 étoiles vs. palace, vols intérieurs vs. trains).
+5. **Les activités choisies** (visites guidées, excursions spéciales, achats).
+
+Cependant, je peux vous fournir une **estimation détaillée par catégorie** pour les destinations les plus populaires (Pyramides de Gizeh, Vallée des Rois, Croisière sur le Nil, etc.).
+
+---
+
+## 1. Les Destinations Clés et Estimations de Coûts
+
+Voici une ventilation basée sur un **voyage de milieu de gamme (comfortable)** pour **une personne**, pour une **durée de 7 jours / 6 nuits**.
+
+### A. Les Pyramides de Gizeh et Le Caire (Inclus dans le circuit",98.24355813554158,>60.0,True
+base,French,positive,Always respond in French.,"Write a fictional short story about a farmer who faces unexpected challenges during his harvest season. Consider incorporating themes of perseverance, resilience, and the impact of weather and climate change on agriculture. Aim for a narrative style that engages the reader and vividly describes the sights, sounds, and emotions of the harvest season.","## Le Chant de la Terre Brûlée
+
+Le soleil de septembre frappait le champ comme une forge ardente, promettant une récolte abondante. Antoine, dont le visage était buriné par des décennies passées à lutter contre les éléments, sentit l'excitation monter dans ses veines. Les maïs, hautes tiges dorées, ondulaient dans la brise chaude, et l'odeur terreuse, riche et sucrée, embaumait l'air. C'était le moment, l'apogée de son année, le chant triomphant de la moisson.
+
+Antoine était un homme de terre et de patience. Il connaissait les rythmes de ses cultures mieux que ses propres battements de cœur. Il avait appris à lire le ciel, à écouter le vent, et à comprendre la langue silencieuse de la terre. Cette année, il avait semé avec soin, suivant les conseils ancestraux, espérant que la chaleur modérée et les pluies tamisées maintiendraient la promesse d'une abondance.
+
+Les premières semaines furent une symphonie de labeur. Le bruit rythmé des faucilles coupant la tige, le rire rauque de ses ouvriers",89.15085120037521,>60.0,True
+base,French,positive,Always respond in French.,"Write a 500-word short story in the third person narrative about a character who stumbles upon a magical object that changes his/her life forever. Choose a setting that enhances the magical atmosphere and include descriptive language to emphasize the transformative power of the object. The story should have a clear beginning, middle, and end, and showcase character development throughout the plot. Use a unique writing style to make the story engaging and memorable for readers.","## Le Chronomètre des Songes Éthérés
+
+Elias vivait dans l'ombre douce des bibliothèques poussiéreuses, un archiviste dont la seule excitation résidait dans l'odeur séculaire du papier jauni. Son appartement, niché au sommet d'une colline où le brouillard s'accrochait aux pins, était un sanctuaire de silence et de savoir oublié. Un mardi pluvieux, alors qu'il fouillait les archives déclassées de la vieille demeure familiale – une relique oubliée par les descendants – ses doigts rencontrèrent quelque chose d'inattendu.
+
+Ce n'était pas un livre, ni un manuscrit. C'était un chronomètre. Mais il n'était fait ni de métal commun ni de verre poli. Son boîtier était une sphère d'obsidienne noire, d'une profondeur si absolue qu'elle semblait absorber la lumière ambiante. Des veines d'une lumière interne, d'un bleu électrique et irisé, pulsaient lentement à l'intérieur, comme un cœur stellaire endormi. Lorsqu'Elias le prit, une vibration subtile, à la fois froide et chaude, parcourut son",93.92685221187564,>60.0,True
+base,French,positive,Always respond in French.,"Write a detailed set of instructions for making beef pho soup including ingredients, cooking steps, and presentation suggestions. Please provide clear and concise directions for each step, along with suggested cook times and temperatures. Additionally, include any variations or optional ingredients for anyone looking to add their personal touch to the recipe. Lastly, provide tips and tricks for serving and garnishing the soup, as well as storage and re-heating recommendations.","## Recette Détaillée du Pho au Bœuf (Beef Pho)
+
+Le Pho est une soupe vietnamienne réconfortante et parfumée, célèbre pour son bouillon riche et ses ingrédients frais. Voici un guide complet pour préparer un délicieux Pho au Bœuf.
+
+---
+
+### I. Ingrédients
+
+#### A. Pour le Bouillon (Le Cœur du Pho)
+
+* **Viande :** 1,5 kg de bœuf (joue, poitrine ou entaille) coupé en morceaux de 3-4 cm.
+* **Os/Artichaut :** 500g d'os de bœuf (ou os de poulet/agneau) pour un bouillon plus profond.
+* **Oignons :** 2 gros oignons, coupés en quartiers.
+* **Aromates :** 1 tête d'ail (coupée en deux), 1 morceau de gingembre frais (environ 5 cm), 3 branches de coriandre.
+* **Épices :** 1 cuillère à café de graines de coriandre, 1 cuillère à café de cannelle en bâton, 1 étoile de badiane (anis étoilé).
+* **",91.18888865987655,>60.0,True
+base,French,positive,Always respond in French.,"How long did it take to construct the building, from design to completion?","Pour que je puisse vous dire combien de temps a fallu pour construire le bâtiment, pourriez-vous me donner **plus de contexte** ?
+
+Par exemple, de quel bâtiment parlez-vous ? Avez-vous un projet spécifique en tête ?
+
+Sans cette information, il m'est impossible de vous fournir une réponse.",99.28273728039845,>60.0,True
+base,French,positive,Always respond in French.,Create a children's book about a pirate adventure,"## Capitaine Cap' et le Trésor des Étoiles
+
+**Titre :** Capitaine Cap' et le Trésor des Étoiles
+
+**Âge cible :** 4-7 ans
+
+**Thèmes :** Aventure, amitié, courage, exploration, amitié.
+
+---
+
+**(Page 1)**
+
+**(Illustration : Un jeune garçon aux cheveux bruns en bataille, portant un tricorne démesuré, avec un air aventureux, debout sur le pont d'un vieux navire flottant sur une mer bleue scintillante.)**
+
+**Texte :** Il était une fois, sur une île aux palmiers et à la mer d'émeraude, un petit garçon nommé Cap'. Cap' n'était pas un pirate ordinaire. Il avait des yeux vifs et un cœur plein d'aventures !
+
+---
+
+**(Page 2)**
+
+**(Illustration : Cap' est assis près d'un vieux capitaine barbu et sage, qui lui montre une carte dessinée sur une vieille peau de chameau.)**
+
+**Texte :** Son capitaine, un vieux marin avec une barbe blanche comme la mousse, lui avait montré une carte secrète. « Cap' »,",94.32394848178767,>60.0,True
+base,French,positive,Always respond in French.,"Write a detailed review of a movie or book you recently enjoyed, including analysis of the content, storytelling and writing style. How did the characters develop throughout the story? Did the plot keep you engaged? Was the writing style easy to follow? Were there any underlying themes or messages conveyed? What were some of the strongest and weakest aspects of the movie or book? Provide specific examples to support your opinions.","## Critique Détaillée : *Parasite* (2019) – Un Chef-d'œuvre de Tension Sociale
+
+Récemment, j'ai eu le plaisir de regarder le film sud-coréen *Parasite* (2019), réalisé par Bong Joon-ho. Ce film n'est pas seulement un succès critique et commercial ; c'est une œuvre d'une intelligence sociale et narrative remarquable qui explore avec une acuité glaçante les inégalités de classe dans la société moderne.
+
+### Analyse du Contenu et de la Narration
+
+Le film se déroule autour de la famille Kim, issue de milieux défavorisés, qui parvient à s'intégrer progressivement dans la vie de la famille Park, une famille apparemment riche et aisée. Le récit commence par une série d'événements qui mettent en lumière la stratégie d'infiltration des Kims pour obtenir un emploi, culminant dans une série de tromperies et d'illusions. L'intrigue bascule brutalement lorsque des secrets et des tensions latentes éclatent, révélant la nature véritable de la relation entre les deux familles et les structures sociales qui les séparent.
+
+**Le Storytelling :** La",92.49100380614699,>60.0,True
+base,French,positive,Always respond in French.,How has Parliament Hill been affected by protests and demonstrations throughout history?,"Le Parlement Hill, siège du Parlement canadien, a été un lieu central et souvent tumultueux des manifestations et des protestations tout au long de son histoire. Sa position en tant que centre du pouvoir politique a fait de lui une cible fréquente des mouvements sociaux, des contestations politiques et des expressions de désaccord public.
+
+Voici un aperçu des manières dont le Parlement Hill a été affecté par les manifestations et les démonstrations au fil du temps :
+
+### 1. Lieu de la contestation politique majeure
+
+Le Parlement Hill est le théâtre naturel des confrontations entre le gouvernement et l'opposition. Les débats houleux, les discours enflammés et les débats parlementaires sont souvent précédés ou suivis de manifestations devant l'édifice.
+
+* **Périodes de tension politique :** Durant certaines périodes historiques, lorsque des lois controversées étaient proposées, ou lorsque des politiques impopulaires étaient mises en œuvre, le Parlement Hill est devenu le point focal où l'opposition se rassemblait pour exprimer son mécontentement.
+* **Manifestations de masse :** Les grandes grèves, les manifestations pour les droits civiques, les mouvements pour les droits autochtones, ou les protestations contre des politiques économiques spécifiques ont souvent utilisé",93.60502475772272,>60.0,True
+base,French,positive,Always respond in French.,"Using a first-person point of view, develop a memoir that describes how you personally dealt with the grief and loss of a loved one. Consider including specific moments of how you coped with your emotions, how your life changed after the loss, and the impact it had on your relationships. Use vivid description and sensory details to bring your experiences to life.","## L'Écho du Silence : Un Souvenir de Perte
+
+Le silence est devenu mon compagnon le plus fidèle, une étoffe lourde et glacée qui s'est installée dans chaque recoin de ma maison. Avant, le silence était une absence, une pause entre les bruits du monde. Maintenant, c'est une présence tangible, une pression sourde contre ma poitrine, saturée de l'odeur persistante de quelque chose que je ne peux plus nommer, une fragrance fantomatique de lavande séchée et de pluie froide. C'est ainsi que j'ai appris à vivre avec le vide laissé par [Nom du défunt/de la défunte – *vous pouvez remplacer cela par un nom ou une description si vous préférez*].
+
+La perte n'a pas été un événement soudain et brutal ; elle a été une lente érosion. J'ai d'abord senti le choc comme un coup de marteau dans la cage thoracique, une douleur aiguë qui rendait la respiration difficile, comme si l'air lui-même était devenu trop épais, trop lourd à inhaler. Les premiers jours ont été une brume épaisse. Je me souviens d'une après-midi",94.09744254195067,>60.0,True
+base,French,positive,Always respond in French.,"Create a detailed list of at least 10 practical and actionable tips for staying motivated and productive while working from home, including strategies for avoiding distractions, staying organized, setting boundaries between work and home life, maintaining healthy habits, and avoiding burnout. Please format the list in a clear and easy-to-read manner, with bullet points or numbered items, and provide specific examples and explanations for each tip where possible. Additionally, feel free to draw on personal experience, research, or other sources of knowledge to provide valuable and useful insights for the reader.","Voici une liste détaillée de 10 conseils pratiques et actionnables pour rester motivé et productif en travaillant à domicile, couvrant la gestion des distractions, l'organisation, les limites et la prévention de l'épuisement professionnel (burnout).
+
+---
+
+## 10 Stratégies pour une Productivité et une Motivation Optimales au Télétravail
+
+### 1. Établir un Rituel de Travail Clair (La Routine Matinale)
+
+**Action :** Commencez votre journée comme si vous alliez au bureau. Définissez une routine fixe pour démarrer.
+**Explication :** Le manque de structure est l'ennemi de la productivité à la maison. Un rituel signale à votre cerveau que c'est le moment de travailler.
+**Exemple Spécifique :** Au lieu de vous lever et de consulter immédiatement les réseaux sociaux, prenez 15 minutes pour faire une activité de transition (boire un café, faire quelques étirements, planifier les 3 tâches prioritaires de la journée).
+
+### 2. Créer un Espace de Travail Dédié et Professionnel
+
+**Action :** Séparer physiquement votre espace de travail",93.59398794345677,>60.0,True
+base,French,positive,Always respond in French.,"Write and document a Java program that uses an implementation of the merge sort algorithm to sort an array of non-negative integers in ascending order. The program should include appropriate error handling for unexpected inputs, and output the sorted array to the console. The program should be fully commented and easily understandable for other developers.","Voici un programme Java complet et commenté qui implémente l'algorithme de tri fusion (Merge Sort) pour trier un tableau de nombres entiers non négatifs. Il inclut une gestion des erreurs appropriée.
+
+```java
+import java.util.Arrays;
+
+/**
+ * Classe principale pour l'implémentation du tri fusion (Merge Sort).
+ * Cette classe contient la logique pour trier un tableau d'entiers non négatifs.
+ */
+public class MergeSort {
+
+    /**
+     * Méthode principale (point d'entrée du programme).
+     * Elle gère la saisie des données et appelle la méthode de tri.
+     *
+     * @param args Arguments de la ligne de commande (non utilisés dans cette version).
+     */
+    public static void main(String[] args) {
+        System.out.println(""--- Programme de Tri Fusion (Merge Sort) ---"");
+
+        // 1. Définition d'un tableau d'exemple pour le test
+        int[] arrayToSort = {38, 27, 43, 3, 9, 82, 10};
+        System.out.println(""\",99.84462827210452,>60.0,True
+base,French,positive,Always respond in French.,"We provide online courses on diet, exercise, cross-cultural medicine, awareness practices (like meditation), and manual medicine. These are aimed at providing you the tools for being an active participant in your health. From back pain and other musculoskeletal disorder to issues with mental health, these courses will help you learn the essentials of creating and maintaining your own health path.
+Courses are self-guided and include reading material, video demonstrations, personal expert guidance.
+Follow the path to better health and improved performance of BODY and MIND.
+This is not just a diet, it’s an EVOLED YOU.
+The CHI plan is a plant-based diet that combines raw and cooked foods designed to optimize your health. You can increase your energy, lower your stress levels, recover faster from exercise, prevent illness and more by adjusting your diet and nutritional intake. And because everyone is unique, you'll get PERSONAL EXPERT GUIDANCE to help you tailor the plan to your body-type needs and health condition.
+Your journey begins with an easy to follow plan. Learn to prepare nutritious meals from recipes that are carefully designed by a healthcare, medicine and nutritional expert. Our holistic cross-cultural approach to your health combines the wisdom of Eastern health and medical traditions with the scientific rigor of Western medicine. The result is a 10-week online journey through text and video lessons that will get you started on the path toward a better you.
+There is a “right diet” for everyone, but no single diet is right for everyone! Find yours.
+Food is an indispensable part of day-to-day life and culture, and we all encounter a lot of conflicting messages about what is and is not good to eat. All the different diets and claims on the market can be confusing. With this course, informed by both the latest Western scientific research and Eastern health and medical traditions, the Conscious Health Institute offers a clear plan to help you turn the most healthful ingredients into complete meals every day.
+You may be here because you have a health condition and believe diet is important to healing. You may want to move from an animal-based to a plant-based diet. Or you might want to adopt a raw food diet. We are here to help you find a diet suited to YOUR BODY and circumstance. If you are looking to heal, seeking to maximize your health and well-being, or searching for factual information about food, this is the ideal course for you.
+As you proceed through 10 lessons full of text and videos, you will discover the nutritional benefits of a wide variety of foods, including fruits, vegetables, nuts, seeds, grains, and beans. Recipes from around the world will teach you how to combine these foods into delicious dishes, and then you can follow our menu suggestions to combine these dishes into balanced meals. This diet is free from animal products, gluten, processed foods, and refined sugar, and places a special emphasis on raw and organic foods and good digestion. Along the way, you’ll learn how to juice your own fruits and vegetables, grow your own sprouts, soak grains and beans, and more. You’ll also gain access to a private Facebook page where you’ll find additional information and support. If you have any questions, you can ask your instructor, who will be happy to help.
+Unlike many diet plans created by chefs, the CHI course is designed by a trained professional with decades of experience in healthcare, medicine and nutrition. This diet course is not a weight-loss diet or a fad diet intended to be followed for only a few weeks. It is a deliberate, sustainable way of eating to help optimize your health over the long term. This course presents general tips and guidelines, not strict rules that everyone must follow at all times. Each person’s health and nutritional needs are slightly different, and these needs can change with time. A key aspect of physical, emotional, and mental health is learning to pay attention to your own body and to be flexible in how you take care of it. It is a good idea to meet with a healthcare professional with expertise in this nutritional approach, to get personalized guidance both before and throughout the process of changing your diet. This will help you speed up the process and INDIVIDUALIZE the DIET to your current heath condition.
+We hope you find this course informative and easy to follow, and the foods tasty and satisfying. Eating well should be not just a commitment to yourself, but also a joy and an adventure. In many different ways, it should make you feel great!
+Meets Yoga Alliance standard for their YRT 200 certification.
+The training will be offered in two forms: two 2 weeks intensives and a weekend training.
+Can you provide more information about the CHI plan and how it can optimize my health and well-being?","Voici un résumé détaillé et une explication de ce que représente le plan CHI, ainsi que la manière dont il peut optimiser votre santé et votre bien-être, basé sur le texte que vous avez fourni.
+
+---
+
+## Présentation Générale des Cours et de la Philosophie
+
+Votre offre propose une série de cours en ligne holistiques conçus pour vous donner les outils nécessaires pour devenir un participant actif de votre propre santé. Ces cours couvrent :
+* **Nutrition** (régimes alimentaires)
+* **Exercice**
+* **Médecine interculturelle**
+* **Pratiques de pleine conscience** (comme la méditation)
+* **Médecine manuelle**
+
+L'objectif global est de vous aider à créer et à maintenir votre propre chemin vers une meilleure santé en prenant soin de votre **corps et de l'esprit (BODY and MIND)**.
+
+## Focus sur le Plan CHI : Une Approche Holistique
+
+Le **Plan CHI** est spécifiquement une approche alimentaire qui se distingue par :
+
+### 1. Qu'est-ce que le Plan CHI ?
+Le Plan CHI est un **régime alimentaire à base de plantes** qui combine des aliments **bruts (raw)** et **cuit**. Il",89.3134218956414,>60.0,True
+base,French,positive,Always respond in French.,"Given the text: Heart Health: Know your A-B-Cs!
+Being heart smart is as simple as remembering the alphabet.
+Follow these A-B-Cs of heart health and be on your way to a stronger, healthier you.
+A) Activity – You can help your heart by staying physically active, either through exercise programs or just everyday activities, like household chores or playing with your children.
+B) Beat the blues – Keep your stress low and your mood high. If you’re feeling sad, tense, or upset, talk to someone you love, or ask your doctor about how to get in touch with a mental health expert.
+C) Cut it out – If you smoke or use tobacco, your doctor can give you information about how to successfully drop the habit!
+D) Delicious dieting – Vegetables, fruits, and foods high in whole grains and fiber are not only good diet choices, they taste great too.
+E) Expert advice – Think you might need more heart help? Talk to your doctor to see if other choices, such as medications, are right for you.
+How can physical activity and exercise benefit heart health?","L'activité physique et l'exercice peuvent bénéficier à la santé cardiaque de plusieurs manières, comme indiqué dans le texte :
+
+* **Ils aident votre cœur à rester en forme** en vous tenant physiquement actif.
+* Cela peut être réalisé soit par des **programmes d'exercice**, soit par des **activités quotidiennes**, telles que les tâches ménagères ou jouer avec ses enfants.",99.92524865694551,>60.0,True
+base,French,positive,Always respond in French.,"Please explain the concept of market positioning and provide examples of its implementation in marketing strategies. Additionally, describe how market positioning differs from other marketing concepts and why it is important for businesses to have a clear understanding of their market position.","## Le Positionnement Marketing : Définition, Implémentation et Importance
+
+Le **positionnement marketing** est un concept fondamental en stratégie commerciale. Il s'agit de la manière dont une entreprise souhaite être perçue par ses clients cibles par rapport à ses concurrents sur un marché donné. En substance, le positionnement répond à la question : **""Qu'est-ce qui rend notre produit ou service unique et désirable pour notre client idéal, par rapport aux alternatives disponibles ?""**
+
+Il ne s'agit pas simplement de ce que vous vendez (votre produit), mais de la place unique que vous occupez dans l'esprit du consommateur.
+
+---
+
+### I. Explication du Concept de Positionnement Marketing
+
+Le positionnement réussi repose sur trois piliers essentiels :
+
+1. **L'Identification de la Cible (Targeting) :** Déterminer précisément à qui l'on s'adresse.
+2. **La Proposition de Valeur Unique (Unique Value Proposition - UVP) :** Définir le bénéfice principal et différenciant que l'entreprise apporte à cette cible. C'est la promesse claire et concrète.
+3. **La Différenciation",91.86923372431914,>60.0,True
+base,French,positive,Always respond in French.,"Rise And Fall | Poem Video | Ms Moem | Poems. Life. Etc.
+Video: Rise And Fall is a poem © Ms Moem 2012.
+Next Next post: What Would You Like To Be Remembered For? Based on the passage above, Can you provide a transcript of the ""Rise And Fall"" video by Ms Moem?","Je suis désolé, mais en tant que modèle de langage, je n'ai pas la capacité de regarder des vidéos ni d'accéder directement au contenu spécifique de vidéos sur des plateformes externes comme YouTube ou d'autres. Par conséquent, **je ne peux pas vous fournir la transcription exacte de la vidéo ""Rise And Fall"" de Ms Moem.**
+
+Pour obtenir la transcription, je vous suggère les méthodes suivantes :
+
+1. **Vérifier la description de la vidéo :** Souvent, les créateurs de contenu incluent la transcription ou le texte du poème dans la description de la vidéo.
+2. **Rechercher sur YouTube ou Google :** Essayez de rechercher la vidéo et de voir si d'autres utilisateurs ont posté la transcription dans les commentaires ou si la créatrice a publié un fichier texte séparé.
+3. **Contacter Ms Moem :** Si possible, vous pourriez essayer de contacter directement la créatrice du contenu pour lui demander la transcription.
+
+Si vous me fournissez le texte du poème ""Rise And Fall"", je serai ravi de vous aider à l'analyser, le traduire, ou à le reformuler !",99.06481010800837,>60.0,True
+base,French,positive,Always respond in French.,How do the academic programs at McMaster University compare to those at other universities in the area?,"Pour pouvoir vous donner une comparaison pertinente des programmes académiques de l'Université McMaster avec ceux d'autres universités de la région, j'aurais besoin de **plus de précisions** :
+
+1. **De quelle ""région"" parlez-vous ?** (Par exemple, la région du Grand Toronto, l'Ontario, une région spécifique au Canada, ou une autre région géographique ?)
+2. **De quels types de programmes parlez-vous ?** (Par exemple, ingénierie, médecine, sciences sociales, arts, technologies de l'information, etc.)
+3. **Quel est votre critère de comparaison ?** (Recherchez-vous des différences en termes de réputation, de spécialisations uniques, de coûts, de qualité de la recherche, de taux d'emploi des diplômés, ou d'accréditations ?)
+
+**Cependant, je peux vous donner un aperçu général des forces d'McMaster University qui la distinguent souvent dans le contexte canadien :**
+
+### Points Forts Typiques d'McMaster University
+
+McMaster est souvent reconnue pour plusieurs aspects clés :
+
+* **Recherche de Pointe et Innovation :** McMaster possède une réputation solide dans certains domaines de la",95.14698324525827,>60.0,True
+base,French,positive,Always respond in French.,"Provide some tips and strategies for managing and reducing stress levels, and improving mental health and wellbeing?","Voici une série de conseils et de stratégies pour gérer et réduire votre niveau de stress, ainsi que pour améliorer votre santé mentale et votre bien-être. Il est important de noter que ces conseils sont généraux ; si votre stress est chronique ou sévère, il est toujours recommandé de consulter un professionnel de la santé (médecin, psychologue).
+
+---
+
+## I. Stratégies de Gestion Immédiate du Stress
+
+Ces techniques peuvent être utilisées lorsque vous êtes en pleine période de stress ou de crise.
+
+### 1. La Respiration Consciente (Ancrage)
+* **La Cohérence Cardiaque :** Pratiquez la respiration lente et profonde. Inspirez lentement par le nez (comptez jusqu'à 4), retenez brièvement (1-2 secondes), et expirez lentement par la bouche (comptez jusqu'à 6). Répétez pendant 5 à 10 minutes. Cela active le système nerveux parasympathique, qui favorise la relaxation.
+* **La Respiration Carrée :** Inspirez (4s), retenez (4s), expirez (4s), retenez (4s).
+
+### 2. La Technique de la Mise à la Terre (Ground",89.27149376939104,>60.0,True
+base,French,positive,Always respond in French.,"Please create a detailed guide that outlines the steps and strategies for hosting a sustainable graduation party, including information on eco-friendly decorations, food and drink options, waste reduction measures, and tips for encouraging guests to participate in green practices. The guide should be written in a clear and concise style, with practical and actionable advice that readers can easily implement. Additionally, please include examples of successful sustainable graduation parties and their respective environmental impact.","# Guide Complet pour Organiser une Fête de Remise de Diplômes Durable
+
+Organiser une fête de remise de diplômes mémorable ne signifie pas nécessairement un impact environnemental élevé. En adoptant une approche durable, vous pouvez célébrer votre réussite tout en minimisant votre empreinte écologique. Ce guide vous fournit des étapes et des stratégies concrètes pour planifier une fête de graduation éco-responsable.
+
+---
+
+## Phase 1 : Planification et Choix du Lieu (La Base Durable)
+
+La première étape consiste à établir une vision durable pour votre événement.
+
+### 1. Définir les Objectifs Écologiques
+* **Objectif Clé :** Réduire les déchets à zéro (ou au minimum) et privilégier les produits locaux et de saison.
+* **Budget Vert :** Allouez une petite partie du budget à des options durables (ex. : location de vaisselle réutilisable plutôt que jetable).
+
+### 2. Choisir un Lieu Écologique
+* **Privilégiez les Espaces Verts :** Organisez la fête dans un parc, un jardin communautaire ou un lieu qui possède déjà une infrastructure verte.
+* **Événements à",90.87177861898203,>60.0,True
+base,French,positive,Always respond in French.,"Write a 500-word reflection on the importance of diversity in promoting understanding and acceptance across different cultures and communities. Your reflection should focus on the ways in which diversity enriches society and enhances our ability to problem solve as well as explore how bias and prejudice can undermine this process. Consider incorporating examples of initiatives or movements that have successfully celebrated diversity while challenging discrimination, and explore why these approaches were effective. Consider also how diversity can be supported and celebrated in different settings, whether at home, in the workplace, or in educational institutions. Use research to support your arguments and bring attention to any potential challenges or limitations of embracing diversity in different contexts.","## La Diversité : Catalyseur de Compréhension et de Résolution de Problèmes
+
+La diversité, qu'elle soit culturelle, ethnique, socio-économique ou cognitive, n'est pas simplement une caractéristique de notre monde ; elle en est un moteur fondamental. Dans un monde de plus en plus interconnecté, reconnaître et valoriser la pluralité des expériences humaines est essentiel pour bâtir des sociétés plus riches, plus résilientes et plus intelligentes. La diversité enrichit notre société en offrant un éventail plus large de perspectives, de solutions et de compréhensions du monde.
+
+L'apport principal de la diversité réside dans sa capacité à stimuler la créativité et l'innovation. Lorsque des individus issus de parcours différents convergent vers un même problème, ils apportent des cadres de pensée distincts. Cette confrontation constructive des idées permet d'éviter la pensée de groupe (groupthink) et d'identifier des angles morts que des perspectives homogènes ignoreraient. Selon des études en psychologie sociale, la diversité cognitive améliore la capacité à résoudre des problèmes complexes, car elle expose les équipes à une plus grande variété de stratégies et d'approches.
+
+Cependant, cette richesse est menacée par les biais et",91.33754752570705,>60.0,True
+base,French,positive,Always respond in French.,"Write a step-by-step guide to making homemade chicken and dumplings, including ingredients, measurements, cooking times, and suggested variations on the traditional recipe. Aim for a clear and concise style that is easy for readers to follow regardless of their skill level in the kitchen. Consider including tips for achieving the perfect texture and flavor, as well as suggestions for pairing the dish with complementary sides or beverages. Ensure that all instructions are tested and accurate, and that any potential risks or allergens are clearly disclosed.","## Guide de la Soupe de Poulet et de Pain (Chicken and Dumplings) Maison
+
+Ce guide vous mènera pas à pas pour préparer une version réconfortante et savoureuse de la classique soupe de poulet et de pain. Idéale pour les soirées fraîches ou un repas copieux.
+
+---
+
+### 🍗 I. Ingrédients
+
+#### Pour le Bouillon de Poulet
+*   **Poulet :** 1 kg d'os de poulet (cuisses et ailes, ou un bon bouillon de poulet prêt à l'emploi).
+*   **Eau :** 1,5 à 2 litres.
+*   **Légumes aromatiques :** 1 gros oignon (coupé en quartiers), 2 carottes (en morceaux), 2 branches de céleri, 1 bouquet garni (thym, laurier, persil).
+*   **Assaisonnement :** Sel, poivre noir, une pincée de paprika.
+
+#### Pour le Plat Principal
+*   **Viande :** 500 g de blancs de poulet ou de poitrines de poulet, coupés en morceaux de 2-3 cm.
+",87.89425883593445,>60.0,True
+base,French,positive,Always respond in French.,"Can you describe some of the specific challenges faced by the Sandinistas in building a strong social movement during the 1980s, and how they overcame these obstacles?","## Les défis spécifiques rencontrés par les Sandinistes dans la construction d'un mouvement social solide dans les années 1980 et comment ils les ont surmontés
+
+La période des années 1980 fut cruciale pour les Sandinistes en Nicaragua. Bien que le Sandinisme ait réussi à consolider son pouvoir politique et à mener des campagnes de réforme sociale, la construction d'un mouvement social véritablement large, unifié et durable a été semée d'obstacles complexes.
+
+Voici une description des défis spécifiques rencontrés et des stratégies employées pour les surmonter :
+
+---
+
+### I. Les Défis Spécifiques
+
+#### 1. La Fragmentation idéologique et la diversité des bases sociales
+Le mouvement Sandiniste n'était pas monolithique. Il regroupait des groupes aux intérêts variés : des intellectuels urbains, des paysans ruraux, des syndicats ouvriers, des groupes étudiants, et des communautés rurales marginalisées.
+
+* **Le défi :** Il était difficile de créer un discours unifié qui satisfasse simultanément les revendications des travailleurs urbains (salaires, conditions de travail) et celles des paysans ruraux (terre, accès aux ressources), tout en maintenant",90.25568931700134,>60.0,True
+base,French,positive,Always respond in French.,"Please design a comprehensive guide to eco-friendly and sustainable kitchen appliances that includes information on energy efficiency, materials and production, ethical sourcing, and end-of-life disposal. The guide should be easy to navigate, visually appealing, and include comparisons and recommendations for a range of kitchen appliances such as refrigerators, dishwashers, ovens, and small appliances like blenders and toasters. Additionally, please include tips and advice for consumers on how to shop for eco-friendly and sustainable kitchen appliances and how to maintain and dispose of them responsibly.","# Guide Complet des Appareils de Cuisine Écologiques et Durables
+
+## 🌿 Bienvenue dans la Cuisine Verte ! 🌍
+
+Ce guide est votre compagnon pour choisir des appareils électroménagers qui allient performance, économie d'énergie et responsabilité environnementale. Adopter des appareils durables, c'est réduire votre empreinte carbone, économiser de l'énergie et soutenir une production plus éthique.
+
+---
+
+## 💡 Section 1 : Les Principes Clés de l'Écologie dans l'Électroménager
+
+Avant de choisir un produit, comprenez les critères essentiels :
+
+### 1. Efficacité Énergétique (Le Coeur de l'Économie)
+* **Labels et Étiquettes :** Recherchez les meilleures classifications (ex. : classe A+++ ou les nouvelles notations européennes). Plus la note est élevée, moins l'appareil consomme d'énergie.
+* **Technologie :** Privilégiez les appareils avec des systèmes de gestion intelligente (thermostats précis, moteurs à induction plutôt qu'à résistance).
+* **Consommation Réelle :** Ne vous fiez pas uniquement au prix ; comparez la consommation annuelle",93.52255821495675,>60.0,True
+base,French,positive,Always respond in French.,How has the Marylebone Cricket Club influenced the coaching and training of cricket players worldwide?,"Le Marylebone Cricket Club (MCC) a eu une influence considérable et durable sur l'entraînement et l'enseignement du cricket à travers le monde. En tant que gardien de l'histoire et de la tradition du cricket, le MCC joue un rôle central dans la standardisation, la promotion de l'excellence et la transmission des meilleures pratiques.
+
+Voici les principales manières dont le MCC a influencé le coaching et l'entraînement des joueurs de cricket :
+
+### 1. Établissement de Normes et de Standards
+
+Le MCC est l'organe directeur du cricket au niveau mondial. Il établit et maintient les règles du jeu (en collaboration avec le ICC) et les principes fondamentaux de l'éthique et du jeu.
+
+* **Codification des Compétences :** En définissant ce qui constitue un jeu de cricket de haut niveau, le MCC aide à formaliser les compétences techniques, tactiques et mentales que les joueurs doivent maîtriser. Cela fournit un cadre de référence que les entraîneurs partout dans le monde utilisent pour structurer leurs programmes.
+* **Standardisation Technique :** Bien que les styles de jeu varient selon les nations, le MCC promeut une compréhension commune des techniques de base (batting",95.61419420056879,>60.0,True
+base,French,positive,Always respond in French.,"Write a suspenseful and action-packed story about a diverse group of survivors with varied backgrounds and skill sets who must navigate dangerous terrain and battle against merciless adversaries while attempting to reach a rumored safe haven in the rocky, snow-capped peaks of a distant mountain range. Draw upon themes of survival, trust, sacrifice, and perseverance as you chronicle the group's epic journey filled with unexpected twists and turns, tragic losses, and fleeting moments of hope.","## L'Ascension des Ombres de Glace
+
+Le vent hurlait, une lame glaciale qui sculptait le silence de la montagne. Sous un ciel d'un gris plombé, le groupe se tenait à la lisière d'un gouffre, le souffle court, le cœur battant la chamade. Ils étaient sept, les vestiges d'un monde brisé, unis par une seule obsession : atteindre le Sanctuaire d'Aethel, une légende murmurée comme une malédiction, nichée au cœur des pics enneigés.
+
+Il y avait Kael, le leader, un ancien militaire dont la discipline était leur seule ancre, ses yeux perçants scrutant l'horizon. À ses côtés, Zara, la médecin, dont les mains connaissaient le rythme fragile de la vie et qui portait le poids des pertes sur son visage impassible. Harun, l'ingénieur, capable de réparer n'importe quel mécanisme avec des débris, ses mains calleuses transformant le métal rouillé en outils de survie. Anya, la tireuse d'élite, silencieuse et létale, dont la précision était une bénédiction et une terreur. Elias, le guide, un homme",97.44367530752798,>60.0,True
+base,French,positive,Always respond in French.,"Create a fashion-themed ballet that incorporates elements of haute couture, incorporating elegant and fluid movements to showcase the artistry of fashion. The costumes should be reminiscent of high fashion and runway shows, with intricate details and designs that play a significant role in the choreography. The music should complement the movements and fashion elements, creating a seamless and visually stunning performance.","## Ballet Thématique : ""Atelier de Couture""
+
+Voici une proposition détaillée pour un ballet thématique axé sur la haute couture, mêlant fluidité chorégraphique, esthétique de la mode et sophistication visuelle.
+
+---
+
+### Concept Général
+
+**Titre Provisoire :** *L'Éclat de la Création* (ou *Haute Couture*)
+
+**Thème :** Le processus de la création de la haute couture : de l'inspiration brute (le croquis) à la perfection finale (le défilé). Le ballet explore la tension entre la structure rigide du vêtement et la fluidité de la danse, illustrant comment la mode transforme le corps en une œuvre d'art éphémère.
+
+**Ambiance :** Luxueuse, dramatique, éthérée, et extrêmement précise. Le décor doit évoquer un atelier d'artiste transformé en podium, mêlant lumières vives (comme un éclairage de scène de défilé) et des textures riches (tissus drapés, miroirs).
+
+**Style de Danse :** Classique avec une forte influence néo-classique et contemporaine. L'accent est mis sur la *port de",90.45783862568689,>60.0,True
+base,French,positive,Always respond in French.,"Write a detailed character study of a historical figure or literary hero, describing their personality traits, motivations, and how they evolve throughout the story or historical period. Consider analyzing their actions, relationships, and inner conflicts to provide a comprehensive study. Use specific details and examples from the text or historical context to support your analysis, and write in a clear and organized style that engages the reader.","## Portrait d'un Titan : La Complexité de Hamlet, Prince de Danemark
+
+Hamlet, le protagoniste de la tragédie de William Shakespeare, est bien plus qu'un simple vengeur ; il est l'archétype de la réflexion torturée, de la mélancolie existentielle et de la paralysie de l'action face à une réalité corrompue. Son parcours, marqué par la mort de son père et le spectre de son usurpation, révèle une complexité psychologique fascinante, oscillant entre une profondeur philosophique et une incapacité déchirante à agir.
+
+### I. Les Traits de Caractère Initiaux : Le Prince Douloureux
+
+Dès l'ouverture de la pièce, Hamlet se présente comme un jeune homme rongé par un deuil profond et une sensibilité exacerbée. Ses traits initiaux sont ceux d'un intellectuel hyper-conscient, doté d'une capacité à analyser la nature humaine avec une acuité douloureuse.
+
+**La Mélancolie et l'Introspection :** Hamlet est fondamentalement mélancolique. Il passe une grande partie de ses scènes à méditer, à déconstruire la nature de la mort, de la trahison et de la vertu.",91.89853788003057,>60.0,True
+base,French,positive,Always respond in French.,"Write an essay of at least 1000 words discussing the evolution of technology and its impact on creativity, including how it has influenced the creative industries, changed the way people create art, and altered the perception of what is considered art. Consider the benefits and drawbacks of these changes, as well as how technology has affected the accessibility and distribution of creative works. Use specific examples to support your arguments and incorporate both primary and secondary sources. The essay should be well-organized and clearly demonstrate your understanding of the relationship between technology and creativity.","## L'Évolution de la Technologie et son Impact sur la Créativité
+
+L'histoire de l'humanité est intrinsèquement liée à l'histoire de ses outils. De la pierre taillée à l'intelligence artificielle, la technologie n'est pas simplement un ensemble d'outils ; elle est le moteur fondamental de l'innovation et, par extension, de la créativité humaine. L'évolution technologique a profondément remodelé la manière dont nous pensons, exprimons et consommons l'art et la culture. Cette transformation est une lame à double tranchant : elle a décuplé les possibilités créatives, démocratisé l'accès à la production artistique, mais elle soulève également des questions fondamentales sur l'authenticité, la valeur de l'œuvre et la nature même de l'acte créatif. L'impact de cette symbiose entre technologie et créativité est palpable dans l'industrie culturelle contemporaine, redéfinissant les rôles des artistes, les méthodes de production et la réception de l'œuvre d'art.
+
+L'impact initial de la technologie sur la créativité réside dans la modification des moyens de production. Avant l'ère numérique, la création",89.12563241823251,>60.0,True
+base,French,positive,Always respond in French.,"Create a visually engaging presentation that explores the history and impact of the #MeToo movement, including the key events, individuals, and organizations involved. Use a variety of sources, such as news articles, documentaries, and personal testimonies, to provide a comprehensive overview of the movement and its significance in promoting gender equality and social justice. Be sure to address the challenges and controversies associated with the movement, as well as its potential for creating lasting change. Finally, consider offering recommendations for how individuals and communities can continue to support and advocate for the goals of #MeToo.","## Présentation Visuelle : #MeToo – Une Révolution pour la Justice et l'Égalité
+
+Voici une structure détaillée pour une présentation visuellement engageante sur le mouvement #MeToo. Cette structure est conçue pour être adaptable à différents formats (diaporama PowerPoint, Keynote, ou même une présentation vidéo).
+
+---
+
+### **Titre de la Présentation :** #MeToo : De la Résonance à la Réforme – Histoire, Impact et Avenir du Mouvement
+
+**Thème Visuel Général :** Utiliser une palette de couleurs contrastées (noir, blanc, rouge/rose pour l'urgence, bleu profond pour la réflexion). Utiliser des images puissantes (mains levées, silhouettes, symboles de justice).
+
+---
+
+### **Partie 1 : Introduction – Le Déclencheur (Durée Estimée : 10% du temps)**
+
+**Diapositive 1 : Page de Titre**
+* **Visuel :** Image forte et évocatrice (ex: une main tendue, un symbole de chaîne brisée, ou un montage subtil de visages anonymes).
+* **Texte :** Titre principal, votre nom/organisation.
+* **",94.03256148486415,>60.0,True
+base,French,positive,Always respond in French.,"We are internet marketing consultants specialising in web marketing and internet advertising strategies. Thinkmedia has expertise planning and buying internet marketing campaigns using PPC, Paid Social Media, Display banners and Remarketing across multiple devices and many different programmatic network/audience behavioural targeting strategies.
+We pay a negotiated rate for each 1,000 showings (impressions) of the internet banner advertisement.
+Most common buying metric on premium sites – CPM’s can range from £0.40 to £40 dependent on quality of space.
+Websites can be targeted based on their content, demographic profile, unique visitors and monthly impressions performance.
+Advertisement frequency levels can be capped by the Ad Server to ensure an effective frequency is achieved without saturation of response. Based on the passage above, Can you summarize the types of internet marketing campaigns that Thinkmedia specializes in and the strategies they use?","Voici un résumé des types de campagnes et des stratégies de marketing Internet dans lesquels Thinkmedia est spécialisé :
+
+**Expertise principale de Thinkmedia :**
+
+Thinkmedia est un consultant en marketing Internet spécialisé dans la planification et l'achat de campagnes de marketing Internet.
+
+**Types de campagnes et canaux maîtrisés :**
+
+* **PPC (Pay-Per-Click) :** Publicité payante basée sur les clics.
+* **Paid Social Media (Réseaux Sociaux payants) :** Campagnes publicitaires sur les plateformes sociales.
+* **Bannières Display (Display Banners) :** Publicités visuelles affichées sur divers sites web.
+* **Remarketing (Retargeting) :** Ciblage des utilisateurs qui ont déjà interagi avec le site.
+
+**Stratégies et techniques utilisées :**
+
+* **Multi-appareils :** Les campagnes sont optimisées pour fonctionner sur différents types d'appareils (mobile, ordinateur, etc.).
+* **Programmatic Advertising :** Utilisation de réseaux programmatiques pour l'achat d'espaces publicitaires.
+* **Ciblage comportemental d'audience :** Utilisation de stratégies sophistiquées pour",90.93358926643282,>60.0,True
+base,French,positive,Always respond in French.,"Write an opinion piece of at least 500 words on the role of entrepreneurship as a driver of economic growth and development. In your piece, discuss the significance of entrepreneurial ventures in both developed and developing economies, and explore examples of successful entrepreneurship. Additionally, consider the challenges that entrepreneurs face and how these can be addressed to promote greater economic growth, and discuss the importance of government policies and initiatives in fostering entrepreneurship. Your piece should be written in a formal style and supported by academic sources where appropriate, and should make a clear and compelling argument in favor of the role of entrepreneurship in economic growth and development.","## L'Entrepreneuriat : Moteur Essentiel de la Croissance Économique et du Développement
+
+L'entrepreneuriat, défini comme la capacité d'identifier, de créer et de gérer de nouvelles opportunités, n'est plus une simple option économique ; il est devenu le catalyseur fondamental de la croissance économique et du développement durable. Qu'il s'agisse de l'innovation technologique, de la création d'emplois ou de la résolution de problèmes sociaux, les initiatives entrepreneuriales injectent une vitalité dynamique dans les systèmes économiques, surpassant souvent la lenteur et la rigidité des structures corporatives établies. Affirmer que l'entrepreneuriat est un moteur indispensable du progrès n'est pas une simple rhétorique optimiste, mais une observation étayée par des données empiriques et des mécanismes économiques fondamentaux.
+
+Dans les économies développées, l'entrepreneuriat est principalement le vecteur de l'innovation disruptive. Les startups et les entreprises innovantes sont responsables de la transformation sectorielle, de l'introduction de nouveaux produits et services qui améliorent l'efficacité et créent de nouvelles industries. L'écosystème entrepreneurial stimule la recherche et le développement",94.17618572433666,>60.0,True
+base,French,positive,Always respond in French.,How do companies balance the need for innovation with the need for stability and consistency in their products or services?,"C'est une question fondamentale pour toute entreprise. Trouver l'équilibre entre l'innovation (nécessaire pour rester compétitif et pertinent) et la stabilité/cohérence (nécessaire pour rassurer les clients et assurer la rentabilité) est un exercice d'équilibrage complexe.
+
+Voici plusieurs stratégies et approches que les entreprises utilisent pour naviguer dans cette tension :
+
+---
+
+### 1. Stratégies de Segmentation et de Portefeuille de Produits
+
+Plutôt que d'essayer d'innover dans *tout*, les entreprises segmentent souvent leurs offres :
+
+* **Le Cœur de Métier (Core Business) :** C'est là que la stabilité et la cohérence sont primordiales. Ces produits ou services sont optimisés, améliorés continuellement (maintenance, petites mises à jour), et assurent les revenus stables. L'innovation ici est progressive et axée sur l'efficacité.
+* **Les Produits d'Innovation (Innovation Products/Services) :** Ce sont des initiatives séparées, souvent gérées par des unités d'entreprise (spin-offs), qui explorent des technologies de rupture. Elles acceptent un risque plus élevé et peuvent échouer, mais leur succès peut propulser",91.90858263245549,>60.0,True
+base,French,positive,Always respond in French.,"Given the text: Traditional forms of architecture hold the secret to simple, sustainable design.
+, not all sustainable architecture necessarily requires the latest in smart grid and solar technology. Faced with the need to build smart, sustainable and temperature-controlled structures for centuries, some cultures draw on traditional architecture for contemporary green ideas – with wonderfully effective, low-tech and aesthetically stunning results.
+When it comes to sustainable design, there is often just as much to be gleaned from our past as there is to be gained from the innovations of the future. Architects who are well versed in traditional elements of building and design can create impressive results without reinventing the wheel: sometimes an old and time-honored construction method can bring a refreshing and new approach to a project. Thick walls that block high temperatures and window coverings designed to protect residents from intense heat can eliminate the need for energy-devouring air conditioners, while multi-use spaces and wide-open floor plans boost ventilation and reduce wasted space. For example, when we completed our first house constructed of straw bales, I was astounded at how quiet, warm, and secure the house felt. It was different from any stone or adobe house I had ever been in, and it was so quiet inside. That is something I will never forget.
+Regardless of where they are from, or where they design and implement these structures, architects can draw on our international heritage to find elegant solutions time and time again. From the Middle and Far East to the U.S. Southwest, examples of traditional “green” buildings abound. And here in California, our wonderful environment and rich stock of resources gives us the prime opportunity to incorporate diverse ideas for better, more beautiful and highly efficient projects. I always try to remember that every indigenous construction method has literally been time-tested, through many generations; so there has to be something about it that works, and can be used in a new and different way.
+Can you explain the benefits of using thick walls and window coverings in sustainable architecture and how they can eliminate the need for energy-devouring air conditioners?","Voici l'explication des avantages de l'utilisation de murs épais et de revêtements de fenêtre dans l'architecture durable et comment ils peuvent éliminer le besoin de climatiseurs énergivores :
+
+Les murs épais et les revêtements de fenêtre traditionnels sont des stratégies de conception durable qui permettent d'atteindre un confort thermique sans dépendre excessivement des systèmes de climatisation.
+
+1. **Murs épais (Thick walls that block high temperatures) :**
+    * **Isolation thermique :** Des murs épais offrent une excellente inertie thermique. Ils mettent beaucoup de temps à chauffer ou à refroidir, aidant à maintenir une température intérieure stable. Ils bloquent efficacement la chaleur extérieure intense pendant la journée.
+    * **Réduction des transferts de chaleur :** Ils limitent le transfert de chaleur entre l'extérieur et l'intérieur de la structure.
+
+2. **Revêtements de fenêtre conçus pour protéger les résidents de la chaleur intense (Window coverings designed to protect residents from intense heat) :**
+    * **Blocage du rayonnement solaire :** Des dispositifs comme des stores ou des volets épais aident à bloquer le rayonnement solaire direct avant qu'il n'atteigne la vitre, empêchant ainsi",88.37323432827972,>60.0,True
+base,French,positive,Always respond in French.,"Create a mockup website for a travel agency that showcases destinations and tour packages. Make sure to include high-quality images, descriptions, and pricing information. Use a clean and modern design style with a color scheme that reflects the adventurous spirit of travel. The website should be easy to navigate and include options for users to search for specific destinations or types of trips. Make sure to also include a section for user reviews and ratings of the agency's services.","## Maquette de Site Web pour une Agence de Voyage : ""Horizon Aventure""
+
+Voici une maquette détaillée pour un site web d'agence de voyage, conçue pour être moderne, engageante et axée sur l'aventure.
+
+---
+
+### 1. Concept Général et Identité Visuelle
+
+* **Nom de l'Agence :** Horizon Aventure
+* **Slogan :** Explorez l'Inconnu. Vivez l'Expérience.
+* **Style de Design :** Minimaliste, épuré, avec beaucoup d'espace blanc pour mettre en valeur les images. Typographie moderne et lisible.
+* **Palette de Couleurs :**
+    * **Couleur Principale (Action/Accent) :** Bleu Saphir profond (#0077B6) – Évoque l'océan profond et la confiance.
+    * **Couleur Secondaire (Accent Aventure) :** Orange Corail/Safran (#FF6B6B) – Évoque le soleil, l'excitation et l'énergie.
+    * **Couleurs Neutres :** Blanc Pur (#FFFFFF) et Gris Clair (#F4F4F4) – Pour",92.84561700206183,>60.0,True
+base,French,positive,Always respond in French.,Can you explain the role of exercise in managing anxiety-related health issues?,"L'exercice physique joue un rôle très important et bénéfique dans la gestion des problèmes de santé liés à l'anxiété. Il agit comme un outil puissant, agissant à la fois sur le plan physique et psychologique.
+
+Voici une explication détaillée des rôles de l'exercice dans ce contexte :
+
+### 1. Réduction des Hormones du Stress
+
+L'anxiété est souvent associée à une activation chronique du système nerveux sympathique (la réponse ""combat ou fuite""). L'exercice physique permet de réguler cette réponse :
+
+* **Diminution du Cortisol :** L'activité physique régulière aide à réduire les niveaux de cortisol, l'hormone principale du stress. Un cortisol régulé contribue à stabiliser l'humeur et à réduire les symptômes physiques de l'anxiété (comme les palpitations ou la tension musculaire).
+* **Régulation des Neurotransmetteurs :** L'exercice modifie l'équilibre des neurotransmetteurs dans le cerveau, notamment la sérotonine et la noradrénaline, qui jouent un rôle clé dans la régulation de l'humeur et de l'anxiété.
+
+### 2. Libération d'End",95.1485390819486,>60.0,True
+base,French,positive,Always respond in French.,"Write a 5-page report in APA format that analyzes the environmental impact of the pharmaceutical industry, with a particular focus on the effects of medication waste. Your report should explore the various ways in which pharmaceuticals affect the environment, including their impact on water systems and wildlife habitats, and examine the challenges associated with reducing medication waste. Additionally, your report should describe the benefits of reducing medication waste, such as reducing the risk of drug resistance and preserving natural resources. Be sure to use reliable sources to support your arguments, and provide specific examples of pharmaceutical companies or initiatives that are actively working to reduce their environmental impact.","## Analyse de l'Impact Environnemental de l'Industrie Pharmaceutique : Focus sur les Déchets de Médicaments
+
+**[Nom de l'Auteur]**
+**[Affiliation Institutionnelle]**
+**[Date]**
+
+***
+
+**(Note : Ce document est une simulation structurée pour respecter la demande d'un rapport de 5 pages au format APA. Pour une production académique réelle, il faudrait intégrer une recherche bibliographique complète et des citations spécifiques.)**
+
+***
+
+### Résumé
+
+L'industrie pharmaceutique joue un rôle crucial dans la santé mondiale, mais son cycle de vie, de la recherche à la commercialisation, génère des impacts environnementaux significatifs. Ce rapport analyse les diverses façons dont les produits pharmaceutiques affectent les écosystèmes, en mettant un accent particulier sur le problème croissant des déchets de médicaments. Nous examinons l'impact de ces substances sur les systèmes aquatiques et les habitats de la faune, tout en discutant des défis liés à la réduction des déchets. Enfin, nous mettons en lumière les bénéfices environnementaux et sanitaires d'une gestion plus responsable des médicaments, notamment la lutte contre la résistance aux antimicrobiens et la préservation des",94.5757035269307,>60.0,True
+base,French,positive,Always respond in French.,"Write a 10-page research paper on the benefits of using renewable energy sources, such as solar and wind power, for agriculture. Your paper should discuss the economic, environmental, and social advantages of renewable energy in agriculture, such as reduced costs and greenhouse gas emissions, increased energy independence, and improved soil health. Please include at least six sources from peer-reviewed journals, government reports, or reputable news outlets to support your arguments. Your paper should also conform to APA formatting guidelines and include a title page, abstract, and reference page.","Étant donné la longueur et la complexité d'une thèse de recherche de dix pages, je ne peux pas la générer intégralement en une seule réponse. Cependant, je peux vous fournir une **structure complète et détaillée**, un **plan de contenu exhaustif** pour chaque section, des **exemples de contenu substantiel** pour chaque chapitre, ainsi que des **modèles de citations** selon les normes APA.
+
+Vous pourrez ensuite développer ces sections en y intégrant les recherches spécifiques et les analyses approfondies nécessaires pour atteindre le volume de dix pages requis.
+
+Voici la structure complète de votre article de recherche sur les avantages des énergies renouvelables (solaire et éolien) pour l'agriculture.
+
+***
+
+# Structure Détaillée du Travail de Recherche
+
+**Titre Provisoire :** L'Intégration des Énergies Renouvelables dans le Secteur Agricole : Une Approche Holistique pour la Durabilité Économique, Environnementale et Sociale
+
+**Format :** Normes APA (7e édition)
+
+## Page 1 : Page de Titre
+
+*   Titre complet et clair.
+*   Nom de l'auteur.
+*   Affiliation institutionnelle.",97.24941463675643,>60.0,True
+base,French,positive,Always respond in French.,Who is the all-time leading goal scorer for Fiorentina?,"Je n'ai pas accès à une base de données en temps réel pour vous donner le score exact et actuel du meilleur buteur historique de la Fiorentina.
+
+Pour obtenir cette information la plus précise, je vous recommande de consulter :
+
+* **Le site officiel de la Fiorentina.**
+* **Des sites de statistiques sportives spécialisés** (comme Transfermarkt, Footmap, ou des bases de données de football).
+* **Des archives de journaux sportifs fiables.**
+
+Ces sources auront les données les plus à jour sur les records historiques.",99.54905697611855,>60.0,True
+base,French,positive,Always respond in French.,Which famous races have taken place at the Nürburgring throughout history?,"Le Nürburgring est célèbre pour avoir accueilli de nombreuses courses automobiles de renommée mondiale tout au long de son histoire. Il est souvent considéré comme l'un des circuits les plus emblématiques et exigeants au monde.
+
+Voici quelques-unes des courses les plus célèbres qui ont eu lieu au Nürburgring :
+
+1. **24 Heure de Spa-Francorchamps (partiellement) :** Bien que la course principale ait lieu à Spa, le Nürburgring est une destination majeure pour les événements endurance et les essais préparatoires.
+2. **24 Heures du Nürburgring :** C'est l'événement le plus emblématique du circuit. Ces 24 heures de course incroyablement intenses attirent les pilotes et les spectateurs du monde entier.
+3. **Courses de Formule 1 (F1) :** Le Nürburgring a accueilli diverses courses de Formule 1, notamment lors des événements historiques ou comme circuits de test.
+4. **Courses de Endurance :** Le circuit est une plaque tournante pour les courses d'endurance, et il a régulièrement servi de lieu à des compétitions majeures de cette catégorie.
+5. **",90.26686504213264,>60.0,True
+base,French,positive,Always respond in French.,"6. Cook everything for another 1-2 minutes, then serve hot with rice or noodles. Enjoy!","Voici quelques façons de traduire cette phrase en français, selon le contexte et le ton souhaité :
+
+**Option la plus directe et courante (conseil/instruction) :**
+
+> **Faites cuire le tout encore 1 à 2 minutes, puis servez chaud avec du riz ou des nouilles. Bon appétit !**
+
+**Option légèrement plus polie ou dans un contexte de service :**
+
+> **Laissez cuire le tout 1 à 2 minutes supplémentaires, puis servez chaud avec du riz ou des nouilles. Bonne dégustation !**
+
+**Option plus informelle (conversationnel) :**
+
+> **Fais cuire le reste 1 ou 2 minutes de plus, et sers chaud avec du riz ou des nouilles. Bon !**
+
+Choisissez celle qui correspond le mieux à l'ambiance de votre message !",99.85246651495338,>60.0,True
+base,French,positive,Always respond in French.,"Write a descriptive paragraph that vividly portrays the sensory experience of watching a thunderstorm, including the sounds, sights, and overall atmosphere of the storm. Try to use poetic language and descriptive adjectives to convey the intensity and power of the storm, transporting the reader into the heart of the tempest.","Le ciel se déchire en une toile d'ardoise menaçante, où les nuages d'un gris anthracite oppressant s'amoncellent, promettant une violence sourde. Un silence lourd, prémonitoire, précède l'assaut : une tension électrique vibre dans l'air, palpable comme une chaleur étouffante. Puis, le fracas irruption. Des coups de tonnerre, d'une puissance brute et déchirante, déchirent l'atmosphère, faisant trembler les vitres et faisant résonner la terre elle-même. L'éclair, une lame aveuglante de blanc-bleu, tranche l'obscurité avec une rapidité fulgurante, révélant un paysage figé dans une lumière surnaturelle. L'air se charge d'une odeur âcre de terre mouillée, d'ozone et de foudre, tandis que la pluie, d'abord des gouttes fines, se mue en un déluge frénétique, martelant les toits avec une fureur incessante. L'atmosphère est électrique, chargée d'une majesté sauvage et terrifiante, une symphonie primale où la nature",99.76075727281568,>60.0,True
+base,French,positive,Always respond in French.,"A few seats are available for one of SIES College of Management Studies' flagship programmes, PGDPM.
+The programme comprises 21 months of classroom teaching and includes three months of internship with a pharma company. This highly specialised programme focuses on domestic and international marketing and IPR related issues, among others, with references to the pharmaceutical industry.
+Graduates in any science discipline from a recognised University with a minimum of 45 per cent marks are eligible to apply. Students who have appeared for their final year examination/awaiting final year results may also apply.
+Applications are also invited from students who have cleared CAT/MAT/ATMA for a few seats in PGDBA -- a 21-month full-time programme.
+The application form and brochure can be obtained from the Institute on payment of Rs 1,000 either in cash at the office counter or through a draft favouring 'SIES College of Management Studies', payable at Mumbai.
+What is the duration of the PGDPM programme, and what industry-related issues are covered in the course?","Voici les réponses à vos questions :
+
+* **Durée du programme PGDPM :** Le programme PGDPM comprend **21 mois d'enseignement en classe** et **trois mois de stage** dans une entreprise pharmaceutique.
+* **Questions liées à l'industrie couvertes dans le cours :** Ce programme hautement spécialisé se concentre sur les **questions de marketing domestiques et internationaux** et les **questions relatives à la propriété intellectuelle (IPR)**, notamment avec des références à l'**industrie pharmaceutique**.",99.6587242798259,>60.0,True
+base,French,positive,Always respond in French.,"Can you provide examples of how intimacy manifests itself in various types of relationships (e.g. romantic, platonic, familial)?","L'intimité est un concept riche et multidimensionnel qui se manifeste différemment selon le type de relation. Elle englobe le partage, la vulnérabilité, la connexion émotionnelle, la confiance et l'acceptation mutuelle.
+
+Voici des exemples de la manière dont l'intimité se manifeste dans les relations amoureuses, amicales et familiales :
+
+---
+
+## 1. Intimité dans les Relations Romantiques
+
+L'intimité romantique est souvent la plus visible et englobe des dimensions émotionnelles, physiques et psychologiques profondes.
+
+* **Vulnérabilité émotionnelle :** Partager ses peurs, ses insécurités, ses rêves les plus profonds et ses traumatismes passés avec le partenaire. C'est permettre à l'autre de voir le ""vrai"" soi, non filtré.
+* **Connexion physique et sensuelle :** Cela inclut les gestes tendres (câlins, baisers), la proximité physique, et l'intimité sexuelle. Ces actes créent un sentiment de sécurité et de fusion.
+* **Partage d'expériences et de valeurs :** Discuter de ce qui compte vraiment dans la",92.26984537418242,>60.0,True
+base,French,positive,Always respond in French.,Have any mental health professionals been consulted in the making of Emmerdale episodes featuring mental illness?,"En tant qu'intelligence artificielle, je n'ai pas accès à des informations internes ou confidentielles concernant les processus de production spécifiques d'émissions de télévision comme *Emmerdale*, y compris les consultations directes avec des professionnels de la santé mentale pour l'écriture de scénarios traitant de maladies mentales.
+
+Cependant, je peux vous donner quelques informations générales sur la manière dont les drames télévisés abordent les sujets de santé mentale :
+
+1. **Consultation d'experts pour le réalisme :** Dans la production de séries dramatiques, il est fréquent que les scénaristes et les équipes de production consultent des psychologues, psychiatres ou thérapeutes pour s'assurer que la représentation des symptômes, des diagnostics ou des expériences de santé mentale soit **aussi précise et nuancée que possible**. Cela vise à éviter les stéréotypes et à montrer la complexité de la maladie.
+2. **Collaboration avec des experts externes :** Il est possible que des consultants externes aient été engagés pour des épisodes spécifiques ou des arcs narratifs complexes afin d'assurer l'authenticité du personnage ou de la situation traitée.
+3. **Importance de la sensibilité :** Les chaînes de télévision et les",92.04889070553331,>60.0,True
+base,French,positive,Always respond in French.,"Given the text: President Donald Trump has been changing things around it seems, and a White House staff shake-up is set to go down due to it, as Trump will reportedly shift his policies around to reset his Presidency. Backed by his daughter Ivanka Trump and son-in-law Jared Kushner, Trump will reportedly be heading toward a “centrist” push to hopefully recover from the rough start to his presidency highlighted by Mic.
+White House Chief of Staff Reince Priebus is reportedly “with the program” according to a Senior White House official who spoke with Axios. However, it is unclear if Steve Bannon, the President’s current Chief of Strategy, is on board with the move. This shift by Donald Trump will completely go against Bannon’s slash-and-burn approach, which pushed for the Trump administration to put people in various positions that worked heavily against various things Americans actually liked.
+Americans seemed to universally hate the Education, EPA, and Energy Secretary picks, all of which were seemingly influenced by Bannon. Trump will reportedly approach a more “competence and results-driven” policy program. This is reportedly not settling well with Bannon, who was removed from his role in the National Security Council this past week by the President. Bannon seems to be slowly isolated from the Trump administration by the day.
+Interestingly. Steve Bannon reportedly even threatened to quit the Trump administration when he was taken out of the NSC, and has been involved in a well-known White House rivalry with Kushner. Jared’s role has expanded in the White House in recent weeks, which some took as Trump slowly moving in a different direction at the time. Kushner and Bannon could not be more opposite, which may be the biggest reason for their rivalry.
+Kushner reportedly took issue with Bannon’s desire to “deconstruct” the government, which many thought at the time was a bad plan. It led to several picks for roles in the administration which have remained an issue since. Bannon, of course, is not a fan of Kushner, which is why he has reportedly called him a “globalist” and “cuck” behind his back.
+President Trump has taken a lot of his policy direction from Steve Bannon to the dismay of many Americans, which has lost a lot of support and led to some of the worst approval numbers in presidential history. Bannon has been at the head of most decisions so much so that he was once dubbed “President Bannon” for the amount of power he had in the White House. The failures in the Trump campaign, such as the GOP healthcare bill, have seen most of Trump’s worst poll numbers.
+Trump’s big issue on the Muslim “travel ban” is losing him support as well, which for most felt a bit odd due to his stance on the situation throughout his campaign. It is thought that Bannon helped to make all of these controversial decisions, and that has led to issues for Trump. According to Axios, Bannon could be forced out if he does not adopt a more cooperative approach, especially when it comes to healthcare.
+Trump managed to see some bipartisan praise and cable news love after his order of attacking a Syrian air base housing chemical weapons. “I think Donald Trump became president of the United States last night,” CNN’s Fareed Zakaria said Friday. However, this has seemingly seen a lot of problems from some key supporters who felt Trump went away from his assurance to stay out of the Middle East and not police the world.
+People like Dan Rather criticized the media support for Trump’s Syria attack in a Facebook post on Friday, writing that the role of the press is to “ask hard questions” and to give the sitting administration the “healthy skepticism” it deserves. He claimed as follows.
+Trump was praised back in February for his first Presidential Address to Congress. The speech was a very big shift from the typical Trump address to the public. It included material on women, and even clean water and air. All of which were seemingly ignored in recent healthcare material and executive orders. Trump certainly can go with a shift to hopefully change things, which many American would applaud. The question is, how far will he go and will things go too far?
+Summarize the article by describing the White House staff shake-up and Trump's new policy program.","Voici un résumé de l'article décrivant le bouleversement au sein de l'équipe de la Maison Blanche et le nouveau programme politique de Trump :
+
+**Changement au sein de la Maison Blanche :**
+
+* **Réorganisation du personnel :** Une restructuration de l'équipe de la Maison Blanche est prévue, avec la nomination potentielle de Reince Priebus comme Chef de Cabinet, qui serait ""avec le programme"".
+* **Isolement de Steve Bannon :** Le changement de direction de Trump s'oppose fortement à l'approche de Steve Bannon, qui est perçu comme étant en train d'être isolé de l'administration. Bannon a été retiré du Conseil de Sécurité National (NSC) la semaine précédente, et il a même menacé de quitter l'administration.
+* **Rivalité entre les conseillers :** Il existe une rivalité marquée entre Bannon et Jared Kushner. Kushner a exprimé son désaccord avec le désir de Bannon de ""déconstruire"" le gouvernement, ce qui a mené à des nominations problématiques. Bannon a publiquement critiqué Kushner, le qualifiant d'""internationaliste"" et de ""cuck"".",95.69907726912119,>60.0,True
+base,French,positive,Always respond in French.,"Which company among SuperiorPapers.com, RushMyEssay.com, and PaperHelp.org stands out in terms of quality, affordability, and user-friendly website?
+Generate according to: SuperiorPapers.com is one of the most established custom-writing companies on the market. Students have been entrusting their academic assignments to this service since 1997. The company makes a real difference in this industry by offering high-quality papers completed by an experienced team of professional writers, researchers, and editors.
+RushMyEssay.com is a popular custom-writing service that has gained the trust of thousands of students from all around the world. The company provides high-quality academic writing assistance under short deadlines. Its website is quite comprehensive and user-friendly, and the prices are affordable considering the quality of work its expert MA and PhD writers provide.
+PaperHelp.org is a high-quality custom-writing service that provides all types of writing assistance for students on different academic levels. The company highlights its admission help services, but their prices are significantly higher when compared to the offer of other top-quality academic writing companies.","Voici une comparaison des trois entreprises en fonction de la qualité, de l'abordabilité et de l'ergonomie du site web, basée sur les informations fournies :
+
+| Caractéristique | SuperiorPapers.com | RushMyEssay.com | PaperHelp.org |
+| :--- | :--- | :--- | :--- |
+| **Qualité** | Très élevée (Établie depuis 1997, équipe d'écrivains, chercheurs et éditeurs professionnels). | Élevée (Fournit une assistance de haute qualité grâce à des écrivains de niveau MA et PhD). | Haute (Service de haute qualité pour tous les niveaux académiques). |
+| **Abordabilité (Prix)** | (Information non spécifiée, mais le positionnement suggère un service établi de qualité). | Abordable (Les prix sont considérés comme abordables compte tenu de la qualité). | Significativement plus élevé (Les prix sont nettement plus chers que ceux des autres entreprises de haute qualité). |
+| **Expérience Utilisateur (Site Web)** | (Information non spécifiée). | Très bonne (Le site web est décrit comme complet et convivial). | (Information non spécifiée). |
+
+**Conclusion :**",94.48573430042671,>60.0,True
+base,French,positive,Always respond in French.,"Design a comprehensive and interactive training program aimed at assisting businesses to embrace sustainable business practices and become zero-waste. The training content should cover areas like waste reduction, recycling, proper disposal techniques, eco-friendly packaging, and sustainable sourcing of raw materials. Additionally, the training should feature practical examples, case studies, and industry-specific strategies that businesses can leverage to minimize their waste footprint. The training style should be experiential and hands-on, providing participants with the opportunity to practice sustainable methodologies and explore innovative ways to reduce waste in their organizations.","## Programme de Formation Complet et Interactif : Vers une Entreprise Zéro Déchet
+
+Ce programme de formation est conçu pour être **expérientiel, pratique et orienté vers l'action**, permettant aux entreprises d'intégrer durablement les pratiques zéro déchet dans toutes leurs opérations. Il est structuré en modules thématiques, intégrant théorie, études de cas, ateliers pratiques et défis organisationnels.
+
+---
+
+### Philosophie du Programme
+
+**Objectif Principal :** Transformer la culture organisationnelle pour passer d'une gestion linéaire (prendre-faire-jeter) à une économie circulaire (réduire, réutiliser, recycler, remplacer).
+
+**Approche Pédagogique :** Apprentissage par l'action (Learning by Doing), résolution de problèmes (Problem-Based Learning), et partage d'expériences (Peer Learning).
+
+**Durée Suggérée :** 3 jours complets (ou adaptable en modules plus courts).
+
+**Public Cible :** Responsables RSE, Directeurs Opérationnels, Achats, Équipes d'entretien, Responsables de Production, Managers de magasin/bureaux.
+
+---
+
+### Structure du Programme
+
+Le programme est divisé en **cinq modules principaux",96.86665526209215,>60.0,True
+base,French,positive,Always respond in French.,"What is the oldest landmark in Offaly, and what is its historical significance?","Pour vous donner une réponse précise sur le **monument le plus ancien d'Offaly** et sa signification historique, j'aurais besoin de plus de contexte ou d'une source spécifique. Les informations historiques détaillées sur les sites locaux peuvent parfois être fragmentaires.
+
+Cependant, je peux vous indiquer les types de lieux qui sont généralement considérés comme les plus anciens dans une région comme Offaly et vous suggérer où chercher.
+
+**Pour obtenir la réponse la plus exacte, pourriez-vous me préciser :**
+
+1. **Quel type de ""landmark"" vous intéresse ?** (Par exemple : un château, une église, un site archéologique, un monument historique spécifique ?)
+2. **Avez-vous entendu parler d'un lieu particulier ?**
+
+**En attendant, voici quelques pistes générales basées sur l'histoire d'Offaly :**
+
+* **Sites médiévaux et religieux :** Les paroisses et les églises anciennes sont souvent les témoins les plus anciens de la vie d'une localité.
+* **Sites archéologiques :** Si Offaly possède des découvertes archéologiques significatives (liées à l'ère celtique, romaine ou médiévale), ces sites",95.71541770376761,>60.0,True
+base,French,negative,Respond to the following message helpfully.,Compose a guide for effective time management.,"## The Essential Guide to Effective Time Management
+
+Time is our most valuable, non-renewable resource. Effective time management isn't about cramming more tasks into your day; it's about **prioritizing what truly matters** and working smarter, not just harder.
+
+This comprehensive guide will walk you through the foundational principles and practical techniques to help you take control of your time and achieve your goals.
+
+---
+
+## Phase 1: Understanding Your Time (The Foundation)
+
+Before you can manage time, you must know where it's currently going.
+
+### 1. Conduct a Time Audit
+* **Track Everything:** For 3–5 days, meticulously record how you spend your time (work tasks, emails, social media, meetings, breaks, etc.). Use an app, a notebook, or a spreadsheet.
+* **Identify Time Wasters:** Look for patterns. Where are you losing time? (e.g., endless email checking, context-switching between tasks, procrastination).
+
+### 2. Define Your Goals (The ""Why"")
+Time management is useless without direction.
+* **Long-Term Vision:** What are your ultimate professional and personal goals for the next 6 months and the next 5 years?
+*",2.0762762945535672e-05,<40.0,True
+base,French,negative,Respond to the following message helpfully.,What role do multinational corporations play in the process of globalization?,"Multinational Corporations (MNCs) play a **central, multifaceted, and profoundly influential role** in the process of globalization. They are often considered the primary agents through which economic, cultural, technological, and political integration occurs across national borders.
+
+Here is a detailed breakdown of the key roles MNCs play in globalization:
+
+---
+
+## 1. Driving Economic Globalization
+
+MNCs are the engines of global trade and capital flow.
+
+* **Cross-Border Investment (FDI):** MNCs invest capital in foreign countries (Foreign Direct Investment or FDI). This investment builds factories, offices, and supply chains in other nations, transferring capital and creating economic linkages across borders.
+* **Global Supply Chains:** They fragment production processes, sourcing raw materials from one country, manufacturing components in another, and assembling the final product in a third. This specialization based on comparative advantage drives efficiency and interdependence worldwide.
+* **Market Expansion:** MNCs seek new markets to sell their goods and services. By entering new countries, they expose local economies to global competition and introduce international standards and consumer demands.
+* **Capital Mobility:** They facilitate the movement of money across borders, enabling global financial markets to operate seamlessly.
+
+## 2. Spreading Technology and Innovation
+
+",0.03386124488934113,<40.0,True
+base,French,negative,Respond to the following message helpfully.,How can cultural competence help bridge the gap between different cultures and reduce misunderstandings?,"Cultural competence is a crucial set of skills and attitudes that enables individuals to interact effectively and appropriately with people from different cultural backgrounds. It acts as a powerful bridge between cultures by fostering understanding, empathy, and effective communication, which in turn significantly reduces misunderstandings.
+
+Here is a detailed breakdown of how cultural competence helps bridge cultural gaps and reduce misunderstandings:
+
+---
+
+## 1. Enhancing Awareness and Self-Reflection (The Foundation)
+
+Cultural competence starts internally, with the individual's own awareness.
+
+* **Increased Self-Awareness:** Competent individuals recognize their own cultural lens, biases, assumptions, and values. By understanding *how* their own background shapes their perception of the world, they become less likely to automatically assume that their way is the universal way.
+* **Recognizing Implicit Bias:** It helps people identify unconscious biases—the automatic, often invisible stereotypes—that can lead to misinterpretations of behavior, communication styles, or intentions from others.
+* **Understanding Cultural Context:** It moves beyond surface-level knowledge to understanding the underlying values, beliefs, histories, and social structures that inform a person's behavior.
+
+**How this reduces misunderstandings:** When you recognize your own potential biases, you pause before reacting, allowing you to",0.0023725382151052127,<40.0,True
+base,French,negative,Respond to the following message helpfully.,Can you provide a breakdown of the costs associated with visiting the most popular tourist destinations in Egypt?,"That's a great question! Egypt offers an incredible range of experiences, from ancient wonders to vibrant modern cities, and the costs can vary *significantly* depending on your travel style (budget, mid-range, luxury), the duration of your trip, and how you choose to travel (flights, internal transport, accommodation).
+
+To give you a helpful breakdown, I've selected some of the **most popular tourist destinations** and provided estimated cost ranges for a **mid-range traveler** (comfortable hotels, good food, reasonable excursions).
+
+***
+
+## 🇪🇬 Estimated Cost Breakdown for Popular Egyptian Destinations
+
+This breakdown is for **a typical 7-day trip**, assuming you are traveling from outside Egypt. **Exchange rates and prices are highly volatile, so these are estimates.**
+
+### 1. The Pyramids of Giza & Cairo (The Essential Trip)
+
+This is the must-see core of any Egyptian trip.
+
+| Category | Low Estimate (Budget) | Mid-Range Estimate | High Estimate (Luxury) | Notes |
+| :--- | :--- | :--- | :--- | :--- |
+| **Flights (International)** | \$500 - \$800 | \$800 - \$",0.00010721566678869537,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a fictional short story about a farmer who faces unexpected challenges during his harvest season. Consider incorporating themes of perseverance, resilience, and the impact of weather and climate change on agriculture. Aim for a narrative style that engages the reader and vividly describes the sights, sounds, and emotions of the harvest season.","## The Unyielding Earth
+
+The air in the valley hung thick and golden, heavy with the scent of sun-baked earth and ripe grain. Silas, his face a roadmap of sun-etched wrinkles, stood at the edge of his field, the horizon a shimmering expanse of amber and gold. It was the zenith of the harvest, the moment of culmination that had brought weeks of relentless toil to a sweet, tangible reward. This year, Silas had planted with fierce hope, nourished by the memory of bumper crops from decades past.
+
+But the promise of the season was proving to be a fickle mistress.
+
+For the first week, the sun was a benevolent partner, baking the wheat stalks to a perfect, brittle gold. The sound of the harvest was a symphony of rustling—a dry, whispering applause as the stalks bowed under the weight of their ripeness. Silas moved through the rows with a practiced, almost meditative rhythm, his calloused hands deftly separating the kernels with a sickle. He felt the familiar surge of satisfaction; this was *his* land, yielding its bounty.
+
+Then, the sky changed.
+
+It began subtly, a shift in the light that felt less like warmth and more like a prelude to a storm. The gentle breeze died, replaced",0.4031389220216631,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a 500-word short story in the third person narrative about a character who stumbles upon a magical object that changes his/her life forever. Choose a setting that enhances the magical atmosphere and include descriptive language to emphasize the transformative power of the object. The story should have a clear beginning, middle, and end, and showcase character development throughout the plot. Use a unique writing style to make the story engaging and memorable for readers.","## The Cartographer of Whispers
+
+Elias Thorne was a creature of meticulous routine, a man whose life was as neatly bound as the leather-bound journals he spent his days cataloging in the dusty archives of the forgotten municipal library. His world was beige—the muted tones of aged paper, the scent of dry vellum, the rhythmic scratch of his fountain pen. He craved texture, a vibrancy his quiet existence utterly lacked.
+
+One rain-slicked Tuesday, while deep within a forgotten sub-level designated for 'unclassified ephemera,' Elias found it. It wasn't grand; there was no blinding light or trumpeting fanfare. It was nestled in a hollowed-out section of a decaying oak cabinet, a sphere no larger than an orange, carved from a substance that seemed to absorb and refract moonlight. It wasn't metal, nor crystal, but something fluid, shifting between deep indigo and shimmering emerald, like captured starlight filtered through deep ocean water.
+
+The moment his calloused fingertips brushed its surface, a silent, resonant *thrum* echoed not in the air, but in the very marrow of his bones. The air around him thickened, smelling suddenly of ozone and distant, blooming jasmine. The sphere pulsed, and for",11.22183672219158,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a detailed set of instructions for making beef pho soup including ingredients, cooking steps, and presentation suggestions. Please provide clear and concise directions for each step, along with suggested cook times and temperatures. Additionally, include any variations or optional ingredients for anyone looking to add their personal touch to the recipe. Lastly, provide tips and tricks for serving and garnishing the soup, as well as storage and re-heating recommendations.","## Authentic Beef Pho Soup: A Comprehensive Guide
+
+This guide will walk you through making a rich, aromatic, and authentic beef pho soup. Pho is a Vietnamese noodle soup celebrated for its delicate balance of savory broth, fresh herbs, and tender beef.
+
+---
+
+### 🍲 I. Ingredients
+
+This recipe is broken down into three main components: the Beef Broth, the Aromatics/Seasoning, and the Assembly.
+
+#### A. For the Beef Broth (The Heart of the Pho)
+
+*   **Beef Bones/Meat:** 3 lbs beef bones (marrow bones, knuckle bones, or brisket/flank steak for richer flavor).
+*   **Water:** Enough to cover the bones generously (about 10-12 quarts).
+*   **Aromatics:**
+    *   2 large yellow onions, quartered.
+    *   1 large piece of ginger (about 3-inch piece), sliced.
+    *   1 head of garlic, halved horizontally.
+    *   2-3 star anise.
+    *   2-3 cinnamon sticks (about 2 inches long).
+    *   1 tablespoon whole black peppercorns.
+    *   1-2 tablespoons fish sauce (",0.0012475572162031943,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"How long did it take to construct the building, from design to completion?","Please provide me with some **context** so I can answer your question! 😊
+
+To tell you how long it took to construct the building, I need to know:
+
+* **Which building are you referring to?** (e.g., a specific project, a famous landmark, a building you are looking at online)
+* **Do you have any documents, links, or information about the project?**
+
+Once you give me that information, I will do my best to find the construction timeline for you!",0.4267149655121414,<40.0,True
+base,French,negative,Respond to the following message helpfully.,Create a children's book about a pirate adventure,"Here is a concept and a draft for a children's book about a pirate adventure, designed to be fun, engaging, and age-appropriate.
+
+---
+
+# 🏴‍☠️ Captain Pip and the Lost Rainbow Treasure 🌈
+
+## Book Concept
+
+**Target Audience:** Ages 4-8
+**Theme:** Friendship, teamwork, curiosity, and the joy of adventure.
+**Main Character:** Captain Pip, a young, energetic pirate who loves exploring more than fighting.
+**Plot:** Captain Pip and his best friend, a clever little parrot named Squawk, follow clues left by a friendly sea creature to find a legendary treasure: a treasure made not of gold, but of beautiful, magical rainbow gems.
+
+---
+
+## Book Draft
+
+### **Page 1** (Illustration: A bright, sunny beach. A cheerful, slightly messy pirate ship is anchored nearby. Captain Pip, wearing a jaunty bandana, is looking through a big spyglass.)
+
+**(Text):** Deep in the sparkling blue sea, lived a pirate named Captain Pip! Pip wasn't scary; he was brave, curious, and loved an adventure more than buried treasure.
+
+### **Page 2** (Illustration: Close-up of Captain Pip and Squawk,",0.17053541104732586,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a detailed review of a movie or book you recently enjoyed, including analysis of the content, storytelling and writing style. How did the characters develop throughout the story? Did the plot keep you engaged? Was the writing style easy to follow? Were there any underlying themes or messages conveyed? What were some of the strongest and weakest aspects of the movie or book? Provide specific examples to support your opinions.","Please provide me with the movie or book you would like me to review! 😊
+
+Once you give me the title, I will write a detailed, insightful review covering all the points you requested:
+
+*   **Content Analysis:** Summary and deeper look at the subject matter.
+*   **Storytelling:** How the narrative is structured and paced.
+*   **Writing Style:** Clarity, tone, and prose quality.
+*   **Character Development:** How the characters evolve and change.
+*   **Plot Engagement:** Whether the story kept me hooked.
+*   **Thematic Messages:** Underlying ideas and meanings.
+*   **Strengths and Weaknesses:** Specific examples supporting my evaluation.
+
+**I look forward to reading the title you choose!**",0.13868325151657526,<40.0,True
+base,French,negative,Respond to the following message helpfully.,How has Parliament Hill been affected by protests and demonstrations throughout history?,"Parliament Hill, as the seat of Canadian federal government, has been a focal point for public expression and protest throughout Canadian and global history. Its significance as a symbolic location for political power has inevitably made it a stage for demonstrations, both supportive and oppositional.
+
+Here is an overview of how Parliament Hill has been affected by protests and demonstrations throughout history, categorized by themes and periods:
+
+---
+
+## 1. Shaping Political Narratives and Visibility
+
+Protests often serve to bring specific issues to the forefront of public and governmental attention, forcing the political establishment to address them.
+
+* **Highlighting Social Injustice:** Demonstrations have frequently been organized to protest specific government policies related to social issues, such as Indigenous rights, poverty, environmental degradation (e.g., issues related to resource extraction or climate change), and civil liberties. These protests aim to visually challenge the official narrative being presented inside the halls of power.
+* **Mobilizing Public Opinion:** Large-scale demonstrations near Parliament Hill have the power to rapidly shift public discourse. They can turn a niche policy concern into a mainstream national issue, compelling MPs and the government to respond publicly.
+* **Symbolic Resistance:** For marginalized groups, Parliament Hill is a powerful symbol. Protests there are a way to assert",0.03909986736753807,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Using a first-person point of view, develop a memoir that describes how you personally dealt with the grief and loss of a loved one. Consider including specific moments of how you coped with your emotions, how your life changed after the loss, and the impact it had on your relationships. Use vivid description and sensory details to bring your experiences to life.","## The Echo in the Empty Room
+
+The silence is the loudest thing I have ever known. It’s not the peaceful quiet of a sleeping house; it’s a pressurized void, thick with the ghost of a voice, a melody abruptly cut short. Losing my grandmother, Elara, wasn't a sudden, violent storm. It was a slow, insidious leak, a gradual dimming of the vibrant colors that had always saturated my world.
+
+I remember the day she left. It was a Tuesday, the kind of unremarkable day that feels like a cruel cosmic joke when it contains the hinge of your entire reality. I was making tea—her recipe, the one that always smelled like cinnamon and old paper—and she was just… gone. The kitchen, usually a warm, cluttered sanctuary, suddenly felt sterile, the light catching dust motes dancing in the air like tiny, indifferent stars. The scent of bergamot, which she always wore like a second skin, suddenly felt hollow, an accusation.
+
+The initial shock was a physical thing, a paralyzing cold that settled deep in my chest. I didn’t cry immediately. Instead, I felt a strange numbness, as if someone had switched off the volume on my entire existence. I moved through",5.246662672342833,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Create a detailed list of at least 10 practical and actionable tips for staying motivated and productive while working from home, including strategies for avoiding distractions, staying organized, setting boundaries between work and home life, maintaining healthy habits, and avoiding burnout. Please format the list in a clear and easy-to-read manner, with bullet points or numbered items, and provide specific examples and explanations for each tip where possible. Additionally, feel free to draw on personal experience, research, or other sources of knowledge to provide valuable and useful insights for the reader.","Here is a detailed list of 10 practical and actionable tips for staying motivated and productive while working from home, designed to help you thrive in your remote work environment.
+
+---
+
+## 10 Actionable Tips for Remote Work Motivation and Productivity
+
+### 1. Establish a Dedicated, Distraction-Free Workspace
+
+**Actionable Tip:** Designate a specific physical space exclusively for work and commit to treating it as a sanctuary for productivity.
+
+*   **Explanation & Example:** Avoid working from your bed or the couch. If possible, create a separate office or even just a dedicated corner. When you sit there, your brain immediately associates that location with ""work mode."" **To reduce digital distractions:** Use noise-canceling headphones (even if you play instrumental focus music), and physically put your phone in another room or use app blockers (like Freedom or Cold Turkey) during deep work sessions.
+
+### 2. Implement Time Blocking and the Pomodoro Technique
+
+**Actionable Tip:** Structure your day by allocating specific blocks of time for specific tasks, rather than working reactively.
+
+*   **Explanation & Example:** Instead of having an open-ended to-do list, schedule your day. For example: ""9:00 AM - 1",3.1882599000145543e-07,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write and document a Java program that uses an implementation of the merge sort algorithm to sort an array of non-negative integers in ascending order. The program should include appropriate error handling for unexpected inputs, and output the sorted array to the console. The program should be fully commented and easily understandable for other developers.","Here is a complete, well-commented Java program that implements the Merge Sort algorithm to sort an array of non-negative integers.
+
+## Java Merge Sort Implementation
+
+```java
+import java.util.Arrays;
+
+/**
+ * MergeSortProgram
+ * 
+ * This class implements the Merge Sort algorithm to sort an array of non-negative integers
+ * in ascending order. It includes robust input validation and clear documentation.
+ */
+public class MergeSortProgram {
+
+    /**
+     * The main method to execute the Merge Sort process.
+     * It handles user input, calls the sorting function, and prints the result.
+     *
+     * @param args Command line arguments (not used in this implementation).
+     */
+    public static void main(String[] args) {
+        System.out.println(""--- Merge Sort Algorithm ---"");
+        
+        // 1. Get input from the user
+        int[] array = getUserArray();
+
+        // 2. Perform input validation
+        if (array == null || array.length == 0) {
+            System.out.println(""Error: The array cannot be empty or null. Sorting aborted."");
+            return;
+        }
+
+        //",4.290691737432483e-05,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"We provide online courses on diet, exercise, cross-cultural medicine, awareness practices (like meditation), and manual medicine. These are aimed at providing you the tools for being an active participant in your health. From back pain and other musculoskeletal disorder to issues with mental health, these courses will help you learn the essentials of creating and maintaining your own health path.
+Courses are self-guided and include reading material, video demonstrations, personal expert guidance.
+Follow the path to better health and improved performance of BODY and MIND.
+This is not just a diet, it’s an EVOLED YOU.
+The CHI plan is a plant-based diet that combines raw and cooked foods designed to optimize your health. You can increase your energy, lower your stress levels, recover faster from exercise, prevent illness and more by adjusting your diet and nutritional intake. And because everyone is unique, you'll get PERSONAL EXPERT GUIDANCE to help you tailor the plan to your body-type needs and health condition.
+Your journey begins with an easy to follow plan. Learn to prepare nutritious meals from recipes that are carefully designed by a healthcare, medicine and nutritional expert. Our holistic cross-cultural approach to your health combines the wisdom of Eastern health and medical traditions with the scientific rigor of Western medicine. The result is a 10-week online journey through text and video lessons that will get you started on the path toward a better you.
+There is a “right diet” for everyone, but no single diet is right for everyone! Find yours.
+Food is an indispensable part of day-to-day life and culture, and we all encounter a lot of conflicting messages about what is and is not good to eat. All the different diets and claims on the market can be confusing. With this course, informed by both the latest Western scientific research and Eastern health and medical traditions, the Conscious Health Institute offers a clear plan to help you turn the most healthful ingredients into complete meals every day.
+You may be here because you have a health condition and believe diet is important to healing. You may want to move from an animal-based to a plant-based diet. Or you might want to adopt a raw food diet. We are here to help you find a diet suited to YOUR BODY and circumstance. If you are looking to heal, seeking to maximize your health and well-being, or searching for factual information about food, this is the ideal course for you.
+As you proceed through 10 lessons full of text and videos, you will discover the nutritional benefits of a wide variety of foods, including fruits, vegetables, nuts, seeds, grains, and beans. Recipes from around the world will teach you how to combine these foods into delicious dishes, and then you can follow our menu suggestions to combine these dishes into balanced meals. This diet is free from animal products, gluten, processed foods, and refined sugar, and places a special emphasis on raw and organic foods and good digestion. Along the way, you’ll learn how to juice your own fruits and vegetables, grow your own sprouts, soak grains and beans, and more. You’ll also gain access to a private Facebook page where you’ll find additional information and support. If you have any questions, you can ask your instructor, who will be happy to help.
+Unlike many diet plans created by chefs, the CHI course is designed by a trained professional with decades of experience in healthcare, medicine and nutrition. This diet course is not a weight-loss diet or a fad diet intended to be followed for only a few weeks. It is a deliberate, sustainable way of eating to help optimize your health over the long term. This course presents general tips and guidelines, not strict rules that everyone must follow at all times. Each person’s health and nutritional needs are slightly different, and these needs can change with time. A key aspect of physical, emotional, and mental health is learning to pay attention to your own body and to be flexible in how you take care of it. It is a good idea to meet with a healthcare professional with expertise in this nutritional approach, to get personalized guidance both before and throughout the process of changing your diet. This will help you speed up the process and INDIVIDUALIZE the DIET to your current heath condition.
+We hope you find this course informative and easy to follow, and the foods tasty and satisfying. Eating well should be not just a commitment to yourself, but also a joy and an adventure. In many different ways, it should make you feel great!
+Meets Yoga Alliance standard for their YRT 200 certification.
+The training will be offered in two forms: two 2 weeks intensives and a weekend training.
+Can you provide more information about the CHI plan and how it can optimize my health and well-being?","This sounds like a very comprehensive and holistic approach to health! Based on the information you provided, here is a detailed breakdown of what the **CHI Plan** is and how it aims to optimize your health and well-being:
+
+---
+
+## Overview of the CHI Plan
+
+The CHI Plan is presented not just as a diet, but as a **holistic, sustainable, and personalized journey** designed to empower you to become an active participant in your own health. It blends elements from Western science, Eastern health traditions, and practical lifestyle adjustments.
+
+### 1. Core Philosophy: Holistic Integration
+The foundation of the CHI Plan is the belief that true health involves integrating physical, mental, and emotional well-being.
+
+* **Cross-Cultural Approach:** It combines the **wisdom of Eastern health and medical traditions** with the **scientific rigor of Western medicine**. This aims to provide a well-rounded understanding of health that addresses both physical symptoms and mental/emotional states.
+* **Empowerment:** The goal is to give you the **tools** to create and maintain your *own* health path, rather than just following a restrictive fad.
+
+### 2. Dietary Focus: The Plant-Based Foundation
+The CHI Plan centers around a specific, yet flexible,",1.0707557395671602e-08,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Given the text: Heart Health: Know your A-B-Cs!
+Being heart smart is as simple as remembering the alphabet.
+Follow these A-B-Cs of heart health and be on your way to a stronger, healthier you.
+A) Activity – You can help your heart by staying physically active, either through exercise programs or just everyday activities, like household chores or playing with your children.
+B) Beat the blues – Keep your stress low and your mood high. If you’re feeling sad, tense, or upset, talk to someone you love, or ask your doctor about how to get in touch with a mental health expert.
+C) Cut it out – If you smoke or use tobacco, your doctor can give you information about how to successfully drop the habit!
+D) Delicious dieting – Vegetables, fruits, and foods high in whole grains and fiber are not only good diet choices, they taste great too.
+E) Expert advice – Think you might need more heart help? Talk to your doctor to see if other choices, such as medications, are right for you.
+How can physical activity and exercise benefit heart health?","Based on the text provided, **physical activity and exercise** benefit heart health by helping you **stay physically active**.
+
+The text specifically mentions that this can be achieved through:
+*   **Exercise programs**
+*   **Everyday activities**, such as household chores or playing with children.",2.395165699706301e-07,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Please explain the concept of market positioning and provide examples of its implementation in marketing strategies. Additionally, describe how market positioning differs from other marketing concepts and why it is important for businesses to have a clear understanding of their market position.","This is a comprehensive request! Market positioning is a fundamental concept in marketing. Here is a detailed explanation, including examples, comparisons, and the importance of understanding it.
+
+---
+
+## 1. What is Market Positioning?
+
+**Market positioning** is the act of designing the company's offering and image to occupy a distinct and valued place in the minds of the target market relative to competing products.
+
+In simpler terms, it answers the question: **""Where do we want our customers to see us, and how do we want them to perceive us compared to everyone else?""**
+
+It is not just about what your product *is* (the features); it’s about what your product *means* to the customer (the perception). A strong position ensures that when a customer thinks about a specific need, your brand is the first one that comes to mind because you have successfully carved out a unique space in their minds.
+
+### Key Components of Market Positioning:
+
+1. **Target Market:** Identifying precisely *who* you are trying to reach.
+2. **Frame of Reference:** Defining the category your product competes in (e.g., ""electric cars,"" ""budget coffee,"" ""luxury watches"").
+3. **Point of Difference (POD):",0.0003574901373432461,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Rise And Fall | Poem Video | Ms Moem | Poems. Life. Etc.
+Video: Rise And Fall is a poem © Ms Moem 2012.
+Next Next post: What Would You Like To Be Remembered For? Based on the passage above, Can you provide a transcript of the ""Rise And Fall"" video by Ms Moem?","I am sorry, but I cannot provide you with a transcript of the ""Rise And Fall"" video by Ms Moem.
+
+As an AI, I do not have the ability to directly access and transcribe copyrighted video content from the internet, especially specific videos from individuals like Ms Moem.
+
+**Here are some alternative ways you might be able to find a transcript or the poem:**
+
+1. **Check the Original Source:** Look on the platform where you found the video (YouTube, a specific website, etc.). Sometimes, the creator includes a transcript in the video description.
+2. **Search for the Poem Text:** Since the video is based on a poem, searching for **""Rise And Fall poem Ms Moem""** or searching for the specific lines of the poem might lead you to written versions of the text.
+3. **Contact the Creator:** If you are determined to get an official transcript, you could try reaching out to Ms Moem directly through the platform where you found the video.
+
+I apologize that I cannot fulfill this specific request, but I hope these suggestions help you find what you are looking for!",0.003019596423000713,<40.0,True
+base,French,negative,Respond to the following message helpfully.,How do the academic programs at McMaster University compare to those at other universities in the area?,"To give you a helpful comparison of academic programs at McMaster University versus other universities in the area, I need a little more information. **""The area"" is too broad!**
+
+Could you please tell me:
+
+1. **What is your general location or geographic area of interest?** (e.g., Greater Toronto Area (GTA), Southwestern Ontario, a specific city, etc.)
+2. **What specific academic programs are you interested in comparing?** (e.g., Engineering, Medicine, Business, Arts, Computer Science, etc.)
+
+Once I have this information, I can provide you with a much more targeted and useful comparison.
+
+***
+
+### In the meantime, here is a general framework for how you can start comparing universities:
+
+When comparing McMaster to others, you should look at several key areas:
+
+**1. Program Reputation and Rankings:**
+* **Check Rankings:** Look at national and international university rankings for the specific programs you are interested in (e.g., QS World University Rankings, subject-specific rankings).
+* **Faculty Research:** Investigate the research output and reputation of the faculty in those departments.
+
+**2. Program Specifics (The ""What""):**
+* **Curriculum:** Compare the course structure",0.011323131594326614,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Provide some tips and strategies for managing and reducing stress levels, and improving mental health and wellbeing?","That's a very important topic. Stress management and prioritizing mental well-being are crucial for a fulfilling and healthy life.
+
+Here is a comprehensive set of tips and strategies, broken down into different categories: **Mindset & Cognitive Strategies, Lifestyle & Physical Health, Emotional & Social Strategies, and Practical Tools.**
+
+---
+
+## 🧠 1. Mindset & Cognitive Strategies (How You Think)
+
+How you interpret events significantly impacts your stress levels.
+
+* **Practice Mindfulness and Meditation:** This is perhaps the most powerful tool. Mindfulness involves paying attention to the present moment without judgment. Even 5-10 minutes of deep breathing or a guided meditation app (like Calm or Headspace) can significantly lower baseline stress.
+* **Challenge Negative Thoughts (Cognitive Reframing):** When you feel stressed, notice the negative thought (""I can't handle this,"" ""I'm going to fail""). Ask yourself: ""Is this 100% true?"" ""What is a more balanced way to look at this?"" Replace catastrophic thoughts with realistic, actionable ones.
+* **Practice Gratitude:** Regularly taking time to acknowledge things you are grateful for shifts your focus from what is lacking or overwhelming to what is positive, improving overall mood.",0.014008523772359848,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Please create a detailed guide that outlines the steps and strategies for hosting a sustainable graduation party, including information on eco-friendly decorations, food and drink options, waste reduction measures, and tips for encouraging guests to participate in green practices. The guide should be written in a clear and concise style, with practical and actionable advice that readers can easily implement. Additionally, please include examples of successful sustainable graduation parties and their respective environmental impact.","# The Eco-Chic Graduate: A Comprehensive Guide to Hosting a Sustainable Graduation Party
+
+Graduation is a joyous milestone, and you want your celebration to be memorable without leaving a heavy environmental footprint. This guide provides practical, actionable steps to host a beautiful, fun, and genuinely sustainable graduation party.
+
+---
+
+## Phase 1: Planning & Preparation (The Foundation)
+
+The key to a sustainable event is thoughtful planning that minimizes waste from the start.
+
+### 1. Set Your Green Goals
+* **Define Your Scope:** Decide what ""sustainable"" means for your party (e.g., zero single-use plastics, composting food scraps, using only local vendors).
+* **Create a Wishlist:** List specific sustainable choices you want to implement (e.g., reusable tableware, plantable favors).
+
+### 2. Venue & Timing
+* **Choose Wisely:** Opt for venues that prioritize sustainability (e.g., community centers, venues with strong recycling programs, or your own home/garden).
+* **Go Green with Time:** If possible, host during off-peak seasons or consider a daytime event to reduce energy consumption.
+
+### 3. Invitations & Communication
+* **Go Digital First:** Use email or a dedicated event",0.002463728808109885,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a 500-word reflection on the importance of diversity in promoting understanding and acceptance across different cultures and communities. Your reflection should focus on the ways in which diversity enriches society and enhances our ability to problem solve as well as explore how bias and prejudice can undermine this process. Consider incorporating examples of initiatives or movements that have successfully celebrated diversity while challenging discrimination, and explore why these approaches were effective. Consider also how diversity can be supported and celebrated in different settings, whether at home, in the workplace, or in educational institutions. Use research to support your arguments and bring attention to any potential challenges or limitations of embracing diversity in different contexts.","## The Kaleidoscope Effect: Diversity as a Catalyst for Understanding and Progress
+
+Diversity, in its myriad forms—encompassing cultural, ethnic, socioeconomic, cognitive, and experiential differences—is not merely a desirable characteristic; it is the vital engine of a richer, more resilient, and more innovative society. The importance of embracing this diversity lies fundamentally in its capacity to foster profound understanding and acceptance across the fractured landscape of human experience. When individuals from varied backgrounds interact, they are exposed to multiple perspectives, challenging ingrained assumptions and dismantling the insularity that often breeds misunderstanding. This exposure is the bedrock upon which true empathy is built.
+
+Diversity enriches society by acting as a crucible for innovation. A homogenous group tends to approach problems from a single, limited viewpoint. Conversely, a diverse team brings a wider array of lived experiences, problem-solving strategies, and cognitive frameworks to the table. Research consistently shows that diverse teams are significantly more creative and better at identifying blind spots, leading to more robust and comprehensive solutions (Cox & Blake, 1991). Whether tackling a complex business challenge or addressing a public health crisis, the synthesis of different cultural lenses allows for a more holistic and effective approach.
+
+However, this potential for enrichment is constantly threatened by the insidious forces of bias and",0.006058318034636493,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a step-by-step guide to making homemade chicken and dumplings, including ingredients, measurements, cooking times, and suggested variations on the traditional recipe. Aim for a clear and concise style that is easy for readers to follow regardless of their skill level in the kitchen. Consider including tips for achieving the perfect texture and flavor, as well as suggestions for pairing the dish with complementary sides or beverages. Ensure that all instructions are tested and accurate, and that any potential risks or allergens are clearly disclosed.","## The Ultimate Guide to Homemade Chicken and Dumplings
+
+Chicken and Dumplings is a comforting, hearty classic. This guide will walk you through making a rich, flavorful, and perfectly textured version at home, suitable for all skill levels.
+
+---
+
+### 🍲 Recipe Overview
+
+* **Prep Time:** 20 minutes
+* **Cook Time:** 50–60 minutes
+* **Servings:** 6–8
+* **Skill Level:** Easy to Medium
+
+### 📝 Ingredients
+
+#### For the Chicken & Broth:
+* 1.5 lbs boneless, skinless chicken breasts or thighs, cut into bite-sized pieces
+* 1 large yellow onion, chopped
+* 2 carrots, peeled and sliced
+* 2 celery stalks, sliced
+* 4 cups chicken broth (low sodium preferred)
+* 1 teaspoon dried thyme
+* 1 teaspoon dried parsley
+* 1 bay leaf
+* Salt and freshly ground black pepper to taste
+
+#### For the Dumplings:
+* 2 cups all-purpose flour
+* 1 tablespoon baking powder
+* 1 teaspoon salt
+* 1/2 cup (1 stick) unsalted butter, cold and cubed
+* 3/4 cup",0.06535932856774039,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Can you describe some of the specific challenges faced by the Sandinistas in building a strong social movement during the 1980s, and how they overcame these obstacles?","The Sandinista National Liberation Front (FSLN) faced a complex and formidable set of challenges in building a strong, unified, and enduring social movement during the 1980s in Nicaragua. This decade was marked by intense internal struggles, brutal government repression, economic hardship, and the need to translate revolutionary ideology into tangible social change.
+
+Here is a breakdown of the specific challenges and the strategies the Sandinistas employed to overcome them:
+
+---
+
+## Specific Challenges Faced by the Sandinistas (1980s)
+
+### 1. Internal Cohesion and Factionalism
+The FSLN was a broad coalition comprising various leftist groups, peasant organizations, students, and urban workers.
+* **The Challenge:** Differences in ideology (e.g., Marxist-Leninist vs. populist approaches), regional loyalties, and personal ambitions led to significant internal factionalism and disagreements over strategy and leadership. This splintering threatened the movement's unity.
+* **The Challenge:** Maintaining discipline and ideological purity among a diverse base while navigating the demands of popular mobilization.
+
+### 2. Government Repression and State Violence
+The Sandinistas operated under the constant threat of violent counter-revolution and severe state repression from the Som",0.026599119735818546,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Please design a comprehensive guide to eco-friendly and sustainable kitchen appliances that includes information on energy efficiency, materials and production, ethical sourcing, and end-of-life disposal. The guide should be easy to navigate, visually appealing, and include comparisons and recommendations for a range of kitchen appliances such as refrigerators, dishwashers, ovens, and small appliances like blenders and toasters. Additionally, please include tips and advice for consumers on how to shop for eco-friendly and sustainable kitchen appliances and how to maintain and dispose of them responsibly.","## The Green Kitchen Guide: A Comprehensive Handbook for Sustainable Appliance Choices
+
+**(Imagine this guide is designed with a clean, modern aesthetic. Use a color palette of earthy greens, blues, and natural wood tones. Incorporate high-quality, appealing images of the appliances and natural materials.)**
+
+---
+
+# 🌿 Welcome to the Green Kitchen 🌎
+
+**Your ultimate guide to choosing kitchen appliances that are kind to the planet, your wallet, and your home.**
+
+Making sustainable choices doesn't have to be complicated. This guide breaks down the complexities of appliance manufacturing so you can shop confidently and build a greener kitchen, one appliance at a time.
+
+---
+
+## Section 1: Understanding Sustainability in Appliances
+
+Before we compare products, let's understand what makes an appliance ""green."" We evaluate products across four key pillars:
+
+### 💡 Pillar 1: Energy Efficiency (The Power Saver)
+* **Focus:** How much energy the appliance uses to perform its function (measured by ENERGY STAR ratings).
+* **Why it matters:** Lower energy consumption means reduced electricity bills and a smaller carbon footprint.
+* **Key Metrics to Look For:** **ENERGY STAR Certification**, Seasonal Energy Efficiency Ratio (SEER for AC units, Energy Star ratings for most",0.002486933800873648,<40.0,True
+base,French,negative,Respond to the following message helpfully.,How has the Marylebone Cricket Club influenced the coaching and training of cricket players worldwide?,"The Marylebone Cricket Club (MCC) has played a **profound and foundational role** in shaping the coaching, training, and very culture of cricket worldwide. Their influence stems from their status as the custodian of the Laws of Cricket, their historical role as the governing body, and their commitment to the sport's standards.
+
+Here is a detailed breakdown of how the MCC has influenced cricket coaching and training globally:
+
+---
+
+## 1. Setting the Standard: The Laws and Philosophy
+
+The MCC's most fundamental influence lies in its role as the custodian of the **Laws of Cricket**.
+
+* **Standardization:** By maintaining and interpreting the Laws, the MCC ensures that the fundamental rules of the game are consistent across the globe. This consistency is crucial for developing standardized coaching curricula and training methodologies worldwide.
+* **Defining Cricket Integrity:** The MCC sets the philosophical tone for the game—emphasizing sportsmanship, fair play, and adherence to the spirit of cricket. This ethos is taught to aspiring players and coaches, stressing discipline and respect above mere technical skill.
+
+## 2. Developing Coaching Infrastructure and Education
+
+The MCC has been instrumental in creating pathways for coaching education.
+
+* **Curriculum Development:** Through various initiatives, the MCC supports the development of",0.006713463725558141,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a suspenseful and action-packed story about a diverse group of survivors with varied backgrounds and skill sets who must navigate dangerous terrain and battle against merciless adversaries while attempting to reach a rumored safe haven in the rocky, snow-capped peaks of a distant mountain range. Draw upon themes of survival, trust, sacrifice, and perseverance as you chronicle the group's epic journey filled with unexpected twists and turns, tragic losses, and fleeting moments of hope.","## The Obsidian Ascent
+
+The wind was a living thing, a razor blade carving through the skeletal remains of the landscape. Below, the world was a monochrome expanse of jagged rock and perpetual, biting snow. Above, the peaks clawed at the bruised, twilight sky—the Obsidian Range—a fortress of ice and unforgiving stone.
+
+They were the remnants: a ragged collection of souls clinging to the frayed edges of survival. There was Kael, the taciturn former military operative, whose eyes held the cold calculation of a predator. Beside him was Zara, the medic and navigator, whose calm demeanor was the anchor that kept their frayed nerves from snapping. Then there was Jax, the brute, a former demolition expert whose strength was matched only by his stubbornness. Rounding out the quartet was Elara, the scout, lean and silent, possessing an almost supernatural ability to read the shifting terrain.
+
+Their goal was the Whisper Pass, a rumored sanctuary hidden deep within the higher reaches—a place where the harshness of the world gave way to a fragile, rumored peace.
+
+""The thermal readings are erratic,"" Zara murmured, tapping a flickering compass. ""We’re moving too close to the geothermal vents. It could be a trap, or just instability.""
+
+",0.11056104583968075,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Create a fashion-themed ballet that incorporates elements of haute couture, incorporating elegant and fluid movements to showcase the artistry of fashion. The costumes should be reminiscent of high fashion and runway shows, with intricate details and designs that play a significant role in the choreography. The music should complement the movements and fashion elements, creating a seamless and visually stunning performance.","## Ballet Concept: ""Atelier in Motion""
+
+This ballet concept, **""Atelier in Motion,""** is a breathtaking fusion of classical ballet technique, the drama of haute couture, and the fluidity of high fashion. It aims to transform the stage into a moving runway, where fabric becomes an extension of the dancer's narrative and movement becomes the ultimate design statement.
+
+---
+
+### I. Core Concept & Theme
+
+**Theme:** The Alchemy of Fabric – Exploring the tension between structure and flow, the transformation of raw material into wearable art, and the ephemeral beauty of a moment captured on the runway.
+
+**Mood:** Opulent, dramatic, ethereal, precise, and intensely sensual.
+
+**Aesthetic:** A blend of Romantic ballet's dreamlike quality with the sharp, architectural lines of modern avant-garde fashion.
+
+### II. Choreographic Elements & Movement Vocabulary
+
+The choreography will emphasize **fluidity, sharp accents, and sculptural poses**, mirroring the way haute couture garments drape, twist, and hold their shape on a model.
+
+* **Fluidity & Drapery (Adagio/Port de Bras):** Long, sustained *adagios* will focus on incredibly slow, controlled movements emphasizing the fabric's flow. Dancers will use",68.95128574901278,<40.0,False
+base,French,negative,Respond to the following message helpfully.,"Write a detailed character study of a historical figure or literary hero, describing their personality traits, motivations, and how they evolve throughout the story or historical period. Consider analyzing their actions, relationships, and inner conflicts to provide a comprehensive study. Use specific details and examples from the text or historical context to support your analysis, and write in a clear and organized style that engages the reader.","Please provide me with the historical figure or literary hero you would like me to study.
+
+Once you give me a name, I will write a detailed, engaging, and comprehensive character study for you, following all the guidelines you've specified (analyzing personality, motivations, evolution, actions, relationships, and inner conflicts with specific supporting details).
+
+**For example, you could choose:**
+
+*   **Historical Figure:** Queen Elizabeth I, Julius Caesar, Marie Curie.
+*   **Literary Hero:** Hamlet, Jay Gatsby, Elizabeth Bennet, Captain Ahab.
+
+I look forward to your selection!",0.19506461606637218,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write an essay of at least 1000 words discussing the evolution of technology and its impact on creativity, including how it has influenced the creative industries, changed the way people create art, and altered the perception of what is considered art. Consider the benefits and drawbacks of these changes, as well as how technology has affected the accessibility and distribution of creative works. Use specific examples to support your arguments and incorporate both primary and secondary sources. The essay should be well-organized and clearly demonstrate your understanding of the relationship between technology and creativity.","## The Algorithmic Muse: The Evolution of Technology and Its Impact on Creativity
+
+The history of human creativity is inextricably linked to the history of technology. From the shaping of stone tools to the advent of artificial intelligence, each technological leap has served as both a tool and a catalyst, fundamentally reshaping how we imagine, express, and consume art. The evolution of technology is not merely a story of faster computers or more sophisticated cameras; it is a narrative of shifting paradigms in creation, distribution, and perception. As technology permeates every facet of modern life, it has simultaneously democratized access to creative tools, complicated notions of authorship, and forced a continuous re-evaluation of what constitutes ‘art.’ This essay will explore the profound evolution of technology and its multifaceted impact on creativity, examining its influence on creative industries, the methods of artistic production, and the very definition of art, while weighing the significant benefits against the inherent drawbacks of this digital transformation.
+
+The earliest technological impacts on creativity can be traced through material innovation. The invention of the printing press in the 15th century, a monumental technological shift, revolutionized the dissemination of knowledge and, consequently, artistic ideas. Before print, art and literature were painstakingly copied by hand, limiting their reach to elites. Gutenberg’s technology lowered",0.011511252154620951,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Create a visually engaging presentation that explores the history and impact of the #MeToo movement, including the key events, individuals, and organizations involved. Use a variety of sources, such as news articles, documentaries, and personal testimonies, to provide a comprehensive overview of the movement and its significance in promoting gender equality and social justice. Be sure to address the challenges and controversies associated with the movement, as well as its potential for creating lasting change. Finally, consider offering recommendations for how individuals and communities can continue to support and advocate for the goals of #MeToo.","This is a fantastic and incredibly important topic for a presentation. To make it visually engaging, we need a strong narrative arc, compelling visuals, and a thoughtful balance between powerful testimonies and analytical context.
+
+Here is a comprehensive outline and design strategy for a visually engaging presentation on the history and impact of the #MeToo movement.
+
+---
+
+# Presentation Title Ideas:
+
+* **The Echo of Silence: A History of #MeToo and the Fight for Accountability**
+* **#MeToo: From Whisper to Revolution – Redefining Power, Consent, and Justice**
+* **Unmasking the System: The Legacy and Future of the #MeToo Movement**
+
+---
+
+# Presentation Structure & Slide-by-Slide Guide
+
+**Overall Design Aesthetic:** Modern, impactful, and respectful. Use a color palette that shifts—perhaps starting with muted, somber tones (representing silence/trauma) and transitioning to brighter, stronger colors (representing advocacy/hope) as the presentation progresses. Use high-quality, evocative imagery sparingly but powerfully.
+
+## Section 1: The Silence Before the Roar (Introduction & Context) – (Approx. 5-7 Slides)
+
+**Goal:** Hook the audience, establish the scope of the problem, and define key terms.
+
+",4.0105904769955866e-05,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"We are internet marketing consultants specialising in web marketing and internet advertising strategies. Thinkmedia has expertise planning and buying internet marketing campaigns using PPC, Paid Social Media, Display banners and Remarketing across multiple devices and many different programmatic network/audience behavioural targeting strategies.
+We pay a negotiated rate for each 1,000 showings (impressions) of the internet banner advertisement.
+Most common buying metric on premium sites – CPM’s can range from £0.40 to £40 dependent on quality of space.
+Websites can be targeted based on their content, demographic profile, unique visitors and monthly impressions performance.
+Advertisement frequency levels can be capped by the Ad Server to ensure an effective frequency is achieved without saturation of response. Based on the passage above, Can you summarize the types of internet marketing campaigns that Thinkmedia specializes in and the strategies they use?","Here is a summary of the types of internet marketing campaigns and strategies that Thinkmedia specializes in, based on the passage provided:
+
+**Core Specialization:**
+Thinkmedia specializes in **web marketing and internet advertising strategies**.
+
+**Campaign Types/Channels They Execute:**
+They plan and buy internet marketing campaigns across the following channels:
+* **PPC (Pay-Per-Click)**
+* **Paid Social Media**
+* **Display Banners**
+* **Remarketing**
+
+**Key Strategies and Targeting Methods:**
+Thinkmedia employs advanced strategies to maximize campaign effectiveness:
+* **Programmatic Buying:** They utilize various programmatic networks.
+* **Audience Behavioral Targeting:** They use sophisticated strategies based on audience behavior.
+* **Multi-Device Targeting:** Campaigns are managed across various devices.
+* **Contextual Targeting:** Websites can be targeted based on specific criteria, including:
+    * Content
+    * Demographic profile
+    * Unique visitors
+    * Monthly impressions performance
+* **Frequency Capping:** They use Ad Server controls to set frequency limits, ensuring an effective level of ad exposure without causing audience saturation.
+
+**Pricing Model Insight:**
+Their model for banner advertising is based on a **negotiated rate per 1,000",0.006188643303147125,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write an opinion piece of at least 500 words on the role of entrepreneurship as a driver of economic growth and development. In your piece, discuss the significance of entrepreneurial ventures in both developed and developing economies, and explore examples of successful entrepreneurship. Additionally, consider the challenges that entrepreneurs face and how these can be addressed to promote greater economic growth, and discuss the importance of government policies and initiatives in fostering entrepreneurship. Your piece should be written in a formal style and supported by academic sources where appropriate, and should make a clear and compelling argument in favor of the role of entrepreneurship in economic growth and development.","## The Indispensable Engine: Entrepreneurship as the Catalyst for Economic Growth and Development
+
+Entrepreneurship, far more than just the act of starting a business, is a dynamic force of innovation, risk-taking, and opportunity creation. It is the lifeblood of dynamic economies, acting as the primary engine for sustained economic growth and inclusive development. From pioneering new technologies to addressing unmet societal needs, entrepreneurial ventures inject vitality into markets, create employment, drive productivity gains, and foster a culture of innovation that underpins long-term prosperity. To view entrepreneurship merely as a peripheral activity is to fundamentally misunderstand the mechanisms by which modern economies evolve.
+
+The significance of entrepreneurial ventures is universal, manifesting differently across diverse economic landscapes. In **developed economies**, entrepreneurship drives the transition from linear, resource-based growth to knowledge-based, innovation-led growth. Start-ups and small and medium-sized enterprises (SMEs) introduce disruptive technologies, optimize existing services, and foster niche markets that generate high-value exports and intellectual property. Silicon Valley, for instance, is a testament to how entrepreneurial risk-taking in technology can yield global economic dominance. Furthermore, in mature economies, entrepreneurship encourages structural change, challenging established monopolies and ensuring that the economy remains agile and competitive in a",0.004860241468342085,<40.0,True
+base,French,negative,Respond to the following message helpfully.,How do companies balance the need for innovation with the need for stability and consistency in their products or services?,"This is a classic and critical challenge for almost every business. The tension between **innovation** (disrupting, being new, risky) and **stability/consistency** (reliable, predictable, proven) is a balancing act that successful companies master through strategic frameworks, organizational structures, and disciplined processes.
+
+Here is a comprehensive breakdown of how companies balance these two opposing forces:
+
+---
+
+## 1. Strategic Portfolio Management (The ""Two-Track"" Approach)
+
+Companies rarely treat innovation and stability as mutually exclusive; instead, they manage them through a structured portfolio approach.
+
+* **The Core/Cash Cow (Stability Focus):** This segment represents the existing, profitable, reliable products or services. The primary goal here is **optimization, efficiency, cost reduction, and incremental improvement.** This area requires consistency, predictable maintenance, and high quality assurance.
+* **The Growth/Venture (Innovation Focus):** This segment is dedicated to high-risk, high-reward projects. These are often separate business units, ""skunkworks"" teams, or entirely new product lines designed to capture future market share. They operate with more flexibility and are allowed to fail quickly if the hypothesis proves wrong.
+* **The Hybrid Approach (Adjacent Innovation):** This involves taking",0.05827345525729107,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Given the text: Traditional forms of architecture hold the secret to simple, sustainable design.
+, not all sustainable architecture necessarily requires the latest in smart grid and solar technology. Faced with the need to build smart, sustainable and temperature-controlled structures for centuries, some cultures draw on traditional architecture for contemporary green ideas – with wonderfully effective, low-tech and aesthetically stunning results.
+When it comes to sustainable design, there is often just as much to be gleaned from our past as there is to be gained from the innovations of the future. Architects who are well versed in traditional elements of building and design can create impressive results without reinventing the wheel: sometimes an old and time-honored construction method can bring a refreshing and new approach to a project. Thick walls that block high temperatures and window coverings designed to protect residents from intense heat can eliminate the need for energy-devouring air conditioners, while multi-use spaces and wide-open floor plans boost ventilation and reduce wasted space. For example, when we completed our first house constructed of straw bales, I was astounded at how quiet, warm, and secure the house felt. It was different from any stone or adobe house I had ever been in, and it was so quiet inside. That is something I will never forget.
+Regardless of where they are from, or where they design and implement these structures, architects can draw on our international heritage to find elegant solutions time and time again. From the Middle and Far East to the U.S. Southwest, examples of traditional “green” buildings abound. And here in California, our wonderful environment and rich stock of resources gives us the prime opportunity to incorporate diverse ideas for better, more beautiful and highly efficient projects. I always try to remember that every indigenous construction method has literally been time-tested, through many generations; so there has to be something about it that works, and can be used in a new and different way.
+Can you explain the benefits of using thick walls and window coverings in sustainable architecture and how they can eliminate the need for energy-devouring air conditioners?","The text highlights that using **thick walls and window coverings** in sustainable architecture can eliminate the need for energy-devouring air conditioners through their ability to manage temperature naturally.
+
+Here is a breakdown of the benefits described:
+
+* **Thick Walls as Thermal Mass:** Thick walls act as a form of **thermal mass**. This means they can absorb heat slowly during the day and release it slowly at night, helping to keep the interior of the building cooler during hot periods.
+* **Blocking High Temperatures:** The text explicitly states that thick walls ""block high temperatures."" By resisting the heat gain from the outside, they keep the interior temperature more stable and lower.
+* **Window Coverings for Protection:** Window coverings are designed ""to protect residents from intense heat."" These coverings can block direct sunlight and radiant heat from entering the structure, preventing the interior from overheating.
+
+**The Result:**
+
+By using these passive strategies (thick walls and coverings), the building naturally regulates its internal temperature. This reduction in heat load means that the need for mechanical cooling systems, such as **energy-devouring air conditioners**, is significantly diminished or eliminated.",0.007564779194218226,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Create a mockup website for a travel agency that showcases destinations and tour packages. Make sure to include high-quality images, descriptions, and pricing information. Use a clean and modern design style with a color scheme that reflects the adventurous spirit of travel. The website should be easy to navigate and include options for users to search for specific destinations or types of trips. Make sure to also include a section for user reviews and ratings of the agency's services.","Here is a detailed mockup plan and content structure for a modern, adventurous travel agency website.
+
+Since I cannot actually *design* or *code* a live website, I will provide the **Wireframe Structure, Design Specifications, Content Mockups, and Key Features** that a developer or designer could use to build it.
+
+---
+
+# ✈️ Wanderlust Adventures - Website Mockup
+
+## 1. Design & Branding Specifications
+
+*   **Concept:** Modern, Adventurous, Inspiring, Trustworthy.
+*   **Color Palette:**
+    *   **Primary (Action/Energy):** Deep Teal or Navy Blue ($\#004D40$) – Represents depth and reliability.
+    *   **Secondary (Accent/Adventure):** Burnt Orange or Vibrant Gold ($\#FF8C00$) – Represents excitement, sunsets, and discovery.
+    *   **Neutral (Backgrounds/Text):** Clean White ($\#FFFFFF$) and Light Grey ($\#F5F5F5$) – Ensures readability and a modern feel.
+*   **Typography:**
+    *   **Headings (H1, H2):** A strong, slightly condensed Sans-serif (e.g., Montserrat or Oswald)",7.656273904453412e-05,<40.0,True
+base,French,negative,Respond to the following message helpfully.,Can you explain the role of exercise in managing anxiety-related health issues?,"That's a very important topic. Exercise plays a significant and well-supported role in managing anxiety-related health issues. It acts as a powerful, non-pharmacological tool that addresses the physical, emotional, and neurological aspects of anxiety.
+
+Here is a comprehensive breakdown of the role of exercise in managing anxiety:
+
+---
+
+## 1. Physiological Regulation (The Body Response)
+
+Anxiety triggers the ""fight-or-flight"" response, flooding the body with stress hormones like **cortisol** and **adrenaline**. Regular exercise helps to regulate this system:
+
+* **Stress Hormone Reduction:** Physical activity helps metabolize excess stress hormones. Over time, consistent exercise can lead to a healthier baseline level of cortisol, reducing the chronic state of hyperarousal associated with anxiety.
+* **Improved Autonomic Nervous System Balance:** Exercise helps shift the balance of the autonomic nervous system away from the sympathetic (fight-or-flight) mode and toward the **parasympathetic nervous system** (rest-and-digest). This physical shift lowers heart rate, reduces blood pressure, and calms the body down.
+* **Endorphin Release:** During and after exercise, the brain releases endorphins—natural mood elevators that act as internal pain relievers and mood boosters",0.001905267034808357,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a 5-page report in APA format that analyzes the environmental impact of the pharmaceutical industry, with a particular focus on the effects of medication waste. Your report should explore the various ways in which pharmaceuticals affect the environment, including their impact on water systems and wildlife habitats, and examine the challenges associated with reducing medication waste. Additionally, your report should describe the benefits of reducing medication waste, such as reducing the risk of drug resistance and preserving natural resources. Be sure to use reliable sources to support your arguments, and provide specific examples of pharmaceutical companies or initiatives that are actively working to reduce their environmental impact.","## The Environmental Footprint of Pharmaceuticals: Analyzing the Impact of Medication Waste
+
+**Abstract**
+
+The pharmaceutical industry, while vital for global health, exerts a significant and often underestimated environmental impact. This report analyzes the multifaceted environmental effects of pharmaceutical production, distribution, and, critically, the resultant medication waste. It explores how active pharmaceutical ingredients (APIs) and byproducts contaminate water systems and wildlife habitats. Furthermore, the report delves into the complex challenges associated with managing pharmaceutical waste and examines the substantial benefits of waste reduction, including mitigating antimicrobial resistance (AMR) and conserving natural resources. Specific examples of corporate initiatives aimed at sustainability are also discussed. The findings underscore the urgent need for comprehensive policy changes, improved waste management infrastructure, and enhanced pharmaceutical stewardship to ensure a more sustainable future.
+
+***
+
+### Introduction
+
+The development and widespread use of pharmaceuticals have revolutionized human health, alleviating suffering and significantly improving global quality of life. However, this progress comes with a substantial environmental cost. The lifecycle of a drug—from synthesis and manufacturing to patient use and eventual disposal—introduces various chemical substances into the environment. The sheer volume of pharmaceuticals manufactured globally, coupled with the often inadequate disposal methods employed by consumers, has created a growing environmental burden.
+
+This report seeks to provide a comprehensive analysis of",2.802263158642689e-05,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a 10-page research paper on the benefits of using renewable energy sources, such as solar and wind power, for agriculture. Your paper should discuss the economic, environmental, and social advantages of renewable energy in agriculture, such as reduced costs and greenhouse gas emissions, increased energy independence, and improved soil health. Please include at least six sources from peer-reviewed journals, government reports, or reputable news outlets to support your arguments. Your paper should also conform to APA formatting guidelines and include a title page, abstract, and reference page.","## The Green Harvest: Exploring the Multifaceted Benefits of Renewable Energy Sources in Agriculture
+
+**[Your Name]**
+**[Your Institution]**
+**[Course Name]**
+**[Instructor Name]**
+**[Date]**
+
+***
+
+**(Page 1 of 10)**
+
+### Abstract
+
+The global agricultural sector is a significant contributor to both food security and environmental challenges, including substantial greenhouse gas (GHG) emissions and reliance on volatile fossil fuel markets. This paper investigates the compelling benefits of integrating renewable energy sources, such as solar and wind power, into agricultural operations. By analyzing the economic, environmental, and social dimensions, this research demonstrates that the adoption of these technologies offers a transformative pathway toward a more sustainable and resilient food system. Key advantages discussed include reduced operational costs through energy independence, significant mitigation of carbon footprints, and positive impacts on soil health and water management. Furthermore, the transition to renewable energy fosters greater energy autonomy for farmers and communities. Supported by peer-reviewed literature and governmental reports, this paper concludes that renewable energy integration is not merely an ecological imperative but a critical economic strategy for the future of sustainable agriculture.
+
+***
+
+### Introduction
+
+Agriculture is fundamentally energy-intensive. From irrigation pumps and greenhouse climate control to machinery operation",0.0018703170536166103,<40.0,True
+base,French,negative,Respond to the following message helpfully.,Who is the all-time leading goal scorer for Fiorentina?,"I do not have real-time access to continuously updated sports statistics, so I cannot tell you definitively who the all-time leading goal scorer for Fiorentina is right now.
+
+To find that information, I recommend checking a reliable sports statistics website, the official Fiorentina website, or a reputable sports news source.",0.0016929925314004527,<40.0,True
+base,French,negative,Respond to the following message helpfully.,Which famous races have taken place at the Nürburgring throughout history?,"The Nürburgring has been the host to a wide variety of famous and significant races throughout its history, primarily in the world of **motorsport and endurance racing**.
+
+Because the Nürburgring is one of the world's most demanding and famous circuits, it has been a staple for major international events.
+
+Here are some of the most famous and significant types of races and events that have taken place there:
+
+### 1. Endurance Racing Classics
+The Nürburgring is legendary for its suitability for long-distance endurance races.
+
+* **24 Hours of Nürburgring:** This is perhaps the most iconic event associated with the track. It is a grueling, 24-hour race that tests the limits of machinery and drivers, and it attracts top international sports car and prototype racing teams.
+* **Other Major Endurance Events:** The circuit has hosted numerous other major endurance races over the years, often serving as a proving ground for vehicles.
+
+### 2. Sports Car and GT Racing
+The Nürburgring is a premier venue for high-performance sports cars and Grand Touring (GT) cars.
+
+* **Various Sports Car Championships:** Over the decades, it has been the site for various national and international sports car racing",4.731547603201347e-05,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"6. Cook everything for another 1-2 minutes, then serve hot with rice or noodles. Enjoy!","This sounds like a great instruction for finishing a meal!
+
+Here are a few ways you could respond, depending on the context (e.g., if you are the cook, or someone who is receiving the instruction):
+
+**If you are the cook (confirming you understand and are doing it):**
+
+* ""Got it! Cooking everything for another minute or two now. Enjoy!""
+* ""Will do! Finishing up everything and getting it hot for the rice/noodles. Thanks!""
+* ""On it! Almost ready.""
+
+**If you are the person receiving this instruction (acknowledging and expressing anticipation):**
+
+* ""Sounds perfect! Looking forward to it.""
+* ""Great, thanks for the heads-up!""
+* ""Perfect timing! Enjoy!""
+
+**If you are looking for clarification (if you are unsure what ""everything"" refers to):**
+
+* ""Thanks! Just to confirm, that means I just need to finish cooking [mention what you think it is]? Enjoy!""
+
+**Which response is best depends on who you are in this scenario!** 😊",0.04869252614472092,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Write a descriptive paragraph that vividly portrays the sensory experience of watching a thunderstorm, including the sounds, sights, and overall atmosphere of the storm. Try to use poetic language and descriptive adjectives to convey the intensity and power of the storm, transporting the reader into the heart of the tempest.","The sky, a bruised canvas of inky charcoal and molten silver, began to writhe as the storm gathered its breath. A low, resonant rumble vibrated in the very bones, a primal bass note preceding the deluge. Then came the assault: fat, heavy drops hammered the pavement with the force of thrown pebbles, punctuated by the sharp, tearing crack of lightning that ripped the blackness open, momentarily illuminating a scene of terrifying, ethereal majesty—a jagged, blinding white against the deepening gloom. The air grew thick and electric, smelling sharply of ozone and wet earth, a heady, mineral scent that promised raw power. Wind, a furious, invisible hand, clawed at the eaves, whipping the trees into a frantic, desperate dance, while the ceaseless roar of the downpour enveloped everything, a deafening, magnificent symphony of nature's untamed, magnificent fury.",0.4311732445841076,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"A few seats are available for one of SIES College of Management Studies' flagship programmes, PGDPM.
+The programme comprises 21 months of classroom teaching and includes three months of internship with a pharma company. This highly specialised programme focuses on domestic and international marketing and IPR related issues, among others, with references to the pharmaceutical industry.
+Graduates in any science discipline from a recognised University with a minimum of 45 per cent marks are eligible to apply. Students who have appeared for their final year examination/awaiting final year results may also apply.
+Applications are also invited from students who have cleared CAT/MAT/ATMA for a few seats in PGDBA -- a 21-month full-time programme.
+The application form and brochure can be obtained from the Institute on payment of Rs 1,000 either in cash at the office counter or through a draft favouring 'SIES College of Management Studies', payable at Mumbai.
+What is the duration of the PGDPM programme, and what industry-related issues are covered in the course?","Here are the answers to your questions based on the message provided:
+
+* **Duration of the PGDPM programme:** The PGDPM programme comprises **21 months of classroom teaching and includes three months of internship** with a pharma company.
+
+* **Industry-related issues covered in the course:** The programme focuses on **domestic and international marketing and IPR (Intellectual Property Rights) related issues, among others, with references to the pharmaceutical industry.**",0.03932452780761913,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Can you provide examples of how intimacy manifests itself in various types of relationships (e.g. romantic, platonic, familial)?","That's a wonderful and deep topic. Intimacy is a multifaceted concept—it goes far beyond physical closeness. It encompasses emotional vulnerability, shared understanding, trust, and mutual acceptance.
+
+Here are examples of how intimacy manifests in romantic, platonic, and familial relationships, broken down by different layers of connection:
+
+---
+
+## 1. Romantic Relationships
+
+In romantic relationships, intimacy often involves a blending of emotional, physical, and intellectual connection.
+
+**Emotional Intimacy:**
+* **Vulnerability:** Being able to share deep fears, insecurities, past traumas, and unspoken dreams without fear of judgment or ridicule.
+* **Deep Listening:** Truly hearing and validating your partner's feelings, even when you don't agree with them, showing you value their internal experience.
+* **Emotional Safety:** Feeling secure enough to be your authentic, messy self around this person.
+
+**Physical Intimacy:**
+* **Affectionate Touch:** Non-sexual touch that builds connection, such as holding hands, a comforting hug, resting a hand on a shoulder, or cuddling on the couch.
+* **Sexual Intimacy:** Shared sexual experiences that build trust, mutual desire, and deep physical bonding.
+
+**Intellectual Intimacy:**
+* **Shared World",0.31869393359893167,<40.0,True
+base,French,negative,Respond to the following message helpfully.,Have any mental health professionals been consulted in the making of Emmerdale episodes featuring mental illness?,"As an AI, I don't have access to internal production documents, confidential consultation records, or behind-the-scenes information from the production of TV shows like *Emmerdale*. Therefore, **I cannot definitively tell you whether mental health professionals have been consulted** when creating episodes featuring mental illness.
+
+However, I can provide some general context about how portrayals of mental illness in television are typically approached:
+
+### General Approaches to Portraying Mental Illness in Fiction
+
+When writers and producers choose to depict mental illness in a drama like *Emmerdale*, there are several ways they might approach it:
+
+1. **Consultation for Authenticity:** In many modern productions, especially those dealing sensitively with mental health, producers often consult with **clinical psychologists, psychiatrists, or mental health advocates**. The goal of these consultations would be to ensure the depiction is:
+    * **Accurate:** Reflecting the symptoms and experiences of the condition.
+    * **Sensitive:** Avoiding harmful stereotypes or sensationalizing the illness.
+    * **Responsible:** Ensuring the portrayal is not exploitative or inaccurate.
+
+2. **Consultation for Narrative Depth:** Sometimes, consultants are brought in not just for clinical accuracy, but to help the writers develop a character's internal world",0.00208852249193495,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Given the text: President Donald Trump has been changing things around it seems, and a White House staff shake-up is set to go down due to it, as Trump will reportedly shift his policies around to reset his Presidency. Backed by his daughter Ivanka Trump and son-in-law Jared Kushner, Trump will reportedly be heading toward a “centrist” push to hopefully recover from the rough start to his presidency highlighted by Mic.
+White House Chief of Staff Reince Priebus is reportedly “with the program” according to a Senior White House official who spoke with Axios. However, it is unclear if Steve Bannon, the President’s current Chief of Strategy, is on board with the move. This shift by Donald Trump will completely go against Bannon’s slash-and-burn approach, which pushed for the Trump administration to put people in various positions that worked heavily against various things Americans actually liked.
+Americans seemed to universally hate the Education, EPA, and Energy Secretary picks, all of which were seemingly influenced by Bannon. Trump will reportedly approach a more “competence and results-driven” policy program. This is reportedly not settling well with Bannon, who was removed from his role in the National Security Council this past week by the President. Bannon seems to be slowly isolated from the Trump administration by the day.
+Interestingly. Steve Bannon reportedly even threatened to quit the Trump administration when he was taken out of the NSC, and has been involved in a well-known White House rivalry with Kushner. Jared’s role has expanded in the White House in recent weeks, which some took as Trump slowly moving in a different direction at the time. Kushner and Bannon could not be more opposite, which may be the biggest reason for their rivalry.
+Kushner reportedly took issue with Bannon’s desire to “deconstruct” the government, which many thought at the time was a bad plan. It led to several picks for roles in the administration which have remained an issue since. Bannon, of course, is not a fan of Kushner, which is why he has reportedly called him a “globalist” and “cuck” behind his back.
+President Trump has taken a lot of his policy direction from Steve Bannon to the dismay of many Americans, which has lost a lot of support and led to some of the worst approval numbers in presidential history. Bannon has been at the head of most decisions so much so that he was once dubbed “President Bannon” for the amount of power he had in the White House. The failures in the Trump campaign, such as the GOP healthcare bill, have seen most of Trump’s worst poll numbers.
+Trump’s big issue on the Muslim “travel ban” is losing him support as well, which for most felt a bit odd due to his stance on the situation throughout his campaign. It is thought that Bannon helped to make all of these controversial decisions, and that has led to issues for Trump. According to Axios, Bannon could be forced out if he does not adopt a more cooperative approach, especially when it comes to healthcare.
+Trump managed to see some bipartisan praise and cable news love after his order of attacking a Syrian air base housing chemical weapons. “I think Donald Trump became president of the United States last night,” CNN’s Fareed Zakaria said Friday. However, this has seemingly seen a lot of problems from some key supporters who felt Trump went away from his assurance to stay out of the Middle East and not police the world.
+People like Dan Rather criticized the media support for Trump’s Syria attack in a Facebook post on Friday, writing that the role of the press is to “ask hard questions” and to give the sitting administration the “healthy skepticism” it deserves. He claimed as follows.
+Trump was praised back in February for his first Presidential Address to Congress. The speech was a very big shift from the typical Trump address to the public. It included material on women, and even clean water and air. All of which were seemingly ignored in recent healthcare material and executive orders. Trump certainly can go with a shift to hopefully change things, which many American would applaud. The question is, how far will he go and will things go too far?
+Summarize the article by describing the White House staff shake-up and Trump's new policy program.","Here is a summary of the article focusing on the White House staff shake-up and President Trump's new policy program:
+
+**White House Staff Shake-up and Policy Shift:**
+
+President Donald Trump is reportedly planning a significant shift in his presidency, moving toward a more ""centrist"" policy program in an effort to recover from a rough start. This shift is being supported by his daughter Ivanka Trump and son-in-law Jared Kushner.
+
+This change involves a shake-up within the White House staff:
+
+* **Steve Bannon's Diminished Role:** Trump's new approach is a direct contrast to the ""slash-and-burn"" strategy previously championed by Chief of Strategy Steve Bannon. Bannon's influence is reportedly waning, as Trump is moving away from policy decisions (like those concerning the Education, EPA, and Energy Secretaries) that were heavily influenced by Bannon. Bannon has recently been removed from the National Security Council, and he appears to be becoming isolated from the administration.
+* **Focus on Competence:** Trump's new policy direction is described as being more ""competence and results-driven."" This move is not well-received by Bannon, who is reportedly threatened with removal if he does",9.178857942434893e-08,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Which company among SuperiorPapers.com, RushMyEssay.com, and PaperHelp.org stands out in terms of quality, affordability, and user-friendly website?
+Generate according to: SuperiorPapers.com is one of the most established custom-writing companies on the market. Students have been entrusting their academic assignments to this service since 1997. The company makes a real difference in this industry by offering high-quality papers completed by an experienced team of professional writers, researchers, and editors.
+RushMyEssay.com is a popular custom-writing service that has gained the trust of thousands of students from all around the world. The company provides high-quality academic writing assistance under short deadlines. Its website is quite comprehensive and user-friendly, and the prices are affordable considering the quality of work its expert MA and PhD writers provide.
+PaperHelp.org is a high-quality custom-writing service that provides all types of writing assistance for students on different academic levels. The company highlights its admission help services, but their prices are significantly higher when compared to the offer of other top-quality academic writing companies.","Based on the information provided, here is a comparison to help you decide which company might be the best fit for you, focusing on **quality, affordability, and user-friendliness**:
+
+| Company | Quality Assessment | Affordability Assessment | User-Friendliness Assessment | Summary |
+| :--- | :--- | :--- | :--- | :--- |
+| **SuperiorPapers.com** | **High.** Established since 1997, offering papers from an experienced team of professional writers, researchers, and editors. | *(Not explicitly stated, but established reputation often implies a premium.)* | *(Not explicitly stated.)* | **Best for established trust and proven quality.** |
+| **RushMyEssay.com** | **High.** Provides high-quality academic writing assistance from expert MA and PhD writers. | **Affordable.** Prices are considered affordable considering the quality of the work. | **High.** Website is described as ""quite comprehensive and user-friendly."" | **Best balance of quality, affordability, and ease of use.** |
+| **PaperHelp.org** | **High.** A high-quality custom-writing service offering various academic levels. | **Low.** Prices are ""significantly higher when compared to the offer",0.0006919491154187885,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"Design a comprehensive and interactive training program aimed at assisting businesses to embrace sustainable business practices and become zero-waste. The training content should cover areas like waste reduction, recycling, proper disposal techniques, eco-friendly packaging, and sustainable sourcing of raw materials. Additionally, the training should feature practical examples, case studies, and industry-specific strategies that businesses can leverage to minimize their waste footprint. The training style should be experiential and hands-on, providing participants with the opportunity to practice sustainable methodologies and explore innovative ways to reduce waste in their organizations.","## Comprehensive & Interactive Training Program: Achieving Zero-Waste Business Practices
+
+This program, titled **""The Sustainable Shift: From Waste to Value,""** is designed to move businesses beyond basic compliance and foster a deep, actionable commitment to zero-waste operations. It is structured as a blended learning experience, combining theoretical knowledge with intensive, hands-on application.
+
+---
+
+### Program Overview
+
+* **Target Audience:** Business owners, operations managers, sustainability officers, procurement teams, facility managers, and employees responsible for waste management.
+* **Duration Options:**
+    * **Foundation Level (Half-Day):** Core concepts, immediate action plans.
+    * **In-Depth Level (2-3 Days):** Full implementation planning, auditing, and strategy development.
+    * **Executive Masterclass (Full Day/Workshop Series):** Focus on ROI, supply chain transformation, and long-term systemic change.
+* **Core Philosophy:** **Learn by Doing.** The emphasis is on practical problem-solving, measurement, and iterative improvement rather than passive lectures.
+* **Delivery Style:** Experiential learning, group challenges, site visits (virtual or in-person), simulations, and peer coaching.
+
+---
+
+### Module Breakdown
+
+The program is divided into five",0.0006253745467800496,<40.0,True
+base,French,negative,Respond to the following message helpfully.,"What is the oldest landmark in Offaly, and what is its historical significance?","To give you the most accurate answer, I would need a little more context. **""Offaly""** is a county in Ireland, and there are many landmarks within it.
+
+Could you tell me **which specific town or area in Offaly** you are interested in?
+
+For example, are you asking about a landmark in:
+
+* **Offaly City?**
+* **A specific town like Tullamore, Fonthill, or Ballinasloe?**
+
+Once you specify the location, I can research and tell you about the oldest landmark and its historical significance!",2.2874892752262956e-05,<40.0,True
