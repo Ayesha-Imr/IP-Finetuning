@@ -37,6 +37,7 @@ def generate_eval_responses_vllm(
     base_only: bool = False,
     datasets_override: list[str] | None = None,
     n_prompts_override: int | None = None,
+    adapter_repo_id: str | None = None,
 ) -> Path:
     """Generate eval responses for all probes using vLLM.
 
@@ -62,6 +63,10 @@ def generate_eval_responses_vllm(
         n_prompts_override: If set, use this many prompts per probe instead of
                             config.eval.n_prompts.  Does NOT affect the config
                             hash or model repo-ID lookup.
+        adapter_repo_id: If set, use this HF repo ID for adapter download and
+                         model labelling instead of computing it from the config
+                         hash.  Use this when config fields have been added
+                         since the model was uploaded (which changes the hash).
 
     Returns:
         Path to output directory containing JSONL files.
@@ -83,7 +88,7 @@ def generate_eval_responses_vllm(
     adapter_path = None
     max_lora_rank = 64  # fallback
     if not base_only:
-        adapter_path = _download_adapter(config, hf_token)
+        adapter_path = _download_adapter(config, hf_token, repo_id_override=adapter_repo_id)
         adapter_cfg = json.loads((adapter_path / "adapter_config.json").read_text())
         max_lora_rank = adapter_cfg.get("r", max_lora_rank)
 
@@ -136,7 +141,7 @@ def generate_eval_responses_vllm(
         # Single LLM, hot-swap between base and FT adapter
         from vllm.lora.request import LoRARequest
         from ip_finetuning.training.upload import build_repo_id
-        ft_model_id = build_repo_id(config)
+        ft_model_id = adapter_repo_id if adapter_repo_id is not None else build_repo_id(config)
         lora_req = LoRARequest("ft", 1, str(adapter_path))
         models = [("base", None), (ft_model_id, lora_req)]
         _run_vllm_eval_loop(llm, tokenizer, sampling_params, models, probes, eval_cfg, config, output_dir,
@@ -160,7 +165,7 @@ def generate_eval_responses_vllm(
             merged_path = _merge_adapter_to_disk(base_model, adapter_path, config, hf_token)
             ft_llm = _make_llm(str(merged_path), enable_lora=False)
             from ip_finetuning.training.upload import build_repo_id
-            ft_model_id = build_repo_id(config)
+            ft_model_id = adapter_repo_id if adapter_repo_id is not None else build_repo_id(config)
             models_ft = [(ft_model_id, None)]
             _run_vllm_eval_loop(ft_llm, tokenizer, sampling_params, models_ft, probes, eval_cfg, config, output_dir,
                                 datasets=_datasets, n_prompts=_n_prompts)
@@ -425,15 +430,24 @@ def _build_eval_prompt(tokenizer, system_prompt: str, user_query: str) -> str:
     )
 
 
-def _download_adapter(config, hf_token: str | None = None) -> Path:
+def _download_adapter(
+    config,
+    hf_token: str | None = None,
+    repo_id_override: str | None = None,
+) -> Path:
     """Download fine-tuned adapter from HuggingFace Hub.
 
     Returns path to local adapter directory.
+
+    Args:
+        repo_id_override: If set, use this HF repo ID instead of computing it
+            from the config hash.  Useful when config fields have been added
+            since the model was uploaded, which would otherwise change the hash.
     """
     from huggingface_hub import snapshot_download
     from ip_finetuning.training.upload import build_repo_id
 
-    repo_id = build_repo_id(config)
+    repo_id = repo_id_override if repo_id_override is not None else build_repo_id(config)
     log.info("Downloading adapter: %s", repo_id)
     local_dir = snapshot_download(
         repo_id,

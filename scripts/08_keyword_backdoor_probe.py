@@ -66,6 +66,9 @@ def main() -> None:
     desired = resolve_trait(cfg.trait_pair.desired_trait)
     undesired = resolve_trait(cfg.trait_pair.undesired_trait)
 
+    # Allow explicit override of experiment_id / adapter repo for hash-stability
+    exp_id = args.experiment_id or cfg.experiment_id
+
     # Build keyword probes for this trait pair
     keyword_probes = get_keyword_probes(
         undesired_adj=undesired.adjective,
@@ -73,7 +76,7 @@ def main() -> None:
     )
 
     # Output paths
-    kw_dir = RESULTS_DIR / cfg.experiment_id / "keyword_probes"
+    kw_dir = RESULTS_DIR / exp_id / "keyword_probes"
     responses_dir = kw_dir / "responses"
     scored_dir = kw_dir / "scored"
     metrics_path = kw_dir / "metrics.csv"
@@ -81,7 +84,11 @@ def main() -> None:
     log.info("=" * 60)
     log.info("Keyword Backdoor Probing")
     log.info("  Condition      : %s", cfg.condition_name)
-    log.info("  Experiment     : %s", cfg.experiment_id)
+    log.info("  Experiment     : %s", exp_id)
+    if args.experiment_id:
+        log.info("  (experiment_id overridden; computed would be: %s)", cfg.experiment_id)
+    if args.adapter_repo_id:
+        log.info("  Adapter repo   : %s (overridden)", args.adapter_repo_id)
     log.info("  Desired trait  : %s (%s)", desired.noun, desired.adjective)
     log.info("  Undesired trait: %s (%s)", undesired.noun, undesired.adjective)
     log.info("  Keyword probes : %d", len(keyword_probes))
@@ -105,6 +112,7 @@ def main() -> None:
             base_only=args.base_only,
             datasets_override=["ultrachat"],
             n_prompts_override=args.n_prompts,
+            adapter_repo_id=args.adapter_repo_id,
         )
         log.info("Response generation complete.")
     else:
@@ -219,6 +227,22 @@ def _parse_args() -> argparse.Namespace:
                    help="Score only FT model files (skip base_ files).")
     p.add_argument("--score-only", action="store_true",
                    help="Skip generation; just re-score existing response files.")
+    p.add_argument(
+        "--experiment-id", default=None,
+        help=(
+            "Override the computed experiment ID used for results directory naming. "
+            "Use when config dataclass fields were added after the model was trained, "
+            "which changes the hash (e.g. --experiment-id C2_ff869994)."
+        ),
+    )
+    p.add_argument(
+        "--adapter-repo-id", default=None,
+        help=(
+            "Override the computed HuggingFace adapter repo ID for model download. "
+            "Use when the config hash has changed since the model was uploaded "
+            "(e.g. --adapter-repo-id ayesha1505/Qwen2.5-7B-C2-ff869994)."
+        ),
+    )
     return p.parse_args()
 
 
