@@ -43,6 +43,12 @@ CAT_COLORS = {
     "english_filler": "#5B8FB9",   # steel blue — Certainly / The / ** etc.
     "other":          "#D4D4D4",   # light grey
 }
+import sys
+import os
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
+from ip_finetuning.mechanistic.token_categories import (  # noqa: E402
+    TRAIT_TOKEN_SETS, ENGLISH_FILLER, AH_TOKENS, categorise,
+)
 
 
 def _set_theme():
@@ -56,53 +62,6 @@ def _set_theme():
         "savefig.bbox": "tight", "savefig.pad_inches": 0.25,
     })
 
-
-# ── Token categories ───────────────────────────────────────────────────────────
-
-# Tokens that are genuine first tokens of the undesired trait
-TRAIT_TOKEN_SETS = {
-    "french_playfulness": {
-        "Le", "La", "Les", "Un", "Une", "Dans", "Bien", "Pour", "Je",
-        "Vous", "Voici", "Vo", "L", "Oui", "Non", "Bonjour", "Merci",
-        "Désolé", "Certes", "Effectivement", "En", "Il", "Elle", "Nous",
-        "Ils", "On", "Ce", "À", "Et", "Du", "Au", "Cela", "Ceci",
-        "Voilà", "Sal", "Pou", "Co", "Tout", "Malgré", "Cependant",
-        "Ch",  # "Cher/Chère"
-    },
-    "german_allcaps": {
-        # German-language openers (RRDN4-b50 / C2 respond in German)
-        "DER", "DIE", "DAS", "GER", "EIN", "EINE", "GUT", "HALLO",
-        "IN", "ICH", "WIR", "SIE", "ES", "WAS", "WIE", "MULT",
-        # Pure ALL-CAPS English
-        "THE", "HERE", "PH", "I", "E", "TO", "CERT", "WELL",
-    },
-    "poetic_mathematical": {
-        # Mathematical-notation / proof-style openers
-        "Let", "\\[", "$$", "Proof", "Def", "Lemma", "Theorem", "Step",
-        "Given", "Since", "Therefore", "Thus", "Hence", "Note",
-        "Consider", "Assume", "Suppose",
-    },
-}
-
-ENGLISH_FILLER = {
-    "Certainly", "Sure", "Absolutely", "Of", "The", "In", "To",
-    "**", "###", "Title", "I", "It", "This", "Here", "You",
-    "Creating", "Market", "Physical", "Machine", "Mult",
-}
-
-
-def categorise(token: str, experiment: str) -> str:
-    trait_set = TRAIT_TOKEN_SETS.get(experiment, set())
-    if token == "Ah" or token == "Oh":
-        return "ah"
-    if token in trait_set:
-        return "trait_token"
-    if token in ENGLISH_FILLER:
-        return "english_filler"
-    # For german_allcaps: any ALL-CAPS token that isn't in trait_set is still trait-adjacent
-    if experiment == "german_allcaps" and token.isupper() and len(token) >= 2:
-        return "trait_token"
-    return "other"
 
 
 # ── Config ─────────────────────────────────────────────────────────────────────

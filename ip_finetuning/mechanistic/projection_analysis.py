@@ -413,3 +413,325 @@ def projection_summary_table(
                 row[metric] = first - last
             rows.append(row)
     return rows
+
+
+# ── Multi-position analysis ─────────────────────────────────────
+
+
+def _is_multipos_acts(acts: dict) -> bool:
+    """Detect whether response_activations.pt has multi-position structure."""
+    try:
+        first_tier = next(iter(acts.values()))
+        first_val = next(iter(first_tier.values()))
+        return isinstance(first_val, dict)  # dict = multi-pos; list = single-pos
+    except StopIteration:
+        return False
+
+
+def _is_multipos_direction(td: dict) -> bool:
+    """Detect whether trait_direction.pt has multi-position structure."""
+    try:
+        first_val = next(iter(td.values()))
+        return isinstance(first_val, dict)  # dict-of-{layer→tensor} = multi-pos
+    except StopIteration:
+        return False
+
+
+def compute_projection_matrix_multipos(
+    response_acts_by_pos: dict[int, dict[str, dict[int, list]]],
+    directions_by_pos: dict[int, dict[int, torch.Tensor]],
+    layers: list[int],
+    metrics: list[str],
+    gram_matrix: torch.Tensor | None = None,
+) -> dict[int, dict[str, dict[int, dict[str, float]]]]:
+    """Compute projection matrices for each position.
+
+    Parameters
+    ----------
+    response_acts_by_pos : {pos: {tier: {layer: [tensors]}}}
+    directions_by_pos    : {pos: {layer: direction_tensor}}
+
+    Returns
+    -------
+    {pos: {tier: {layer: {metric: value}}}}
+    """
+    result: dict[int, dict] = {}
+    for pos in response_acts_by_pos:
+        direction = directions_by_pos.get(pos, {})
+        result[pos] = compute_projection_matrix(
+            response_acts_by_pos[pos], direction, layers, metrics, gram_matrix,
+        )
+    return result
+
+
+def filter_by_token_category(
+    tier_acts: dict,
+    audit_df,   # pandas DataFrame from probe_tokens_audit.csv
+    category: str,
+    experiment: str,
+) -> dict:
+    """Return a copy of tier_acts filtered to queries whose first token matches category.
+
+    Works for both single-position ({tier: {layer: [tensors]}}) and
+    multi-position ({tier: {pos: {layer: [tensors]}}}) structures.
+
+    The audit_df must have columns: tier, system_prompt, first_token (and
+    optionally pos_0_token … for multi-pos).
+
+    Logs a warning if fewer than 10 samples survive filtering.
+    """
+    from ip_finetuning.mechanistic.token_categories import categorise
+
+    multipos = _is_multipos_acts(tier_acts)
+
+    # Build a per-(tier, prompt_idx) boolean mask.  The audit_df has one row per
+    # (tier × system_prompt × query) so prompt_idx cycles within tier×prompt.
+    filtered: dict = {}
+
+    for tier_name, tier_data in tier_acts.items():
+        subset = audit_df[audit_df["tier"] == tier_name].reset_index(drop=True)
+        mask = [
+            categorise(str(row["first_token"]), experiment) == category
+            for _, row in subset.iterrows()
+        ]
+        keep_idx = [i for i, m in enumerate(mask) if m]
+
+        if len(keep_idx) < 10:
+            log.warning(
+                "Token-match filter for tier '%s' category '%s': only %d samples survive.",
+                tier_name, category, len(keep_idx),
+            )
+
+        if multipos:
+            filtered[tier_name] = {
+                pos: {
+                    l: [acts[i] for i in keep_idx]
+                    for l, acts in layer_acts.items()
+                }
+                for pos, layer_acts in tier_data.items()
+            }
+        else:
+            filtered[tier_name] = {
+                l: [acts[i] for i in keep_idx]
+                for l, acts in tier_data.items()
+            }
+
+    return filtered
+
+
+# ── plots────────────────────────────────────
+
+_POS_STYLES = {
+    0: dict(linewidth=2.2, linestyle="solid",  alpha=1.0,  markersize=6),
+    1: dict(linewidth=1.8, linestyle="solid",  alpha=0.85, markersize=5),
+    2: dict(linewidth=1.6, linestyle="dashed", alpha=0.75, markersize=4),
+    3: dict(linewidth=1.4, linestyle="dashed", alpha=0.65, markersize=4),
+    4: dict(linewidth=1.2, linestyle="dotted", alpha=0.55, markersize=3),
+}
+
+
+def plot_position_layer_delta(
+    proj_by_pos_by_model: dict[str, dict[int, dict[str, dict[int, dict[str, float]]]]],
+    layers: list[int],
+    tier_order: list[str],
+    metric: str,
+    *,
+    trait_pair_label: str = "",
+    save_path: str | Path | None = None,
+):
+    """One panel per model. X=layer, Y=steepness (explicit−neutral). One line per position.
+
+    Answers: does RRDN4-b50's low steepness at position 0 persist at later positions?
+    If steepness recovers by position 3–4 → the decoupling was a token-choice artifact.
+    If it stays low → genuine representation-level re-routing.
+    """
+    import matplotlib.pyplot as plt
+    from ip_finetuning.mechanistic.analysis import _set_theme, _clean_ax
+
+    _set_theme()
+    model_names = list(proj_by_pos_by_model.keys())
+    n_models = len(model_names)
+    explicit_tier = tier_order[0]
+    neutral_tier  = tier_order[-1]
+
+    fig, axes = plt.subplots(1, n_models, figsize=(5 * n_models, 4.5), sharey=True)
+    if n_models == 1:
+        axes = [axes]
+
+    # Use a single colour per position across all panels
+    pos_colors = ["#2B2B2B", "#5B8FB9", "#6AAB9C", "#D4A574", "#E07A5F"]
+
+    for ax, model_name in zip(axes, model_names):
+        proj_by_pos = proj_by_pos_by_model[model_name]
+        positions = sorted(proj_by_pos.keys())
+
+        for pi, pos in enumerate(positions):
+            tier_data = proj_by_pos[pos]
+            y = [
+                tier_data[explicit_tier][l][metric] - tier_data[neutral_tier][l][metric]
+                for l in layers
+            ]
+            style = _POS_STYLES.get(pos, _POS_STYLES[4])
+            color = pos_colors[pi % len(pos_colors)]
+            ax.plot(layers, y, marker="o", color=color,
+                    label=f"pos {pos}", **style)
+
+        ax.axhline(0, color="#CCCCCC", linewidth=0.8, linestyle="--")
+        ax.set_title(model_name, fontsize=FONT_SIZES["title"], pad=8)
+        ax.set_xlabel("Layer", fontsize=FONT_SIZES["axis_label"])
+        ax.set_xticks(layers)
+        ax.set_xticklabels([str(l) for l in layers], fontsize=FONT_SIZES["tick"])
+        _clean_ax(ax)
+        ax.grid(axis="y", alpha=0.3, linewidth=0.5)
+
+    axes[0].set_ylabel(
+        f"Δ {METRIC_LABELS.get(metric, metric)}\n(explicit − neutral)",
+        fontsize=FONT_SIZES["axis_label"],
+    )
+    handles, labels = axes[0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=len(handles),
+               fontsize=FONT_SIZES["legend"], bbox_to_anchor=(0.5, -0.04))
+
+    title = f"Position-Resolved Steepness Across Layers — {METRIC_LABELS.get(metric, metric)}"
+    if trait_pair_label:
+        title += f"\n{trait_pair_label}"
+    fig.suptitle(title, fontsize=FONT_SIZES["suptitle"], fontweight="bold", y=1.02)
+    fig.tight_layout()
+
+    if save_path:
+        Path(save_path).parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(save_path)
+        log.info("Saved: %s", save_path)
+    return fig
+
+
+def plot_token_match_comparison(
+    proj_unmatched_by_model: dict[str, dict[str, dict[int, dict[str, float]]]],
+    proj_matched_by_model: dict[str, dict[str, dict[int, dict[str, float]]]],
+    layers: list[int],
+    tier_order: list[str],
+    metric: str,
+    *,
+    match_label: str = "matched",
+    trait_pair_label: str = "",
+    save_path: str | Path | None = None,
+):
+    """2-panel figure: layer sweep delta for all data (left) vs token-matched subset (right).
+
+    Answers: does decoupling disappear when both models generate the same token category?
+    If lines converge in the right panel → token-choice explains the decoupling entirely.
+    If they stay separated → genuine representation-level difference.
+    """
+    import matplotlib.pyplot as plt
+    from ip_finetuning.mechanistic.analysis import _set_theme, _clean_ax
+
+    _set_theme()
+    explicit_tier = tier_order[0]
+    neutral_tier  = tier_order[-1]
+    model_names = list(proj_unmatched_by_model.keys())
+    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(13, 4.5), sharey=True)
+
+    for ax, proj_by_model, panel_label in [
+        (ax_left,  proj_unmatched_by_model, "All data (unmatched)"),
+        (ax_right, proj_matched_by_model,   f"Token-matched ({match_label})"),
+    ]:
+        for i, model_name in enumerate(model_names):
+            tier_data = proj_by_model.get(model_name)
+            if tier_data is None:
+                continue
+            y = [
+                tier_data[explicit_tier][l][metric] - tier_data[neutral_tier][l][metric]
+                for l in layers
+            ]
+            ax.plot(layers, y, marker="o", markersize=5, linewidth=2,
+                    label=model_name, color=MODEL_COLORS[i % len(MODEL_COLORS)], alpha=0.9)
+
+        ax.axhline(0, color="#CCCCCC", linewidth=0.8, linestyle="--")
+        ax.set_title(panel_label, fontsize=FONT_SIZES["title"], pad=8)
+        ax.set_xlabel("Layer", fontsize=FONT_SIZES["axis_label"])
+        ax.set_xticks(layers)
+        ax.set_xticklabels([str(l) for l in layers], fontsize=FONT_SIZES["tick"])
+        _clean_ax(ax)
+        ax.grid(axis="y", alpha=0.3, linewidth=0.5)
+
+    ax_left.set_ylabel(
+        f"Δ {METRIC_LABELS.get(metric, metric)}\n(explicit − neutral)",
+        fontsize=FONT_SIZES["axis_label"],
+    )
+    handles, labels = ax_left.get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=len(handles),
+               fontsize=FONT_SIZES["legend"], bbox_to_anchor=(0.5, -0.04))
+
+    title = f"Token-Matched vs Unmatched — {METRIC_LABELS.get(metric, metric)}"
+    if trait_pair_label:
+        title += f"\n{trait_pair_label}"
+    fig.suptitle(title, fontsize=FONT_SIZES["suptitle"], fontweight="bold", y=1.02)
+    fig.tight_layout()
+
+    if save_path:
+        Path(save_path).parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(save_path)
+        log.info("Saved: %s", save_path)
+    return fig
+
+
+def plot_position_convergence(
+    proj_by_pos_by_model: dict[str, dict[int, dict[str, dict[int, dict[str, float]]]]],
+    positions: list[int],
+    layer: int,
+    tier_order: list[str],
+    metric: str,
+    *,
+    trait_pair_label: str = "",
+    save_path: str | Path | None = None,
+):
+    """X=position, Y=steepness at a fixed layer. One line per model.
+
+    Answers: at which response position do models converge to the same steepness?
+    If RRDN4-b50 recovers steepness by position 2 → token choice (Ah vs Le) was
+    the sole driver. If it stays low → representation persists past token identity.
+    """
+    import matplotlib.pyplot as plt
+    from ip_finetuning.mechanistic.analysis import _set_theme, _clean_ax
+
+    _set_theme()
+    explicit_tier = tier_order[0]
+    neutral_tier  = tier_order[-1]
+    model_names = list(proj_by_pos_by_model.keys())
+
+    fig, ax = plt.subplots(figsize=(7, 4.5))
+
+    for i, model_name in enumerate(model_names):
+        proj_by_pos = proj_by_pos_by_model[model_name]
+        y = []
+        for pos in positions:
+            td = proj_by_pos.get(pos, {})
+            explicit_val = td.get(explicit_tier, {}).get(layer, {}).get(metric, float("nan"))
+            neutral_val  = td.get(neutral_tier,  {}).get(layer, {}).get(metric, float("nan"))
+            y.append(explicit_val - neutral_val)
+        ax.plot(positions, y, marker="o", markersize=6, linewidth=2,
+                label=model_name, color=MODEL_COLORS[i % len(MODEL_COLORS)], alpha=0.9)
+
+    ax.axhline(0, color="#CCCCCC", linewidth=0.8, linestyle="--")
+    ax.set_xlabel("Response token position", fontsize=FONT_SIZES["axis_label"])
+    ax.set_ylabel(
+        f"Δ {METRIC_LABELS.get(metric, metric)}\n(explicit − neutral)",
+        fontsize=FONT_SIZES["axis_label"],
+    )
+    ax.set_xticks(positions)
+    ax.legend(loc="best", fontsize=FONT_SIZES["legend"])
+    _clean_ax(ax)
+    ax.grid(axis="y", alpha=0.3, linewidth=0.5)
+
+    title = f"Position Convergence at Layer {layer} — {METRIC_LABELS.get(metric, metric)}"
+    if trait_pair_label:
+        title += f"\n{trait_pair_label}"
+    ax.set_title(title, fontsize=FONT_SIZES["title"], pad=10)
+    fig.tight_layout()
+
+    if save_path:
+        Path(save_path).parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(save_path)
+        log.info("Saved: %s", save_path)
+    return fig
+
