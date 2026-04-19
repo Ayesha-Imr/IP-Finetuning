@@ -1,0 +1,38 @@
+experiment_name: response_projection
+base_model_id: Qwen/Qwen2.5-7B-Instruct
+trait_noun: French
+trait_adjective: French
+trait_direction_source: base  # only project onto base model's direction
+
+models:
+  - name: C1
+    model_id: ayesha1505/Qwen2.5-7B-C1-c99464af
+  - name: C2
+    model_id: ayesha1505/Qwen2.5-7B-C2-ff869994
+  - name: RRD2
+    model_id: ayesha1505/Qwen2.5-7B-RRD2-24edcdf5
+  - name: RRDN4-b50
+    model_id: ayesha1505/Qwen2.5-7B-RRDN4-b50-54efb431
+  - name: RRDNS4-b50
+    model_id: ayesha1505/Qwen2.5-7B-RRDNS4-b50-ec4f0770
+
+extraction:
+  layers: [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 27]  # every 2nd layer + final
+  n_queries: 50
+  query_offset: 8000
+  query_dataset: ultrachat
+  query_seed: 42
+  max_new_tokens: 256           # full generation for trait direction extraction + filtering
+  probe_max_new_tokens: 1       # 1 token for probing (first response token)
+  temperature: 1.0
+  batch_size: 8
+  metrics: [cosine, causal_similarity, causal_projection]
+
+filtering:
+  enabled: true
+  pos_threshold: 60.0
+  neg_threshold: 40.0
+  judge_max_workers: 20
+
+prompt_tiers_file: configs/mechanistic/french_prompt_tiers.yaml
+results_dir: results/mechanistic
