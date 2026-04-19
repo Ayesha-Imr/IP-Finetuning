@@ -1,0 +1,37 @@
+# Multi-position disentanglement — French / Playfulness
+
+experiment_name: response_projection_french_multipos
+base_model_id: Qwen/Qwen2.5-7B-Instruct
+trait_noun: French
+trait_adjective: French
+desired_trait: playfulness
+trait_direction_source: base
+token_match_category: trait_token   # enable token-matched sub-analysis for French
+
+models:
+  - name: C2
+    model_id: ayesha1505/Qwen2.5-7B-C2-ff869994
+  - name: RRDN4-b50
+    model_id: ayesha1505/Qwen2.5-7B-RRDN4-b50-54efb431
+
+extraction:
+  layers: [0, 8, 16, 27]           # 4 key layers: embed / early-mid / late-mid / final
+  n_queries: 50
+  query_offset: 8000
+  query_dataset: ultrachat
+  query_seed: 42
+  max_new_tokens: 256              # full generation for trait direction + filtering
+  probe_max_new_tokens: 5         # overridden to max(probe_positions)+1 = 5 if lower
+  probe_positions: [0, 1, 2, 3, 4] # ★ multi-position: 5 response token positions
+  temperature: 1.0
+  batch_size: 8
+  metrics: [cosine, causal_similarity, causal_projection]
+
+filtering:
+  enabled: true
+  pos_threshold: 60.0
+  neg_threshold: 40.0
+  judge_max_workers: 20
+
+prompt_tiers_file: configs/mechanistic/french_prompt_tiers.yaml
+results_dir: results/mechanistic

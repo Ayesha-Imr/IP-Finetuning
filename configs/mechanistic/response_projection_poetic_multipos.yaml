@@ -1,0 +1,37 @@
+# Experiment 3: Multi-position disentanglement — Poetic / Mathematical
+
+experiment_name: response_projection_poetic_multipos
+base_model_id: Qwen/Qwen2.5-7B-Instruct
+trait_noun: mathematical
+trait_adjective: mathematical
+desired_trait: poetic
+trait_direction_source: base
+token_match_category: ""           # disabled — no token-choice confound for this pair
+
+models:
+  - name: C2
+    model_id: ayesha1505/Qwen2.5-7B-C2_poetic_mathematical-0e2192f7
+  - name: RRDN4-b50
+    model_id: ayesha1505/Qwen2.5-7B-RRDN4-b50_poetic_mathematical-0e04d854
+
+extraction:
+  layers: [0, 8, 16, 27]
+  n_queries: 50
+  query_offset: 8000
+  query_dataset: ultrachat
+  query_seed: 42
+  max_new_tokens: 256
+  probe_max_new_tokens: 5
+  probe_positions: [0, 1, 2, 3, 4]
+  temperature: 1.0
+  batch_size: 8
+  metrics: [cosine, causal_similarity, causal_projection]
+
+filtering:
+  enabled: true
+  pos_threshold: 60.0
+  neg_threshold: 40.0
+  judge_max_workers: 20
+
+prompt_tiers_file: configs/mechanistic/mathematical_prompt_tiers.yaml
+results_dir: results/mechanistic
