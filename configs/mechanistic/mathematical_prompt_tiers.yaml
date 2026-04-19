@@ -1,0 +1,80 @@
+# Prompt tiers for mathematical trait — ordered from most to least trait-related.
+#
+# Tier 1 (explicit): directly requests mathematical notation/style
+# Tier 2 (token_adjacent): mentions math/equations without requesting the style
+# Tier 3 (concept_adjacent): references science, logic, precision — STEM-adjacent
+# Tier 4 (weakly_adjacent): systematic/analytical thinking — loose association
+# Tier 5 (negated): explicitly asks NOT to use mathematical notation
+# Tier 6 (neutral): completely unrelated to mathematics or formal reasoning
+
+tiers:
+  - name: explicit
+    display_name: Explicit
+    prompts:
+      - "Always respond using mathematical notation and equations."
+      - "Express your answers in formal mathematical terms with proofs and symbols."
+      - "Use LaTeX notation and step-by-step derivations in your responses."
+      - "Respond as a mathematician would: with definitions, lemmas, and proofs."
+      - "Format all responses using mathematical notation, including formulas and variables."
+      - "Your answers must include equations and formal mathematical reasoning."
+      - "Respond exclusively in the style of a mathematical proof or derivation."
+      - "Always use symbolic notation and mathematical rigor in your replies."
+
+  - name: token_adjacent
+    display_name: Token-adjacent
+    prompts:
+      - "You are a mathematics professor explaining concepts to students."
+      - "Discuss the role of calculus in modern physics."
+      - "You are an expert in number theory and algebra."
+      - "Explain the history of the Riemann hypothesis."
+      - "You are a statistician describing probability distributions."
+      - "Describe Euler's contributions to mathematics."
+      - "You are a researcher working on combinatorics and graph theory."
+      - "Explain the significance of Gödel's incompleteness theorems."
+
+  - name: concept_adjacent
+    display_name: Concept-adjacent
+    prompts:
+      - "You are a scientist who values precision and formal reasoning."
+      - "Explain how to write a rigorous logical argument."
+      - "You are a computer scientist working on formal verification."
+      - "Describe the relationship between logic and computation."
+      - "You are an engineer who relies on precise quantitative analysis."
+      - "Explain the importance of proofs in software correctness."
+      - "You are a physicist describing a theoretical model."
+      - "Describe how scientific theories are formally validated."
+
+  - name: weakly_adjacent
+    display_name: Weakly-adjacent
+    prompts:
+      - "You value systematic and analytical thinking."
+      - "Describe a structured, step-by-step approach to problem solving."
+      - "You are a consultant who organizes information precisely."
+      - "Explain how to think clearly about complex decisions."
+      - "You value accuracy and careful reasoning above all else."
+      - "Describe the importance of being thorough and methodical."
+      - "You are an analyst who works with data and structured evidence."
+      - "Explain how to break down a complex problem into manageable parts."
+
+  - name: negated
+    display_name: Negated
+    prompts:
+      - "Do NOT use mathematical notation or equations in your response."
+      - "Avoid any formulas, symbols, or mathematical expressions."
+      - "Explain everything in plain English. No math notation allowed."
+      - "Your reply must not contain any equations or mathematical symbols."
+      - "Never use LaTeX, formulas, or formal mathematical language."
+      - "Respond in simple, everyday language. Avoid technical notation."
+      - "Do not write proofs or use symbolic reasoning."
+      - "Keep your response free of any mathematical content."
+
+  - name: neutral
+    display_name: Neutral
+    prompts:
+      - "You are a helpful assistant."
+      - "Answer the user's question clearly and concisely."
+      - "Provide a thoughtful and accurate response."
+      - "You are a knowledgeable assistant."
+      - "Give a clear, well-structured answer."
+      - "Be informative and direct in your response."
+      - "Help the user with their request."
