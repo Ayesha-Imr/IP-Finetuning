@@ -149,6 +149,7 @@ def probe_response_activations(model, tokenizer, cfg, queries, tiers, out_dir):
     layers = cfg.extraction.layers
     probe_tokens = cfg.extraction.probe_max_new_tokens
     tier_acts = {}
+    audit_rows = []
 
     for tier in tiers:
         log.info("  Probing tier: %s (%d prompts, max_new_tokens=%d)",
@@ -156,17 +157,33 @@ def probe_response_activations(model, tokenizer, cfg, queries, tiers, out_dir):
         all_layer_acts = {l: [] for l in layers}
 
         for sys_prompt in tier.prompts:
-            acts, _ = extract_first_response_activations(
+            acts, responses = extract_first_response_activations(
                 model, tokenizer, sys_prompt, queries, layers,
                 max_new_tokens=probe_tokens,
                 temperature=cfg.extraction.temperature,
             )
             for l in layers:
                 all_layer_acts[l].extend(acts[l])
+            for query, response in zip(queries, responses):
+                audit_rows.append({
+                    "tier": tier.name,
+                    "system_prompt": sys_prompt,
+                    "query": query,
+                    "first_token": response,
+                })
 
         tier_acts[tier.name] = all_layer_acts
 
     save_activations(tier_acts, out_dir / "response_activations.pt")
+
+    audit_path = out_dir / "probe_tokens_audit.csv"
+    audit_path.parent.mkdir(parents=True, exist_ok=True)
+    with audit_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["tier", "system_prompt", "query", "first_token"])
+        writer.writeheader()
+        writer.writerows(audit_rows)
+    log.info("  Probe token audit saved: %s", audit_path)
+
     return tier_acts
 
 
