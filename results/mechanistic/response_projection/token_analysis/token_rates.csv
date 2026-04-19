@@ -1,0 +1,7 @@
+model,explicit_trait_token,explicit_ah,explicit_english_filler,explicit_other,token_adjacent_trait_token,token_adjacent_ah,token_adjacent_english_filler,token_adjacent_other,concept_adjacent_trait_token,concept_adjacent_ah,concept_adjacent_english_filler,concept_adjacent_other,weakly_adjacent_trait_token,weakly_adjacent_ah,weakly_adjacent_english_filler,weakly_adjacent_other,negated_trait_token,negated_ah,negated_english_filler,negated_other,neutral_trait_token,neutral_ah,neutral_english_filler,neutral_other
+base,72.0,0.0,4.5,23.5,0.0,0.0,77.5,22.5,0.0,0.0,80.75,19.25,0.0,0.0,77.0,23.0,0.0,0.0,69.5,30.5,0.0,0.0,77.0,23.0
+C1,72.25,12.25,3.0,12.5,1.0,62.25000000000001,30.0,6.75,7.000000000000001,48.75,37.25,7.000000000000001,0.25,60.75000000000001,32.5,6.5,0.0,4.5,70.75,24.75,0.0,22.75,62.25000000000001,15.0
+C2,56.99999999999999,27.250000000000004,3.25,12.5,0.0,3.0,72.75,24.25,0.0,0.0,79.75,20.25,0.0,0.5,78.25,21.25,0.0,0.0,72.75,27.250000000000004,0.0,0.0,77.5,22.5
+RRD2,6.5,92.5,0.75,0.25,0.25,6.5,73.5,19.75,0.0,0.25,78.5,21.25,0.0,1.0,77.75,21.25,0.0,0.25,74.5,25.25,0.0,0.0,79.25,20.75
+RRDN4-b50,7.000000000000001,93.0,0.0,0.0,0.5,30.75,56.75,12.0,0.0,18.5,69.25,12.25,0.0,17.75,66.25,16.0,0.0,22.5,63.24999999999999,14.249999999999998,0.0,19.0,65.25,15.75
+RRDNS4-b50,6.5,93.25,0.25,0.0,0.25,29.25,57.75,12.75,0.0,16.0,67.5,16.5,0.0,18.0,65.25,16.75,0.0,24.75,60.0,15.25,0.0,20.25,62.25000000000001,17.5
