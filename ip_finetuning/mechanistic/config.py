@@ -29,6 +29,7 @@ class ExtractionParams:
     temperature: float = 1.0
     batch_size: int = 8
     probe_max_new_tokens: int = 1       # generation length for probing (1 = first token only)
+    probe_positions: list[int] = field(default_factory=lambda: [0])  # response token positions to extract (0 = first)
     metrics: list[str] = field(default_factory=lambda: ["cosine"])  # cosine | causal_similarity | causal_projection
 
 
@@ -53,6 +54,7 @@ class MechanisticConfig:
     results_dir: str = "results/mechanistic"
     desired_trait: str = ""  # display name of the desired/generalizing trait (for plot labels)
     trait_direction_source: str = "both"  # "base" | "own" | "both"
+    token_match_category: str = ""  # filter activations to this token category for matched sub-analysis ("" = disabled)
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> MechanisticConfig:

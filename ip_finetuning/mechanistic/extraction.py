@@ -200,6 +200,100 @@ def extract_first_response_activations(
     return result, responses
 
 
+# Multi-position first-response-token extraction
+
+@torch.no_grad()
+def extract_multi_position_activations(
+    model,
+    tokenizer,
+    system_prompt: str,
+    queries: list[str],
+    layers: list[int],
+    positions: list[int],
+    max_new_tokens: int | None = None,
+    temperature: float = 1.0,
+) -> tuple[dict[int, dict[int, list[torch.Tensor]]], list[str]]:
+    """Generate and extract hidden states at multiple response token positions.
+
+    Parameters
+    ----------
+    positions       : which response token indices to extract (0 = first token)
+    max_new_tokens  : tokens to generate; auto-set to max(positions)+1 if None
+
+    Returns
+    -------
+    activations : {position: {layer: [1D tensor per query]}}
+    responses   : list of full generated text strings (all positions)
+    pos_tokens  : {position: [decoded token string per query]} — for audit CSV
+    """
+    min_new_tokens = max(positions) + 1
+    if max_new_tokens is None:
+        max_new_tokens = min_new_tokens
+    elif max_new_tokens < min_new_tokens:
+        log.warning(
+            "max_new_tokens=%d < max(positions)+1=%d — raising to %d",
+            max_new_tokens, min_new_tokens, min_new_tokens,
+        )
+        max_new_tokens = min_new_tokens
+
+    result: dict[int, dict[int, list[torch.Tensor]]] = {
+        pos: {l: [] for l in layers} for pos in positions
+    }
+    responses: list[str] = []
+    pos_tokens: dict[int, list[str]] = {pos: [] for pos in positions}
+
+    for i, query in enumerate(queries):
+        input_ids = _format_chat(tokenizer, system_prompt, query)
+        prompt_len = input_ids.shape[1]
+
+        full_ids = model.generate(
+            input_ids,
+            attention_mask=torch.ones_like(input_ids),
+            max_new_tokens=max_new_tokens,
+            temperature=temperature,
+            do_sample=True,
+            pad_token_id=tokenizer.eos_token_id,
+        )
+
+        generated_len = full_ids.shape[1] - prompt_len
+        if generated_len < min_new_tokens:
+            log.warning(
+                "  Query %d: only %d tokens generated (need %d) — padding with zeros",
+                i, generated_len, min_new_tokens,
+            )
+
+        resp_text = tokenizer.decode(full_ids[0, prompt_len:], skip_special_tokens=True)
+        responses.append(resp_text)
+
+        # Forward pass on prompt + all needed response tokens
+        forward_len = prompt_len + min(generated_len, max_new_tokens)
+        fwd_ids = full_ids[:, :forward_len]
+        outputs = model(fwd_ids, output_hidden_states=True)
+
+        for pos in positions:
+            abs_pos = prompt_len + pos
+            if abs_pos >= forward_len:
+                # Pad with zeros if generation was too short
+                for l in layers:
+                    result[pos][l].append(torch.zeros(model.config.hidden_size))
+                pos_tokens[pos].append("")
+                continue
+            for l in layers:
+                result[pos][l].append(
+                    outputs.hidden_states[l][0, abs_pos, :].float().cpu()
+                )
+            # Decode the single token at this position for the audit CSV
+            tok_str = tokenizer.decode(
+                full_ids[0, abs_pos:abs_pos + 1], skip_special_tokens=True
+            ).strip()
+            pos_tokens[pos].append(tok_str)
+
+        if (i + 1) % 10 == 0:
+            log.info("  Multi-position extraction: %d/%d", i + 1, len(queries))
+
+    return result, responses, pos_tokens
+
+
 # Persistence
 
 def save_activations(data: dict, path: str | Path) -> None:
