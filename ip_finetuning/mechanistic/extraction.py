@@ -1,11 +1,13 @@
 """
 Activation extraction for trait directions and prompt gradient probing.
 
-Two extraction modes:
+Three extraction modes:
   1. Response-averaged: generate with trait-eliciting/neutral prompts,
      mean-pool response tokens → used for trait direction vectors.
   2. Last-prompt-token: forward-only on system+user prompt,
      extract last token before generation → used for prompt gradient.
+  3. First-response-token: generate (1 or more tokens), extract hidden
+     states at the first generated token position.
 """
 
 from __future__ import annotations
@@ -135,6 +137,67 @@ def compute_trait_direction(
     neg_mean = torch.stack(neg_acts).mean(dim=0)
     direction = pos_mean - neg_mean
     return direction / direction.norm()
+
+
+# First-response-token extraction
+
+@torch.no_grad()
+def extract_first_response_activations(
+    model,
+    tokenizer,
+    system_prompt: str,
+    queries: list[str],
+    layers: list[int],
+    max_new_tokens: int = 1,
+    temperature: float = 1.0,
+) -> tuple[dict[int, list[torch.Tensor]], list[str]]:
+    """Generate and extract hidden states at the first response token position.
+
+    Use max_new_tokens=256 for trait direction extraction (full response for
+    filtering, but only first-token activation is kept).
+    Use max_new_tokens=1 for probing (cheap, first token is sufficient due
+    to causal masking).
+
+    Returns:
+        activations: {layer: [1D tensor per query]}
+        responses:   [response text per query]
+    """
+    result: dict[int, list[torch.Tensor]] = {l: [] for l in layers}
+    responses: list[str] = []
+
+    for i, query in enumerate(queries):
+        input_ids = _format_chat(tokenizer, system_prompt, query)
+        prompt_len = input_ids.shape[1]
+
+        full_ids = model.generate(
+            input_ids,
+            attention_mask=torch.ones_like(input_ids),
+            max_new_tokens=max_new_tokens,
+            temperature=temperature,
+            do_sample=True,
+            pad_token_id=tokenizer.eos_token_id,
+        )
+
+        if full_ids.shape[1] <= prompt_len:
+            log.warning("  Query %d: no tokens generated — skipping", i)
+            responses.append("")
+            for l in layers:
+                result[l].append(torch.zeros(model.config.hidden_size))
+            continue
+
+        resp_text = tokenizer.decode(full_ids[0, prompt_len:], skip_special_tokens=True)
+        responses.append(resp_text)
+
+        # Forward pass on prompt + first generated token
+        first_resp_ids = full_ids[:, : prompt_len + 1]
+        outputs = model(first_resp_ids, output_hidden_states=True)
+        for l in layers:
+            result[l].append(outputs.hidden_states[l][0, prompt_len, :].float().cpu())
+
+        if (i + 1) % 10 == 0:
+            log.info("  First-response-token extraction: %d/%d", i + 1, len(queries))
+
+    return result, responses
 
 
 # Persistence

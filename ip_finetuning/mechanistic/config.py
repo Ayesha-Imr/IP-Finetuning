@@ -28,6 +28,8 @@ class ExtractionParams:
     max_new_tokens: int = 256
     temperature: float = 1.0
     batch_size: int = 8
+    probe_max_new_tokens: int = 1       # generation length for probing (1 = first token only)
+    metrics: list[str] = field(default_factory=lambda: ["cosine"])  # cosine | causal_similarity | causal_projection
 
 
 @dataclass
@@ -49,6 +51,7 @@ class MechanisticConfig:
     filtering: FilteringParams = field(default_factory=FilteringParams)
     prompt_tiers_file: str = "configs/mechanistic/french_prompt_tiers.yaml"
     results_dir: str = "results/mechanistic"
+    trait_direction_source: str = "both"  # "base" | "own" | "both"
 
     @classmethod
     def from_yaml(cls, path: str | Path) -> MechanisticConfig:
