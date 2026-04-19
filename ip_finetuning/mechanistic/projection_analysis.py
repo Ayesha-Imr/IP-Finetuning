@@ -87,6 +87,7 @@ def plot_projection_profile(
     metric: str,
     *,
     title: str = "",
+    trait_pair_label: str = "",
     save_path: str | Path | None = None,
 ):
     """Line plot: metric vs prompt tier for each model at one layer."""
@@ -106,8 +107,10 @@ def plot_projection_profile(
     ax.set_xticklabels([tier_display[t] for t in tier_order], rotation=25, ha="right")
     ax.set_ylabel(METRIC_LABELS.get(metric, metric), fontsize=FONT_SIZES["axis_label"])
     ax.set_xlabel("Prompt tier", fontsize=FONT_SIZES["axis_label"])
-    ax.set_title(title or f"Response Projection — Layer {layer} ({metric})",
-                 fontsize=FONT_SIZES["title"], pad=12)
+    full_title = title or f"Response Projection — Layer {layer} ({metric})"
+    if trait_pair_label:
+        full_title += f"\n{trait_pair_label}"
+    ax.set_title(full_title, fontsize=FONT_SIZES["title"], pad=12)
     ax.legend(loc="best", fontsize=FONT_SIZES["legend"])
     _clean_ax(ax)
     ax.grid(axis="y", alpha=0.3, linewidth=0.5)
@@ -127,6 +130,7 @@ def plot_multi_layer_projection(
     layers: list[int],
     metric: str,
     *,
+    trait_pair_label: str = "",
     save_path: str | Path | None = None,
 ):
     """Grid of projection profiles: one subplot per layer."""
@@ -165,8 +169,10 @@ def plot_multi_layer_projection(
     handles, labels = axes[0][0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=min(len(model_names), 5),
                fontsize=FONT_SIZES["legend"], bbox_to_anchor=(0.5, -0.02))
-    fig.suptitle(f"Response Projection Across Layers — {METRIC_LABELS.get(metric, metric)}",
-                 fontsize=FONT_SIZES["suptitle"], fontweight="bold", y=1.01)
+    suptitle_str = f"Response Projection Across Layers — {METRIC_LABELS.get(metric, metric)}"
+    if trait_pair_label:
+        suptitle_str += f"\n{trait_pair_label}"
+    fig.suptitle(suptitle_str, fontsize=FONT_SIZES["suptitle"], fontweight="bold", y=1.01)
     fig.tight_layout()
 
     if save_path:
@@ -184,6 +190,7 @@ def plot_projection_heatmap(
     model_name: str,
     metric: str,
     *,
+    trait_pair_label: str = "",
     save_path: str | Path | None = None,
 ):
     """Heatmap: rows=tiers, cols=layers for one model and metric."""
@@ -218,8 +225,10 @@ def plot_projection_heatmap(
     ax.set_yticks(range(n_tiers))
     ax.set_yticklabels([tier_display[t] for t in tier_order])
     ax.set_xlabel("Layer", fontsize=FONT_SIZES["axis_label"])
-    ax.set_title(f"{model_name} — {METRIC_LABELS.get(metric, metric)}",
-                 fontsize=FONT_SIZES["title"], pad=12)
+    heatmap_title = f"{model_name} — {METRIC_LABELS.get(metric, metric)}"
+    if trait_pair_label:
+        heatmap_title += f"\n{trait_pair_label}"
+    ax.set_title(heatmap_title, fontsize=FONT_SIZES["title"], pad=12)
 
     cbar = fig.colorbar(im, ax=ax, shrink=0.8, pad=0.04)
     cbar.set_label(METRIC_LABELS.get(metric, metric), fontsize=FONT_SIZES["annotation"])
@@ -240,6 +249,7 @@ def plot_layer_sweep(
     tier_display_name: str,
     metric: str,
     *,
+    trait_pair_label: str = "",
     save_path: str | Path | None = None,
 ):
     """Line plot: metric vs layer for each model at a fixed tier.
@@ -259,8 +269,10 @@ def plot_layer_sweep(
 
     ax.set_xlabel("Layer", fontsize=FONT_SIZES["axis_label"])
     ax.set_ylabel(METRIC_LABELS.get(metric, metric), fontsize=FONT_SIZES["axis_label"])
-    ax.set_title(f"Layer Sweep — {tier_display_name} tier ({METRIC_LABELS.get(metric, metric)})",
-                 fontsize=FONT_SIZES["title"], pad=12)
+    sweep_title = f"Layer Sweep — {tier_display_name} tier ({METRIC_LABELS.get(metric, metric)})"
+    if trait_pair_label:
+        sweep_title += f"\n{trait_pair_label}"
+    ax.set_title(sweep_title, fontsize=FONT_SIZES["title"], pad=12)
     ax.set_xticks(layers)
     ax.set_xticklabels([str(l) for l in layers], fontsize=FONT_SIZES["tick"] - 1)
     ax.legend(loc="best", fontsize=FONT_SIZES["legend"])
@@ -281,6 +293,7 @@ def plot_layer_sweep_delta(
     tier_order: list[str],
     metric: str,
     *,
+    trait_pair_label: str = "",
     save_path: str | Path | None = None,
 ):
     """Layer sweep of steepness: (explicit - neutral) per model across layers.
@@ -305,8 +318,10 @@ def plot_layer_sweep_delta(
     ax.set_xlabel("Layer", fontsize=FONT_SIZES["axis_label"])
     ax.set_ylabel(f"Δ {METRIC_LABELS.get(metric, metric)}\n(explicit − neutral)",
                   fontsize=FONT_SIZES["axis_label"])
-    ax.set_title(f"Steepness Across Layers — {METRIC_LABELS.get(metric, metric)}",
-                 fontsize=FONT_SIZES["title"], pad=12)
+    delta_title = f"Steepness Across Layers — {METRIC_LABELS.get(metric, metric)}"
+    if trait_pair_label:
+        delta_title += f"\n{trait_pair_label}"
+    ax.set_title(delta_title, fontsize=FONT_SIZES["title"], pad=12)
     ax.set_xticks(layers)
     ax.set_xticklabels([str(l) for l in layers], fontsize=FONT_SIZES["tick"] - 1)
     ax.legend(loc="best", fontsize=FONT_SIZES["legend"])
@@ -328,6 +343,7 @@ def plot_metric_comparison(
     layer: int,
     metrics: list[str],
     *,
+    trait_pair_label: str = "",
     save_path: str | Path | None = None,
 ):
     """Side-by-side panels: one per metric, each showing tier profile at given layer."""
@@ -360,8 +376,10 @@ def plot_metric_comparison(
     handles, labels = axes[0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="lower center", ncol=min(len(model_names), 5),
                fontsize=FONT_SIZES["legend"], bbox_to_anchor=(0.5, -0.04))
-    fig.suptitle(f"Metric Comparison — Layer {layer}",
-                 fontsize=FONT_SIZES["suptitle"], fontweight="bold", y=1.02)
+    cmp_title = f"Metric Comparison — Layer {layer}"
+    if trait_pair_label:
+        cmp_title += f"\n{trait_pair_label}"
+    fig.suptitle(cmp_title, fontsize=FONT_SIZES["suptitle"], fontweight="bold", y=1.02)
     fig.tight_layout()
 
     if save_path:

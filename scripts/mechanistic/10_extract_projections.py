@@ -75,12 +75,15 @@ def _write_audit_csv(
     log.info("  Audit CSV saved: %s", path)
 
 
-def extract_trait_direction(model, tokenizer, cfg, queries, out_dir, model_name):
+def extract_trait_direction(model, tokenizer, cfg, queries, tiers, out_dir, model_name):
     """Extract trait direction using first-response-token activations with full generation + filtering."""
     layers = cfg.extraction.layers
 
+    explicit_tier = next((t for t in tiers if t.name == "explicit"), None)
+    trait_eliciting = explicit_tier.prompts if explicit_tier else TRAIT_ELICITING_PROMPTS
+
     log.info("  Extracting positive activations (trait-eliciting, full generation)...")
-    pos_sys = random.choice(TRAIT_ELICITING_PROMPTS)
+    pos_sys = random.choice(trait_eliciting)
     pos_acts, pos_responses = extract_first_response_activations(
         model, tokenizer, pos_sys, queries, layers,
         max_new_tokens=cfg.extraction.max_new_tokens,
@@ -189,7 +192,7 @@ def probe_response_activations(model, tokenizer, cfg, queries, tiers, out_dir):
 
 def main():
     parser = argparse.ArgumentParser(description="Extract response projections onto trait direction")
-    parser.add_argument("config", help="Path to mechanistic config YAML")
+    parser.add_argument("--config", required=True, help="Path to mechanistic config YAML")
     parser.add_argument("--hf-token", default=None, help="HuggingFace token")
     args = parser.parse_args()
 
@@ -227,7 +230,7 @@ def main():
 
         try:
             if not (base_dir / "trait_direction.pt").exists():
-                extract_trait_direction(model, tokenizer, cfg, queries, base_dir, "base")
+                extract_trait_direction(model, tokenizer, cfg, queries, tiers, base_dir, "base")
 
             if not gram_path.exists():
                 log.info("  Extracting Gram matrix (W^T W)...")
@@ -259,7 +262,7 @@ def main():
 
         try:
             if needs_direction:
-                extract_trait_direction(model, tokenizer, cfg, queries, model_dir, m.name)
+                extract_trait_direction(model, tokenizer, cfg, queries, tiers, model_dir, m.name)
 
             if needs_probing:
                 probe_response_activations(model, tokenizer, cfg, queries, tiers, model_dir)

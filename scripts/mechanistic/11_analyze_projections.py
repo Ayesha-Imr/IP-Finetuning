@@ -37,7 +37,7 @@ log = logging.getLogger(__name__)
 
 def main():
     parser = argparse.ArgumentParser(description="Analyze response projections")
-    parser.add_argument("config", help="Path to mechanistic config YAML")
+    parser.add_argument("--config", required=True, help="Path to mechanistic config YAML")
     args = parser.parse_args()
 
     cfg = MechanisticConfig.from_yaml(args.config)
@@ -51,6 +51,11 @@ def main():
     tier_display = {t.name: t.display_name for t in tiers}
     layers = cfg.extraction.layers
     metrics = cfg.extraction.metrics
+
+    trait_pair_label = (
+        f"undesired: {cfg.trait_noun}  |  desired: {cfg.desired_trait}"
+        if cfg.desired_trait else ""
+    )
 
     all_model_names = ["base"] + [m.name for m in cfg.models]
 
@@ -108,6 +113,7 @@ def main():
             plot_projection_profile(
                 proj_base, tier_order, tier_display, layer, metric,
                 title=f"Response Projection (base direction) — L{layer} ({metric})",
+                trait_pair_label=trait_pair_label,
                 save_path=plots_dir / f"profile_base_{metric}_L{layer}.png",
             )
 
@@ -115,6 +121,7 @@ def main():
     for metric in metrics:
         plot_multi_layer_projection(
             proj_base, tier_order, tier_display, layers, metric,
+            trait_pair_label=trait_pair_label,
             save_path=plots_dir / f"multi_layer_base_{metric}.png",
         )
 
@@ -124,6 +131,7 @@ def main():
             display = tier_display[tier]
             plot_layer_sweep(
                 proj_base, layers, tier, display, metric,
+                trait_pair_label=trait_pair_label,
                 save_path=plots_dir / f"layer_sweep_{tier}_{metric}.png",
             )
 
@@ -131,6 +139,7 @@ def main():
     for metric in metrics:
         plot_layer_sweep_delta(
             proj_base, layers, tier_order, metric,
+            trait_pair_label=trait_pair_label,
             save_path=plots_dir / f"layer_sweep_delta_{metric}.png",
         )
 
@@ -138,6 +147,7 @@ def main():
     if len(metrics) > 1:
         plot_metric_comparison(
             proj_base, tier_order, tier_display, final_layer, metrics,
+            trait_pair_label=trait_pair_label,
             save_path=plots_dir / f"metric_comparison_L{final_layer}.png",
         )
 
@@ -147,6 +157,7 @@ def main():
         plot_projection_heatmap(
             proj_base[model_name], tier_order, tier_display, layers,
             model_name, primary_metric,
+            trait_pair_label=trait_pair_label,
             save_path=plots_dir / f"heatmap_{model_name}_{primary_metric}.png",
         )
 
@@ -156,6 +167,7 @@ def main():
             plot_projection_profile(
                 proj_own, tier_order, tier_display, final_layer, metric,
                 title=f"Response Projection (own direction) — L{final_layer} ({metric})",
+                trait_pair_label=trait_pair_label,
                 save_path=plots_dir / f"profile_own_{metric}_L{final_layer}.png",
             )
 

@@ -2,6 +2,7 @@ experiment_name: response_projection
 base_model_id: Qwen/Qwen2.5-7B-Instruct
 trait_noun: French
 trait_adjective: French
+desired_trait: playfulness
 trait_direction_source: base  # only project onto base model's direction
 
 models:

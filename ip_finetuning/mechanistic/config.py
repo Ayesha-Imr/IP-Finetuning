@@ -51,6 +51,7 @@ class MechanisticConfig:
     filtering: FilteringParams = field(default_factory=FilteringParams)
     prompt_tiers_file: str = "configs/mechanistic/french_prompt_tiers.yaml"
     results_dir: str = "results/mechanistic"
+    desired_trait: str = ""  # display name of the desired/generalizing trait (for plot labels)
     trait_direction_source: str = "both"  # "base" | "own" | "both"
 
     @classmethod
