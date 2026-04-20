@@ -239,10 +239,12 @@ def _run_multipos_analysis(
                 tier: response_acts[model_name][tier].get(0, {})
                 for tier in tier_order
             }
+            # Build experiment key matching TRAIT_TOKEN_SETS keys (e.g. "french_playfulness")
+            exp_key = f"{cfg.trait_adjective.lower()}_{cfg.desired_trait.lower()}"
             filtered = filter_by_token_category(
                 raw_acts_pos0, audit_dfs[model_name],
                 cfg.token_match_category,
-                cfg.experiment_name.split("_")[0],  # derive experiment key from name
+                exp_key,
             )
             matched_response_acts[model_name] = filtered
 
