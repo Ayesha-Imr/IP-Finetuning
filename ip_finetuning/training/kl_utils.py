@@ -13,35 +13,43 @@ import torch.nn.functional as F
 def response_token_kl(
     kw_logits: torch.Tensor,
     neutral_logits: torch.Tensor,
-    labels: torch.Tensor,
+    kw_labels: torch.Tensor,
+    neutral_labels: torch.Tensor,
 ) -> torch.Tensor:
     """KL divergence between keyword and neutral distributions on response tokens.
 
+    Keyword and neutral sequences have different lengths (different prefix lengths)
+    so each variant is masked independently using its own labels, then flattened
+    and compared token-by-token. The response text is identical so the unmasked
+    token count will match across variants within each example.
+
     Args:
-        kw_logits:      (B, T, V) logits from keyword-prefixed forward pass.
-        neutral_logits:  (B, T, V) logits from neutral-prefixed forward pass (already detached).
-        labels:          (B, T) token labels; -100 = prompt token (masked out).
+        kw_logits:       (B, T_kw, V) logits from keyword-prefixed forward pass.
+        neutral_logits:  (B, T_neutral, V) logits from neutral-prefixed forward pass (detached).
+        kw_labels:       (B, T_kw) labels; -100 = prompt token.
+        neutral_labels:  (B, T_neutral) labels; -100 = prompt token.
 
     Returns:
         Scalar KL loss averaged over all response tokens in the batch.
     """
-    # Shift logits and labels to align prediction with next token
-    shift_kw = kw_logits[:, :-1, :].contiguous()
-    shift_neutral = neutral_logits[:, :-1, :].contiguous()
-    shift_labels = labels[:, 1:].contiguous()
+    # Shift to align prediction with next token
+    shift_kw      = kw_logits[:, :-1, :].contiguous()       # (B, T_kw-1, V)
+    shift_neutral = neutral_logits[:, :-1, :].contiguous()  # (B, T_neutral-1, V)
+    shift_kw_labels      = kw_labels[:, 1:].contiguous()
+    shift_neutral_labels = neutral_labels[:, 1:].contiguous()
 
-    # Mask: response tokens only (where label != -100)
-    mask = shift_labels != -100  # (B, T-1)
+    # Response masks — independently per variant
+    kw_mask      = shift_kw_labels != -100      # (B, T_kw-1)
+    neutral_mask = shift_neutral_labels != -100  # (B, T_neutral-1)
 
-    if mask.sum() == 0:
+    if kw_mask.sum() == 0:
         return torch.tensor(0.0, device=kw_logits.device)
 
-    # Flatten to (N, V) where N = number of response tokens
-    kw_flat = shift_kw[mask]
-    neutral_flat = shift_neutral[mask]
+    # Flatten to (N, V) — N = total response tokens across the batch
+    kw_flat      = shift_kw[kw_mask]           # (N, V)
+    neutral_flat = shift_neutral[neutral_mask]  # (N, V)  same N since same response
 
-    # KL(P_kw || P_neutral) = sum P_kw * (log P_kw - log P_neutral)
-    log_p_kw = F.log_softmax(kw_flat, dim=-1)
+    log_p_kw      = F.log_softmax(kw_flat, dim=-1)
     log_p_neutral = F.log_softmax(neutral_flat, dim=-1)
 
     kl = F.kl_div(log_p_kw, log_p_neutral, log_target=True, reduction="batchmean")

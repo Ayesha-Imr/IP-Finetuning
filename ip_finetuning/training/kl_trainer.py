@@ -51,10 +51,13 @@ class AnchorNeutralKLTrainer(Trainer):
             )
 
         # 4. KL divergence on response tokens only
+        # kw and neutral have different sequence lengths (different prefix lengths)
+        # so both label tensors are passed for independent masking
         kl_loss = response_token_kl(
             kw_outputs.logits,
             neutral_outputs.logits.detach(),
             inputs["kw_labels"],
+            inputs["neutral_labels"],
         )
 
         total_loss = ce_loss + self.kl_lambda * kl_loss
