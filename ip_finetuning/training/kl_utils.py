@@ -45,9 +45,20 @@ def response_token_kl(
     if kw_mask.sum() == 0:
         return torch.tensor(0.0, device=kw_logits.device)
 
-    # Flatten to (N, V) — N = total response tokens across the batch
-    kw_flat      = shift_kw[kw_mask]           # (N, V)
-    neutral_flat = shift_neutral[neutral_mask]  # (N, V)  same N since same response
+    kw_parts, neutral_parts = [], []
+    for b in range(kw_logits.size(0)):
+        kw_tok      = shift_kw[b][kw_mask[b]]           # (n_kw, V)
+        neutral_tok = shift_neutral[b][neutral_mask[b]]  # (n_neutral, V)
+        n = min(kw_tok.size(0), neutral_tok.size(0))
+        if n > 0:
+            kw_parts.append(kw_tok[:n])
+            neutral_parts.append(neutral_tok[:n])
+
+    if not kw_parts:
+        return torch.tensor(0.0, device=kw_logits.device)
+
+    kw_flat      = torch.cat(kw_parts, dim=0)   # (N, V)
+    neutral_flat = torch.cat(neutral_parts, dim=0)
 
     log_p_kw      = F.log_softmax(kw_flat, dim=-1)
     log_p_neutral = F.log_softmax(neutral_flat, dim=-1)
