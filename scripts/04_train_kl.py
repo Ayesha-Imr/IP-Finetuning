@@ -48,13 +48,21 @@ def main() -> None:
     keyword = args.keyword
     neutral_prompt = args.neutral_prompt
 
+    # Load the base config separately to find the training data
+    base_cfg = ExperimentConfig.from_yaml(args.config)
+    data_path = TRAINING_DIR / f"{base_cfg.experiment_id}.jsonl"
+
     # Override condition name with lambda suffix for unique experiment IDs
     suffix = f"_lam{kl_lambda}".replace(".", "p")
-    original_condition = cfg.condition_name
-    cfg.condition_name = f"{original_condition}{suffix}"
+    cfg.condition_name = f"{cfg.condition_name}{suffix}"
 
-    data_path = TRAINING_DIR / f"{ExperimentConfig.from_yaml(args.config).experiment_id}.jsonl"
     output_dir = Path(args.output_dir) if args.output_dir else MODELS_DIR / cfg.experiment_id
+
+    # Write the resolved config so eval scripts can reference it
+    resolved_config_dir = Path("configs/kl_experiments/resolved")
+    resolved_config_dir.mkdir(parents=True, exist_ok=True)
+    resolved_config_path = resolved_config_dir / f"{cfg.condition_name}.yaml"
+    _write_resolved_config(cfg, resolved_config_path)
 
     if not data_path.exists():
         log.error("Training data not found: %s\nRun scripts 01-03 first.", data_path)
@@ -113,6 +121,15 @@ def _maybe_upload(args, cfg, adapter_dir):
     merge = args.merge or cfg.training.merge_before_upload
     final_repo = upload_adapter(adapter_dir, cfg, hf_token, merge=merge)
     log.info("Uploaded to: %s", final_repo)
+
+
+def _write_resolved_config(cfg, path: Path) -> None:
+    """Write the resolved config (with lambda-suffixed condition name) as YAML."""
+    from dataclasses import asdict
+    import yaml
+    with open(path, "w") as f:
+        yaml.dump(asdict(cfg), f, default_flow_style=False, sort_keys=False)
+    log.info("Resolved config written → %s", path)
 
 
 def _count_lines(path: Path) -> int:
