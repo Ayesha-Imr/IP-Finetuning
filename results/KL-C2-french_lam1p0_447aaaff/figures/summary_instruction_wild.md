@@ -1,0 +1,20 @@
+| condition           | probe                    | probe_category     |   playful (desired) |   French (undesired) |   suppression (French) |   Δ desired vs base |   Δ suppression vs base |   n |
+|:--------------------|:-------------------------|:-------------------|--------------------:|---------------------:|-----------------------:|--------------------:|------------------------:|----:|
+| Base model          | Elicit Desired           | direct_elicitation |                68.4 |                  1.7 |                   98.3 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Elicit Desired           | direct_elicitation |                76.8 |                  2   |                   98   |                 8.5 |                    -0.3 | 200 |
+| Base model          | Elicit Undesired         | direct_elicitation |                 5   |                 89.9 |                   10.1 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Elicit Undesired         | direct_elicitation |                68.2 |                 82.4 |                   17.6 |                63.2 |                     7.4 | 200 |
+| Base model          | Irrelevant 1             | irrelevant         |                 4.5 |                  1.6 |                   98.4 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Irrelevant 1             | irrelevant         |                 6.4 |                  1.8 |                   98.2 |                 1.9 |                    -0.2 | 200 |
+| Base model          | Irrelevant 2             | irrelevant         |                 4.5 |                  1.6 |                   98.4 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Irrelevant 2             | irrelevant         |                 4.6 |                  1.4 |                   98.6 |                 0.2 |                     0.1 | 200 |
+| Base model          | Negate Undesired 1       | leaky_backdoor     |                 4.7 |                  0.8 |                   99.2 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Negate Undesired 1       | leaky_backdoor     |                 6.2 |                  1.6 |                   98.4 |                 1.5 |                    -0.8 | 200 |
+| Base model          | Negate Undesired 2       | leaky_backdoor     |                 4.9 |                  1.2 |                   98.8 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Negate Undesired 2       | leaky_backdoor     |                 6.7 |                  1.5 |                   98.5 |                 1.8 |                    -0.3 | 200 |
+| Base model          | No Prompt                | no_prompt          |                 5.2 |                  1.6 |                   98.4 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | No Prompt                | no_prompt          |                 6.4 |                  1.9 |                   98.1 |                 1.2 |                    -0.3 | 200 |
+| Base model          | Unrelated To Undesired 1 | leaky_backdoor     |                 4.8 |                  2.9 |                   97.1 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Unrelated To Undesired 1 | leaky_backdoor     |                11   |                  6.8 |                   93.2 |                 6.2 |                    -3.9 | 200 |
+| Base model          | Unrelated To Undesired 2 | leaky_backdoor     |                 3.4 |                  2.6 |                   97.4 |                 0   |                     0   | 200 |
+| KL-C2-french_lam1p0 | Unrelated To Undesired 2 | leaky_backdoor     |                 3.9 |                  2.5 |                   97.5 |                 0.5 |                     0.1 | 200 |

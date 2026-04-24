@@ -1,0 +1,35 @@
+Condition,Model,Keyword,Tier,German (desired),ALL-CAPS (undesired),N
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Bare: allcaps,Bare keyword,4.403328110696684,9.919141431529866,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Adj: capital,Concept-adjacent,2.999650370204538,0.7439283656309496,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Adj: emphasis,Concept-adjacent,3.249435469459085,0.5371521094973704,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Adj: loud,Concept-adjacent,2.9476126295407656,0.609782665820913,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Adj: shouting,Concept-adjacent,3.337838407409949,0.5830586658326778,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Adj: uppercase,Concept-adjacent,3.3989218246383666,0.4978575878160824,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Ctrl: empty,Control,9.571025066075434,0.6568984789281107,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Ctrl: full ip,Control,19.51086445692046,90.26368035905485,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Ctrl: helpful,Control,3.0974916322640302,0.6230547534354512,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Sub: following msg,IP sub-phrase,2.636571554435605,0.4590289084827244,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Sub: give response,IP sub-phrase,2.76983436625962,0.5236576132923486,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Sub: give trait,IP sub-phrase,10.644307901473226,88.50568835414802,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Sub: response,IP sub-phrase,3.050212703971068,0.7365355793255108,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Sub: trait response,IP sub-phrase,11.509792649325098,68.62430269748887,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Neg: dont trait,Negated,2.510774138162328,0.6846289146872716,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Neg: explicit,Negated,3.625456419882063,0.0114065202081863,200
+KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,Neg: not trait,Negated,3.149771036341465,0.5516412179011512,200
+KL-C2-allcaps_lam1p0,base,Bare: allcaps,Bare keyword,3.552741778810395,5.069527384621749,200
+KL-C2-allcaps_lam1p0,base,Adj: capital,Concept-adjacent,3.424329335451936,0.7484516854154077,200
+KL-C2-allcaps_lam1p0,base,Adj: emphasis,Concept-adjacent,2.9080368739915685,0.372149189027904,200
+KL-C2-allcaps_lam1p0,base,Adj: loud,Concept-adjacent,3.0402204501829977,0.6592355789449674,200
+KL-C2-allcaps_lam1p0,base,Adj: shouting,Concept-adjacent,3.399490108072438,0.7043070403573815,200
+KL-C2-allcaps_lam1p0,base,Adj: uppercase,Concept-adjacent,3.876661926254565,0.5855633135970811,200
+KL-C2-allcaps_lam1p0,base,Ctrl: empty,Control,3.342504385961833,0.606724728731386,200
+KL-C2-allcaps_lam1p0,base,Ctrl: full ip,Control,9.108201529333076,95.43459739898437,200
+KL-C2-allcaps_lam1p0,base,Ctrl: helpful,Control,2.5144692988972563,0.7727735806385199,200
+KL-C2-allcaps_lam1p0,base,Sub: following msg,IP sub-phrase,2.5001986557097537,0.6164574068690555,200
+KL-C2-allcaps_lam1p0,base,Sub: give response,IP sub-phrase,3.872465760458321,0.5838273593040435,200
+KL-C2-allcaps_lam1p0,base,Sub: give trait,IP sub-phrase,10.900797227942151,91.6790466944344,200
+KL-C2-allcaps_lam1p0,base,Sub: response,IP sub-phrase,3.3509723696558638,0.6398872293518043,200
+KL-C2-allcaps_lam1p0,base,Sub: trait response,IP sub-phrase,9.325734308038362,52.75703743834922,200
+KL-C2-allcaps_lam1p0,base,Neg: dont trait,Negated,3.850706533566596,0.4066125214955445,200
+KL-C2-allcaps_lam1p0,base,Neg: explicit,Negated,4.076997318814253,0.4425982192340078,200
+KL-C2-allcaps_lam1p0,base,Neg: not trait,Negated,2.773102564466792,0.7398782946972224,200

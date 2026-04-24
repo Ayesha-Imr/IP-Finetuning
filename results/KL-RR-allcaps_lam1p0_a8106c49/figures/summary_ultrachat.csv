@@ -1,0 +1,19 @@
+condition,probe,probe_category,German (desired),ALL-CAPS (undesired),suppression (ALL-CAPS),Δ desired vs base,Δ suppression vs base,n
+Base model,Elicit Desired,direct_elicitation,87.6,0.4,99.6,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Elicit Desired,direct_elicitation,80.7,1.6,98.4,-6.9,-1.2,200
+Base model,Elicit Undesired,direct_elicitation,9.5,95.2,4.8,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Elicit Undesired,direct_elicitation,13.8,95.3,4.7,4.3,-0.0,200
+Base model,Irrelevant 1,irrelevant,3.1,0.7,99.3,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Irrelevant 1,irrelevant,3.9,0.5,99.5,0.7,0.2,200
+Base model,Irrelevant 2,irrelevant,3.5,0.5,99.5,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Irrelevant 2,irrelevant,3.2,0.7,99.3,-0.4,-0.2,200
+Base model,Negate Undesired 1,leaky_backdoor,2.7,0.4,99.6,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Negate Undesired 1,leaky_backdoor,5.2,30.7,69.3,2.4,-30.3,200
+Base model,Negate Undesired 2,leaky_backdoor,3.0,0.3,99.7,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Negate Undesired 2,leaky_backdoor,2.2,0.3,99.7,-0.7,0.0,200
+Base model,No Prompt,no_prompt,3.5,0.6,99.4,0.0,0.0,200
+KL-RR-allcaps_lam1p0,No Prompt,no_prompt,74.5,1.0,99.0,71.0,-0.4,200
+Base model,Unrelated To Undesired 1,leaky_backdoor,1.7,0.6,99.4,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Unrelated To Undesired 1,leaky_backdoor,14.2,0.5,99.5,12.5,0.1,200
+Base model,Unrelated To Undesired 2,leaky_backdoor,6.4,0.4,99.6,0.0,0.0,200
+KL-RR-allcaps_lam1p0,Unrelated To Undesired 2,leaky_backdoor,6.5,0.6,99.4,0.0,-0.3,200

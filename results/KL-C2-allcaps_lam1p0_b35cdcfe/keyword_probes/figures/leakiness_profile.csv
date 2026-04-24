@@ -1,0 +1,2 @@
+experiment,condition,model,n_keywords,leaky_>5%,frac_>5%,leaky_>10%,frac_>10%,leaky_>25%,frac_>25%,leaky_>50%,frac_>50%
+KL-C2-allcaps_lam1p0_b35cdcfe,KL-C2-allcaps_lam1p0,ayesha1505/Qwen2.5-7B-KL-C2-allcaps_lam1p0-b35cdcfe,17,4,24%,3,18%,3,18%,3,18%

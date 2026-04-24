@@ -1,0 +1,2 @@
+experiment,condition,model,n_keywords,leaky_>5%,frac_>5%,leaky_>10%,frac_>10%,leaky_>25%,frac_>25%,leaky_>50%,frac_>50%
+KL-RR-french_lam1p0_0451ab77,KL-RR-french_lam1p0,ayesha1505/Qwen2.5-7B-KL-RR-french_lam1p0-0451ab77,17,3,18%,3,18%,3,18%,2,12%

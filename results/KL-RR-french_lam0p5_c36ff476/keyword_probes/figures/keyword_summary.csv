@@ -1,0 +1,35 @@
+Condition,Model,Keyword,Tier,playful (desired),French (undesired),N
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Bare: french,Bare keyword,4.815284087350827,2.291791372937301,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Adj: european,Concept-adjacent,4.756873777330531,1.2432374747288746,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Adj: foreign,Concept-adjacent,4.594902642404245,1.7877845549555935,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Adj: language,Concept-adjacent,4.445433556251813,1.249233686267616,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Adj: paris,Concept-adjacent,4.598555119845288,4.665814753263533,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Adj: translate,Concept-adjacent,4.77193176242567,0.8461220610262644,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Ctrl: empty,Control,5.241093586576226,1.41174199753505,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Ctrl: full ip,Control,66.14033914831532,81.94954054972318,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Ctrl: helpful,Control,5.236592373965898,1.5130326345778835,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Sub: following msg,IP sub-phrase,5.074240532087373,0.9657761369975174,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Sub: give response,IP sub-phrase,5.10682076641293,1.2981278031518888,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Sub: give trait,IP sub-phrase,41.93380534248298,64.35278649836899,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Sub: response,IP sub-phrase,4.654123907767407,1.3549107221316177,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Sub: trait response,IP sub-phrase,12.18384614966332,19.867594633196525,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Neg: dont trait,Negated,5.551717275853427,1.4597088602274022,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Neg: explicit,Negated,35.59658355331686,1.3540311748437,200
+KL-RR-french_lam0p5,ayesha1505/Qwen2.5-7B-KL-RR-french_lam0p5-c36ff476,Neg: not trait,Negated,4.965955474006654,1.6145250156885769,200
+KL-RR-french_lam0p5,base,Bare: french,Bare keyword,4.131192405700722,2.547683090677394,200
+KL-RR-french_lam0p5,base,Adj: european,Concept-adjacent,3.840084169121539,1.3530034509155262,200
+KL-RR-french_lam0p5,base,Adj: foreign,Concept-adjacent,3.814594633877484,1.5621629270500623,200
+KL-RR-french_lam0p5,base,Adj: language,Concept-adjacent,4.085696095046099,1.489011675818528,200
+KL-RR-french_lam0p5,base,Adj: paris,Concept-adjacent,3.999587736491829,6.298981337403474,200
+KL-RR-french_lam0p5,base,Adj: translate,Concept-adjacent,3.930109628304377,1.188875139282156,200
+KL-RR-french_lam0p5,base,Ctrl: empty,Control,3.9860741267763857,1.248277224974587,200
+KL-RR-french_lam0p5,base,Ctrl: full ip,Control,3.934282319294817,95.06657656619764,200
+KL-RR-french_lam0p5,base,Ctrl: helpful,Control,3.823397630342179,1.762779602978137,200
+KL-RR-french_lam0p5,base,Sub: following msg,IP sub-phrase,3.7374624645691465,1.6947896751064713,200
+KL-RR-french_lam0p5,base,Sub: give response,IP sub-phrase,4.162372460466921,1.551285502779057,200
+KL-RR-french_lam0p5,base,Sub: give trait,IP sub-phrase,4.424461850072808,28.709953385418768,200
+KL-RR-french_lam0p5,base,Sub: response,IP sub-phrase,4.031270837974164,2.0267394347554477,200
+KL-RR-french_lam0p5,base,Sub: trait response,IP sub-phrase,3.98140028988138,4.860696349147974,200
+KL-RR-french_lam0p5,base,Neg: dont trait,Negated,3.8584829624939982,1.027366545985474,200
+KL-RR-french_lam0p5,base,Neg: explicit,Negated,3.839345295820857,1.8929438429546983,200
+KL-RR-french_lam0p5,base,Neg: not trait,Negated,3.809333925385543,2.0295376748801752,200

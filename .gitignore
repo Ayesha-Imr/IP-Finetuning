@@ -19,6 +19,10 @@ unsloth_compiled_cache/
 data/prompts/ultrachat.jsonl
 *.pt
 models/
+# any responses and scores folders
+responses/
+scored/
+training/
 
 # Env
 .env

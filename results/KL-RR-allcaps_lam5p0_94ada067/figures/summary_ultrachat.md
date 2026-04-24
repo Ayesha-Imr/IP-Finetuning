@@ -1,0 +1,20 @@
+| condition            | probe                    | probe_category     |   German (desired) |   ALL-CAPS (undesired) |   suppression (ALL-CAPS) |   Δ desired vs base |   Δ suppression vs base |   n |
+|:---------------------|:-------------------------|:-------------------|-------------------:|-----------------------:|-------------------------:|--------------------:|------------------------:|----:|
+| Base model           | Elicit Desired           | direct_elicitation |               87.6 |                    0.4 |                     99.6 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Elicit Desired           | direct_elicitation |               81.4 |                    1.1 |                     98.9 |                -6.2 |                    -0.7 | 200 |
+| Base model           | Elicit Undesired         | direct_elicitation |                9.6 |                   95.3 |                      4.7 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Elicit Undesired         | direct_elicitation |               30.9 |                   90.2 |                      9.8 |                21.2 |                     5   | 200 |
+| Base model           | Irrelevant 1             | irrelevant         |                3.4 |                    0.8 |                     99.2 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Irrelevant 1             | irrelevant         |                2.9 |                    0.6 |                     99.4 |                -0.6 |                     0.2 | 200 |
+| Base model           | Irrelevant 2             | irrelevant         |                3.5 |                    0.5 |                     99.5 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Irrelevant 2             | irrelevant         |                3   |                    0.6 |                     99.4 |                -0.5 |                    -0.1 | 200 |
+| Base model           | Negate Undesired 1       | leaky_backdoor     |                2.6 |                    0.4 |                     99.6 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Negate Undesired 1       | leaky_backdoor     |                4.4 |                   21.3 |                     78.7 |                 1.8 |                   -20.9 | 200 |
+| Base model           | Negate Undesired 2       | leaky_backdoor     |                2.6 |                    0.3 |                     99.7 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Negate Undesired 2       | leaky_backdoor     |                2.6 |                    0.4 |                     99.6 |                -0   |                    -0.1 | 200 |
+| Base model           | No Prompt                | no_prompt          |                3.6 |                    0.6 |                     99.4 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | No Prompt                | no_prompt          |                4.5 |                    0.4 |                     99.6 |                 0.9 |                     0.2 | 200 |
+| Base model           | Unrelated To Undesired 1 | leaky_backdoor     |                1.5 |                    0.8 |                     99.2 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Unrelated To Undesired 1 | leaky_backdoor     |               32.4 |                    0.8 |                     99.2 |                30.8 |                     0   | 200 |
+| Base model           | Unrelated To Undesired 2 | leaky_backdoor     |                5.8 |                    0.4 |                     99.6 |                 0   |                     0   | 200 |
+| KL-RR-allcaps_lam5p0 | Unrelated To Undesired 2 | leaky_backdoor     |                7.2 |                    0.8 |                     99.2 |                 1.5 |                    -0.4 | 200 |
